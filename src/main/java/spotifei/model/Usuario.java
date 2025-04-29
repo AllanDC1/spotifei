@@ -9,5 +9,6 @@ package spotifei.model;
  * @author unifacalen
  */
 public class Usuario extends Pessoa implements Autenticacao{
-    
+    private String loginUsuario;
+    private String senha;
 }

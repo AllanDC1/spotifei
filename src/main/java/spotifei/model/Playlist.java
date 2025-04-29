@@ -9,5 +9,5 @@ package spotifei.model;
  * @author unifacalen
  */
 public class Playlist {
-    
+    private String nomePlaylist;
 }

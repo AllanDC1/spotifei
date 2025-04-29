@@ -9,5 +9,7 @@ package spotifei.model;
  * @author unifacalen
  */
 public class Musica {
-    
+    private String titutloMusica;
+    private Artista artista;
+    private int duracaoSegundos;
 }
