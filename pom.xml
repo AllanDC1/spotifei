@@ -5,9 +5,16 @@
     <artifactId>spotifei</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
+        </dependency>
+    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>com.mycompany.spotifei.Spotifei</exec.mainClass>
+        <exec.mainClass>spotifei.app.SpotifeiApp</exec.mainClass>
     </properties>
 </project>
