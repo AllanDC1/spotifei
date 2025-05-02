@@ -14,13 +14,12 @@ import java.sql.SQLException;
  */
 public class Conexao {
         
-    private static final String USUARIO = "";
-    private static final String SENHA = "";
-    private static final String URL_BD = "";
+    private static final String USUARIO = "postgres";
+    private static final String SENHA = "admin";
+    private static final String URL_BD = "jdbc:postgresql://localhost:5432/spotifei";
     
-    public Connection criarConexaoBD() throws SQLException {
+    public static Connection criarConexaoBD() throws SQLException {
         Connection conexao = DriverManager.getConnection(URL_BD, USUARIO, SENHA);
         return conexao;
     } 
-    
 }
