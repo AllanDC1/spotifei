@@ -14,6 +14,12 @@ public class Usuario extends Pessoa implements Autenticavel{
     private String login;
     private String senha;  
 
+    public Usuario(String login, String nome, String senha) {
+        this.login = login;
+        super.setNome(nome);
+        this.senha = senha;
+    }
+
     @Override
     public int getId() {
         return id;
