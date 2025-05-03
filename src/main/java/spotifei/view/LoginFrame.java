@@ -4,6 +4,8 @@
  */
 package spotifei.view;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author unifacalen
@@ -151,6 +153,22 @@ public class LoginFrame extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    public JTextField getTxtSenhaLogin() {
+        return txtSenhaLogin;
+    }
+
+    public void setTxtSenhaLogin(JTextField txtSenhaLogin) {
+        this.txtSenhaLogin = txtSenhaLogin;
+    }
+
+    public JTextField getTxtUsuarioLogin() {
+        return txtUsuarioLogin;
+    }
+
+    public void setTxtUsuarioLogin(JTextField txtUsuarioLogin) {
+        this.txtUsuarioLogin = txtUsuarioLogin;
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogarLogin;

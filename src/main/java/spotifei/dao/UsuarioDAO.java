@@ -16,11 +16,11 @@ import spotifei.model.Usuario;
  */
 public class UsuarioDAO {
     
-    private Connection connection;    
+    private Connection connection;
 
     public UsuarioDAO(Connection connection) {
         this.connection = connection;
-    }        
+    }       
     
     public ResultSet consultar(Usuario usuario) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE login_usuario = ? and senha_usuario = ?";
