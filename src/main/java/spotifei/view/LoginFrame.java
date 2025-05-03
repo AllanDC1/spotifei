@@ -5,6 +5,7 @@
 package spotifei.view;
 
 import javax.swing.JTextField;
+import spotifei.controller.LoginController;
 
 /**
  *
@@ -12,11 +13,14 @@ import javax.swing.JTextField;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
+    private LoginController controller;
+    
     /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
         initComponents();
+        controller = new LoginController(this);
     }
 
     /**
@@ -116,7 +120,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnLogarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarLoginActionPerformed
         // TODO add your handling code here:
-        
+        controller.logarUsuario();
     }//GEN-LAST:event_btnLogarLoginActionPerformed
 
     /**
