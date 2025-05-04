@@ -4,17 +4,23 @@
  */
 package spotifei.view;
 
+import javax.swing.JTextField;
+import spotifei.controller.CadastroController;
+
 /**
  *
  * @author unifacalen
  */
 public class CadastroFrame extends javax.swing.JFrame {
 
+    private CadastroController controller;
+    
     /**
      * Creates new form CadastroFrame
      */
     public CadastroFrame() {
         initComponents();
+        controller = new CadastroController(this);
     }
 
     /**
@@ -130,7 +136,8 @@ public class CadastroFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCadastroActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+        controller.cadastrarUsuario();
     }//GEN-LAST:event_btnCadastrarCadastroActionPerformed
 
     /**
@@ -167,6 +174,30 @@ public class CadastroFrame extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    public JTextField getTxtNomeCadastro() {
+        return txtNomeCadastro;
+    }
+
+    public void setTxtNomeCadastro(JTextField txtNomeCadastro) {
+        this.txtNomeCadastro = txtNomeCadastro;
+    }
+
+    public JTextField getTxtSenhaCadastro() {
+        return txtSenhaCadastro;
+    }
+
+    public void setTxtSenhaCadastro(JTextField txtSenhaCadastro) {
+        this.txtSenhaCadastro = txtSenhaCadastro;
+    }
+
+    public JTextField getTxtUsuarioCadastro() {
+        return txtUsuarioCadastro;
+    }
+    
+    public void setTxtUsuarioCadastro(JTextField txtUsuarioCadastro) {
+        this.txtUsuarioCadastro = txtUsuarioCadastro;
+    }            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCadastro;

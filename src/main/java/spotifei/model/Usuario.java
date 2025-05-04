@@ -8,7 +8,52 @@ package spotifei.model;
  *
  * @author unifacalen
  */
-public class Usuario extends Pessoa implements Autenticacao{
-    private String loginUsuario;
-    private String senha;
+public class Usuario extends Pessoa implements Autenticavel{
+    
+    private int id;
+    private String login;
+    private String senha;  
+
+    public Usuario(String login, String senha, String nome) {
+        this.login = login;
+        this.senha = senha;
+        super.setNome(nome);
+    }
+    
+    public Usuario(int id, String login, String senha, String nome) {
+        this.id = id;
+        this.login = login;
+        this.senha = senha;
+        super.setNome(nome);
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }    
+    
+    @Override
+    public String getLogin() {
+        return login;
+    }
+
+    @Override
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Override
+    public String getSenha() {
+        return senha;
+    }
+
+    @Override
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

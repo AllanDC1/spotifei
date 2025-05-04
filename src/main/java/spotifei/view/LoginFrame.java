@@ -4,17 +4,23 @@
  */
 package spotifei.view;
 
+import javax.swing.JTextField;
+import spotifei.controller.LoginController;
+
 /**
  *
  * @author unifacalen
  */
 public class LoginFrame extends javax.swing.JFrame {
 
+    private LoginController controller;
+    
     /**
      * Creates new form LoginFrame
      */
     public LoginFrame() {
         initComponents();
+        controller = new LoginController(this);
     }
 
     /**
@@ -114,7 +120,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnLogarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarLoginActionPerformed
         // TODO add your handling code here:
-        
+        controller.logarUsuario();
     }//GEN-LAST:event_btnLogarLoginActionPerformed
 
     /**
@@ -151,6 +157,22 @@ public class LoginFrame extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    public JTextField getTxtSenhaLogin() {
+        return txtSenhaLogin;
+    }
+
+    public void setTxtSenhaLogin(JTextField txtSenhaLogin) {
+        this.txtSenhaLogin = txtSenhaLogin;
+    }
+
+    public JTextField getTxtUsuarioLogin() {
+        return txtUsuarioLogin;
+    }
+
+    public void setTxtUsuarioLogin(JTextField txtUsuarioLogin) {
+        this.txtUsuarioLogin = txtUsuarioLogin;
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogarLogin;

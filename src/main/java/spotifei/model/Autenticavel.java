@@ -8,6 +8,13 @@ package spotifei.model;
  *
  * @author unifacalen
  */
-public interface Autenticacao {
+public interface Autenticavel {
+    int getId();
+    void setId(int id);
     
+    String getLogin();
+    void setLogin(String login);
+
+    String getSenha();
+    void setSenha(String senha);
 }
