@@ -8,11 +8,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import org.mindrot.jbcrypt.BCrypt;
+import spotifei.app.Sessao;
 import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
-import spotifei.util.Conexao;
-import spotifei.util.ErroSQL;
+import spotifei.dao.Conexao;
+import spotifei.exception.ErroSQL;
 import spotifei.view.CadastroFrame;
+import spotifei.view.SpotifeiFrame;
 
 /**
  *
@@ -46,7 +48,14 @@ public class CadastroController {
             UsuarioDAO usuarioDao = new UsuarioDAO(connection);            
             usuarioDao.inserir(novoUsuario);
             
-            JOptionPane.showMessageDialog(cadastroView, "Usuário Cadastrado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);            
+            JOptionPane.showMessageDialog(cadastroView, "Usuário Cadastrado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            
+            Sessao.setUsuarioLogado(novoUsuario);
+            
+            SpotifeiFrame homeFrame = new SpotifeiFrame();
+            homeFrame.setVisible(true);
+                
+            cadastroView.dispose();
         }
         catch (SQLException e) {
             if (e.getSQLState().equals(ErroSQL.ERRO_UNIQUE_POSTGRESQL)) {

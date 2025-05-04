@@ -4,7 +4,7 @@
  */
 package spotifei.app;
 
-import spotifei.view.HomeFrame;
+import spotifei.view.LoginFrame;
 
 /**
  *
@@ -12,7 +12,7 @@ import spotifei.view.HomeFrame;
  */
 public class SpotifeiApp {
     public static void main(String[] args) {
-        HomeFrame homeFrame = new HomeFrame();
-        homeFrame.setVisible(true);     
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);     
     }
 }
