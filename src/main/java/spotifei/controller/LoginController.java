@@ -7,6 +7,7 @@ package spotifei.controller;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import spotifei.app.Sessao;
 import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
 import spotifei.dao.Conexao;
@@ -39,6 +40,7 @@ public class LoginController {
             Usuario usuarioLogado = usuarioDao.consultarLogin(login, senha);
             
             if (usuarioLogado != null) {
+                Sessao.setUsuarioLogado(usuarioLogado);
                 JOptionPane.showMessageDialog(loginView, "Usuário Logado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(loginView, "Usuário ou Senha incorretos.", "Aviso", JOptionPane.WARNING_MESSAGE);
