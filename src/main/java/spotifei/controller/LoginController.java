@@ -12,6 +12,7 @@ import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
 import spotifei.dao.Conexao;
 import spotifei.view.LoginFrame;
+import spotifei.view.SpotifeiFrame;
 
 /**
  *
@@ -42,8 +43,14 @@ public class LoginController {
             if (usuarioLogado != null) {
                 Sessao.setUsuarioLogado(usuarioLogado);
                 JOptionPane.showMessageDialog(loginView, "Usuário Logado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                
+                SpotifeiFrame homeFrame = new SpotifeiFrame();
+                homeFrame.setVisible(true);
+                
+                loginView.dispose();
             } else {
                 JOptionPane.showMessageDialog(loginView, "Usuário ou Senha incorretos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                loginView.getTxtSenhaLogin().setText("");
             }
         }
         catch (SQLException e) {

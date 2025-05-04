@@ -26,17 +26,32 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSpotifeiSpotifei = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblSpotifeiSpotifei.setBackground(new java.awt.Color(0, 0, 0));
+        lblSpotifeiSpotifei.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblSpotifeiSpotifei.setForeground(new java.awt.Color(0, 153, 0));
+        lblSpotifeiSpotifei.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSpotifeiSpotifei.setText("SPOTIFEI");
+        lblSpotifeiSpotifei.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +93,6 @@ public class SpotifeiFrame extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblSpotifeiSpotifei;
     // End of variables declaration//GEN-END:variables
 }
