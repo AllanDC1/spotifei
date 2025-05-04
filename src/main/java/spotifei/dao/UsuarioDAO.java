@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import spotifei.model.Usuario;
-import spotifei.util.IndiceUsuarios;
 
 /**
  *
@@ -33,10 +32,10 @@ public class UsuarioDAO {
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
                     return new Usuario(
-                        rs.getInt(IndiceUsuarios.ID_USUARIO),
-                        rs.getString(IndiceUsuarios.LOGIN_USUARIO),
-                        rs.getString(IndiceUsuarios.SENHA_USUARIO),
-                        rs.getString(IndiceUsuarios.NOME_USUARIO)
+                        rs.getInt("id_usuario"),
+                        rs.getString("login_usuario"),
+                        rs.getString("senha_usuario"),
+                        rs.getString("nome_usuario")
                     );
                 }
             }
