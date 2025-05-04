@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
-import spotifei.util.Conexao;
+import spotifei.dao.Conexao;
 import spotifei.view.LoginFrame;
 
 /**

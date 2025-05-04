@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 import org.mindrot.jbcrypt.BCrypt;
 import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
-import spotifei.util.Conexao;
-import spotifei.util.ErroSQL;
+import spotifei.dao.Conexao;
+import spotifei.exception.ErroSQL;
 import spotifei.view.CadastroFrame;
 
 /**
