@@ -7,6 +7,7 @@ package spotifei.controller;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
 import spotifei.util.Conexao;
@@ -35,7 +36,10 @@ public class CadastroController {
             return; // alterar caso queira trocar de janela
         }
         
-        Usuario novoUsuario = new Usuario(login, senha, nome);
+        // Hashing da senha
+        String senhaHash = BCrypt.hashpw(senha, BCrypt.gensalt());
+        
+        Usuario novoUsuario = new Usuario(login, senhaHash, nome);
         
         try (Connection connection = Conexao.criarConexaoBD()) {
             

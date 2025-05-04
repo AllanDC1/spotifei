@@ -8,8 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 import spotifei.model.Usuario;
-import spotifei.util.IndiceUsuarios;
 
 /**
  *
@@ -24,19 +24,19 @@ public class UsuarioDAO {
     }
     
     public Usuario consultarLogin(String login, String senha) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE login_usuario = ? and senha_usuario = ?";
+        String sql = "SELECT * FROM usuarios WHERE login_usuario = ?";
         
         try (PreparedStatement statement = connection.prepareCall(sql)) {
             statement.setString(1, login);
-            statement.setString(2, senha);
             
             try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
+                
+                if (rs.next() && BCrypt.checkpw(senha, rs.getString("senha_usuario"))) {                    
                     return new Usuario(
-                        rs.getInt(IndiceUsuarios.ID_USUARIO),
-                        rs.getString(IndiceUsuarios.LOGIN_USUARIO),
-                        rs.getString(IndiceUsuarios.SENHA_USUARIO),
-                        rs.getString(IndiceUsuarios.NOME_USUARIO)
+                        rs.getInt("id_usuario"),
+                        rs.getString("login_usuario"),
+                        rs.getString("senha_usuario"),
+                        rs.getString("nome_usuario")
                     );
                 }
             }
