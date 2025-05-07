@@ -11,9 +11,15 @@ package spotifei.model;
 public class Musica {
     private int id;
     private String titulo;
-    private Artista artista;
-    private int duracaoSegundos;
+    private Artista artista; 
+    private String duracao;
     private Genero genero;
+
+    public Musica(String titulo, Artista artista, String duracao) {
+        this.titulo = titulo;
+        this.artista = artista;
+        this.duracao = duracao;
+    }
 
     public int getId() {
         return id;
@@ -39,12 +45,12 @@ public class Musica {
         this.artista = artista;
     }
 
-    public int getDuracaoSegundos() {
-        return duracaoSegundos;
+    public String getDuracao() {
+        return duracao;
     }
 
-    public void setDuracaoSegundos(int duracaoSegundos) {
-        this.duracaoSegundos = duracaoSegundos;
+    public void setDuracao(String duracao) {
+        this.duracao = duracao;
     }
 
     public Genero getGenero() {

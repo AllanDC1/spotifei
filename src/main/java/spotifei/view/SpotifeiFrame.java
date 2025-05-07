@@ -4,19 +4,25 @@
  */
 package spotifei.view;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author adone
  */
 public class SpotifeiFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SpotifeiFrame
-     */
+    
     public SpotifeiFrame() {
         initComponents();
+        
+        // PARA TESTES:
+        //BuscaMusicasPanel buscaMusicasView = new BuscaMusicasPanel();
+        //pnlMainSpotifei.add(buscaMusicasView, "buscarMusicas");
+        //CardLayout cl = (CardLayout)(pnlMainSpotifei.getLayout());;
+        //cl.show(pnlMainSpotifei, "buscarMusicas");
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +38,8 @@ public class SpotifeiFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1024, 768));
+
+        pnlNavegacaoSpotifei.setBackground(new java.awt.Color(30, 30, 30));
 
         lblSpotifeiSpotifei.setBackground(new java.awt.Color(0, 0, 0));
         lblSpotifeiSpotifei.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -54,19 +62,13 @@ public class SpotifeiFrame extends javax.swing.JFrame {
             .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(706, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout pnlMainSpotifeiLayout = new javax.swing.GroupLayout(pnlMainSpotifei);
-        pnlMainSpotifei.setLayout(pnlMainSpotifeiLayout);
-        pnlMainSpotifeiLayout.setHorizontalGroup(
-            pnlMainSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
-        );
-        pnlMainSpotifeiLayout.setVerticalGroup(
-            pnlMainSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        pnlMainSpotifei.setBackground(new java.awt.Color(44, 44, 44));
+        pnlMainSpotifei.setMinimumSize(new java.awt.Dimension(850, 768));
+        pnlMainSpotifei.setPreferredSize(new java.awt.Dimension(850, 768));
+        pnlMainSpotifei.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,52 +77,17 @@ public class SpotifeiFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlNavegacaoSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlMainSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlMainSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlNavegacaoSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlMainSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMainSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SpotifeiFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SpotifeiFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SpotifeiFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SpotifeiFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new SpotifeiFrame().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblSpotifeiSpotifei;
