@@ -4,6 +4,7 @@
  */
 package spotifei.app;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import spotifei.view.LoginFrame;
 
 /**
@@ -12,6 +13,8 @@ import spotifei.view.LoginFrame;
  */
 public class SpotifeiApp {
     public static void main(String[] args) {
+        FlatDarkLaf.setup();
+        
         LoginFrame loginFrame = new LoginFrame();
         loginFrame.setVisible(true);     
     }

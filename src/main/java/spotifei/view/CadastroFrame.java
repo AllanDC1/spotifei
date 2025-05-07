@@ -44,7 +44,6 @@ public class CadastroFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Spotifei");
         setName("Cadastro Spotifei"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(465, 369));
 
         txtUsuarioCadastro.setToolTipText("");
 
@@ -73,6 +72,7 @@ public class CadastroFrame extends javax.swing.JFrame {
 
         btnCadastrarCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastrarCadastro.setText("Cadastrar-se");
+        btnCadastrarCadastro.setBorderPainted(false);
         btnCadastrarCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarCadastroActionPerformed(evt);
@@ -133,6 +133,7 @@ public class CadastroFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCadastroActionPerformed

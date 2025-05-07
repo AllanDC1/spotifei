@@ -26,9 +26,12 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlNavegacaoSpotifei = new javax.swing.JPanel();
         lblSpotifeiSpotifei = new javax.swing.JLabel();
+        pnlMainSpotifei = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1024, 768));
 
         lblSpotifeiSpotifei.setBackground(new java.awt.Color(0, 0, 0));
         lblSpotifeiSpotifei.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -37,24 +40,51 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         lblSpotifeiSpotifei.setText("SPOTIFEI");
         lblSpotifeiSpotifei.setToolTipText("");
 
+        javax.swing.GroupLayout pnlNavegacaoSpotifeiLayout = new javax.swing.GroupLayout(pnlNavegacaoSpotifei);
+        pnlNavegacaoSpotifei.setLayout(pnlNavegacaoSpotifeiLayout);
+        pnlNavegacaoSpotifeiLayout.setHorizontalGroup(
+            pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        pnlNavegacaoSpotifeiLayout.setVerticalGroup(
+            pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(706, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlMainSpotifeiLayout = new javax.swing.GroupLayout(pnlMainSpotifei);
+        pnlMainSpotifei.setLayout(pnlMainSpotifeiLayout);
+        pnlMainSpotifeiLayout.setHorizontalGroup(
+            pnlMainSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 850, Short.MAX_VALUE)
+        );
+        pnlMainSpotifeiLayout.setVerticalGroup(
+            pnlMainSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addComponent(pnlNavegacaoSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlMainSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(307, Short.MAX_VALUE))
+            .addComponent(pnlNavegacaoSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMainSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -94,5 +124,7 @@ public class SpotifeiFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblSpotifeiSpotifei;
+    private javax.swing.JPanel pnlMainSpotifei;
+    private javax.swing.JPanel pnlNavegacaoSpotifei;
     // End of variables declaration//GEN-END:variables
 }
