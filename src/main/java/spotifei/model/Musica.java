@@ -12,12 +12,20 @@ public class Musica {
     private int id;
     private String titulo;
     private Artista artista; 
-    private String duracao;
     private Genero genero;
+    private String duracao;
 
     public Musica(String titulo, Artista artista, String duracao) {
         this.titulo = titulo;
         this.artista = artista;
+        this.duracao = duracao;
+    }
+
+    public Musica(int id, String titulo, Artista artista, Genero genero, String duracao) {
+        this.id = id;
+        this.titulo = titulo;
+        this.artista = artista;
+        this.genero = genero;
         this.duracao = duracao;
     }
 
@@ -44,15 +52,7 @@ public class Musica {
     public void setArtista(Artista artista) {
         this.artista = artista;
     }
-
-    public String getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
-    }
-
+    
     public Genero getGenero() {
         return genero;
     }
@@ -60,4 +60,12 @@ public class Musica {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
+
+    public String getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(String duracao) {
+        this.duracao = duracao;
+    }    
 }
