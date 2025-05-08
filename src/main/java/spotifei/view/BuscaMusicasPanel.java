@@ -5,6 +5,8 @@
 package spotifei.view;
 
 import java.util.List;
+import javax.swing.JTextField;
+import spotifei.controller.BuscaMusicasController;
 import spotifei.model.Musica;
 
 /**
@@ -13,11 +15,11 @@ import spotifei.model.Musica;
  */
 public class BuscaMusicasPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MusicasPanel
-     */
+    private BuscaMusicasController controller;
+    
     public BuscaMusicasPanel() {
-        initComponents();        
+        initComponents();
+        controller = new BuscaMusicasController(this);
     }
 
     /**
@@ -31,34 +33,52 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
         pnlSuperiorBusca = new javax.swing.JPanel();
         txtBuscarMusicas = new javax.swing.JTextField();
+        btnBuscarMusicas = new javax.swing.JButton();
         pnlResultadosBusca = new javax.swing.JScrollPane();
         pnlListaMusicas = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(44, 44, 44));
         setMinimumSize(new java.awt.Dimension(850, 768));
+        setPreferredSize(new java.awt.Dimension(850, 768));
         setLayout(new java.awt.BorderLayout());
 
-        pnlSuperiorBusca.setBackground(new java.awt.Color(55, 55, 55));
+        pnlSuperiorBusca.setBackground(new java.awt.Color(44, 44, 44));
 
         txtBuscarMusicas.setColumns(25);
         txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtBuscarMusicas.setToolTipText("");
+        txtBuscarMusicas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         pnlSuperiorBusca.add(txtBuscarMusicas);
+
+        btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarMusicas.setText("Buscar");
+        btnBuscarMusicas.setBorderPainted(false);
+        btnBuscarMusicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMusicasActionPerformed(evt);
+            }
+        });
+        pnlSuperiorBusca.add(btnBuscarMusicas);
 
         add(pnlSuperiorBusca, java.awt.BorderLayout.PAGE_START);
 
+        pnlListaMusicas.setBackground(new java.awt.Color(55, 55, 55));
         pnlListaMusicas.setLayout(new javax.swing.BoxLayout(pnlListaMusicas, javax.swing.BoxLayout.Y_AXIS));
         pnlResultadosBusca.setViewportView(pnlListaMusicas);
 
         add(pnlResultadosBusca, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMusicasActionPerformed
+        // TODO add your handling code here:
+        controller.buscarMusicas();
+    }//GEN-LAST:event_btnBuscarMusicasActionPerformed
+
     public void atualizarListaMusicas(List<Musica> listaMusicas) {
-        pnlListaMusicas.removeAll();        
+        pnlListaMusicas.removeAll();
 
         for (Musica musica : listaMusicas) {
             MusicaItemPanel item = new MusicaItemPanel();
-            // alterar formatacao
             item.getLblMusicaInfo().setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
 
             pnlListaMusicas.add(item);
@@ -68,7 +88,12 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlListaMusicas.repaint();
     }
 
+    public JTextField getTxtBuscarMusicas() {
+        return txtBuscarMusicas;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarMusicas;
     private javax.swing.JPanel pnlListaMusicas;
     private javax.swing.JScrollPane pnlResultadosBusca;
     private javax.swing.JPanel pnlSuperiorBusca;

@@ -11,16 +11,13 @@ import java.awt.CardLayout;
  * @author adone
  */
 public class SpotifeiFrame extends javax.swing.JFrame {
-
+    
+    private CardLayout cl;
     
     public SpotifeiFrame() {
         initComponents();
-        
-        // PARA TESTES:
-        //BuscaMusicasPanel buscaMusicasView = new BuscaMusicasPanel();
-        //pnlMainSpotifei.add(buscaMusicasView, "buscarMusicas");
-        //CardLayout cl = (CardLayout)(pnlMainSpotifei.getLayout());;
-        //cl.show(pnlMainSpotifei, "buscarMusicas");
+        cl = (CardLayout)(pnlMainSpotifei.getLayout());     
+        pnlMainSpotifei.add(new BuscaMusicasPanel(), "buscarMusicas");
     }
     
     /**
@@ -34,6 +31,8 @@ public class SpotifeiFrame extends javax.swing.JFrame {
 
         pnlNavegacaoSpotifei = new javax.swing.JPanel();
         lblSpotifeiSpotifei = new javax.swing.JLabel();
+        btnPlaylistNavegacao = new javax.swing.JButton();
+        btnMusicasNavegacao = new javax.swing.JButton();
         pnlMainSpotifei = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,20 +47,40 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         lblSpotifeiSpotifei.setText("SPOTIFEI");
         lblSpotifeiSpotifei.setToolTipText("");
 
+        btnPlaylistNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnPlaylistNavegacao.setText("Playlists");
+        btnPlaylistNavegacao.setBorderPainted(false);
+
+        btnMusicasNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnMusicasNavegacao.setText("Músicas");
+        btnMusicasNavegacao.setBorderPainted(false);
+        btnMusicasNavegacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMusicasNavegacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlNavegacaoSpotifeiLayout = new javax.swing.GroupLayout(pnlNavegacaoSpotifei);
         pnlNavegacaoSpotifei.setLayout(pnlNavegacaoSpotifeiLayout);
         pnlNavegacaoSpotifeiLayout.setHorizontalGroup(
             pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlNavegacaoSpotifeiLayout.setVerticalGroup(
             pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132)
+                .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -89,7 +108,14 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMusicasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusicasNavegacaoActionPerformed
+        // TODO add your handling code here:
+        cl.show(pnlMainSpotifei, "buscarMusicas");
+    }//GEN-LAST:event_btnMusicasNavegacaoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMusicasNavegacao;
+    private javax.swing.JButton btnPlaylistNavegacao;
     private javax.swing.JLabel lblSpotifeiSpotifei;
     private javax.swing.JPanel pnlMainSpotifei;
     private javax.swing.JPanel pnlNavegacaoSpotifei;
