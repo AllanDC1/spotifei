@@ -4,6 +4,7 @@
  */
 package spotifei.view;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JTextField;
 import spotifei.controller.BuscaMusicasController;
@@ -46,8 +47,18 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
         txtBuscarMusicas.setColumns(25);
         txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtBuscarMusicas.setForeground(new java.awt.Color(153, 153, 153));
+        txtBuscarMusicas.setText("Pesquisar...");
         txtBuscarMusicas.setToolTipText("");
         txtBuscarMusicas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtBuscarMusicas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarMusicasFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarMusicasFocusLost(evt);
+            }
+        });
         pnlSuperiorBusca.add(txtBuscarMusicas);
 
         btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -73,6 +84,22 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         controller.buscarMusicas();
     }//GEN-LAST:event_btnBuscarMusicasActionPerformed
+
+    private void txtBuscarMusicasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusGained
+        // TODO add your handling code here:
+        if (txtBuscarMusicas.getText().equals("Pesquisar...")) {
+            txtBuscarMusicas.setText("");
+            txtBuscarMusicas.setForeground(new Color(204,204,204));
+        }
+    }//GEN-LAST:event_txtBuscarMusicasFocusGained
+
+    private void txtBuscarMusicasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusLost
+        // TODO add your handling code here:
+        if (txtBuscarMusicas.getText().equals("")) {
+            txtBuscarMusicas.setText("Pesquisar...");
+            txtBuscarMusicas.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txtBuscarMusicasFocusLost
 
     public void atualizarListaMusicas(List<Musica> listaMusicas) {
         pnlListaMusicas.removeAll();

@@ -28,6 +28,10 @@ public class BuscaMusicasController {
     public void buscarMusicas() {
         
         String textoPesquisa = buscaMusicasView.getTxtBuscarMusicas().getText();
+        // Se estiver com o placeholder, substitui a pesquisa para vazio
+        if (textoPesquisa.equals("Pesquisar...")) {
+            textoPesquisa = "";
+        }
         
         try (Connection connection = Conexao.criarConexaoBD()) {
             
