@@ -4,6 +4,8 @@
  */
 package spotifei.model;
 
+import java.util.List;
+
 /**
  *
  * @author unifacalen
@@ -12,7 +14,8 @@ public class Usuario extends Pessoa implements Autenticavel{
     
     private int id;
     private String login;
-    private String senha;  
+    private String senha;
+    private List<Playlist> playlists;
 
     public Usuario(String login, String senha, String nome) {
         this.login = login;

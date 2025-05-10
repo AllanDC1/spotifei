@@ -9,7 +9,63 @@ package spotifei.model;
  * @author unifacalen
  */
 public class Musica {
-    private String titutloMusica;
-    private Artista artista;
-    private int duracaoSegundos;
+    private int id;
+    private String titulo;
+    private Artista artista; 
+    private Genero genero;
+    private String duracao;
+
+    public Musica(String titulo, Artista artista, String duracao) {
+        this.titulo = titulo;
+        this.artista = artista;
+        this.duracao = duracao;
+    }
+
+    public Musica(int id, String titulo, Artista artista, Genero genero, String duracao) {
+        this.id = id;
+        this.titulo = titulo;
+        this.artista = artista;
+        this.genero = genero;
+        this.duracao = duracao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Artista getArtista() {
+        return artista;
+    }
+
+    public void setArtista(Artista artista) {
+        this.artista = artista;
+    }
+    
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public String getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(String duracao) {
+        this.duracao = duracao;
+    }    
 }

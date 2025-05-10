@@ -4,18 +4,19 @@
  */
 package spotifei.model;
 
-import java.util.List;
-
 /**
  *
- * @author unifacalen
+ * @author adone
  */
-public class Playlist {
+public class Genero {
     private int id;
     private String nome;
-    private List<Musica> musicas;
-    private Usuario dono;
 
+    public Genero(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+    
     public int getId() {
         return id;
     }
@@ -30,13 +31,5 @@ public class Playlist {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Usuario getDono() {
-        return dono;
-    }
-
-    public void setDono(Usuario dono) {
-        this.dono = dono;
     }
 }

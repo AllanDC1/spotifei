@@ -41,10 +41,12 @@ public class LoginFrame extends javax.swing.JFrame {
         btnCadastroLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login Spotifei");
         setSize(new java.awt.Dimension(465, 369));
 
         btnLogarLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLogarLogin.setText("Login");
+        btnLogarLogin.setBorderPainted(false);
         btnLogarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogarLoginActionPerformed(evt);
@@ -72,6 +74,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         btnCadastroLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastroLogin.setText("Cadastro");
+        btnCadastroLogin.setBorderPainted(false);
         btnCadastroLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastroLoginActionPerformed(evt);
@@ -124,6 +127,7 @@ public class LoginFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarLoginActionPerformed
