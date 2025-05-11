@@ -39,7 +39,10 @@
         </Constraint>
       </Constraints>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+        <Property name="horizontalGap" type="int" value="7"/>
+        <Property name="verticalGap" type="int" value="10"/>
+      </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtBuscarMusicas">
           <Properties>
@@ -64,7 +67,7 @@
         <Component class="javax.swing.JButton" name="btnBuscarMusicas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
+              <Font name="Segoe UI" size="16" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
             <Property name="borderPainted" type="boolean" value="false"/>

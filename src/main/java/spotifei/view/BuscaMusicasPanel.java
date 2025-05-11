@@ -44,6 +44,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         pnlSuperiorBusca.setBackground(new java.awt.Color(44, 44, 44));
+        pnlSuperiorBusca.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 10));
 
         txtBuscarMusicas.setColumns(25);
         txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -61,7 +62,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         });
         pnlSuperiorBusca.add(txtBuscarMusicas);
 
-        btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnBuscarMusicas.setText("Buscar");
         btnBuscarMusicas.setBorderPainted(false);
         btnBuscarMusicas.addActionListener(new java.awt.event.ActionListener() {

@@ -18,6 +18,7 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         initComponents();
         cl = (CardLayout)(pnlMainSpotifei.getLayout());     
         pnlMainSpotifei.add(new BuscaMusicasPanel(), "buscarMusicas");
+        pnlMainSpotifei.add(new PlaylistsPanel(), "exibirPlaylists");
     }
     
     /**
@@ -50,6 +51,11 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         btnPlaylistNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPlaylistNavegacao.setText("Playlists");
         btnPlaylistNavegacao.setBorderPainted(false);
+        btnPlaylistNavegacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaylistNavegacaoActionPerformed(evt);
+            }
+        });
 
         btnMusicasNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnMusicasNavegacao.setText("Músicas");
@@ -112,6 +118,11 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         cl.show(pnlMainSpotifei, "buscarMusicas");
     }//GEN-LAST:event_btnMusicasNavegacaoActionPerformed
+
+    private void btnPlaylistNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaylistNavegacaoActionPerformed
+        // TODO add your handling code here:
+        cl.show(pnlMainSpotifei,"exibirPlaylists");
+    }//GEN-LAST:event_btnPlaylistNavegacaoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMusicasNavegacao;
