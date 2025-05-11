@@ -39,4 +39,9 @@ public class Playlist {
     public void setDono(Usuario dono) {
         this.dono = dono;
     }
+
+    public List<Musica> getMusicas() {
+        return musicas;
+    }    
+    
 }

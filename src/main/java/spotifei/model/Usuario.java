@@ -59,4 +59,8 @@ public class Usuario extends Pessoa implements Autenticavel{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public List<Playlist> getPlaylists() {
+        return playlists;
+    }
 }
