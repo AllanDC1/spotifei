@@ -16,7 +16,7 @@ public class PlaylistItemPanel extends javax.swing.JPanel {
     
     public PlaylistItemPanel(Playlist playlist) {
         initComponents();
-        lblPlaylistInfo.setText(playlist.getNome() + " - " + playlist.getMusicas().size() + " Música(s)");
+        lblPlaylistInfo.setText(playlist.getNome() + " - " + playlist.getQntMusicas() + " Música(s)");
     }
 
     /**

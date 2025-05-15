@@ -4,7 +4,9 @@
  */
 package spotifei.view;
 
+import java.util.List;
 import javax.swing.JLabel;
+import spotifei.controller.SpotifeiFrameController;
 import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
@@ -13,14 +15,11 @@ import spotifei.model.Playlist;
  * @author adone
  */
 public class ExibirPlaylistPanel extends javax.swing.JPanel {
-
-    private Playlist playlist;
     
-    public ExibirPlaylistPanel(Playlist playlist) {
-        this.playlist = playlist;
+    public ExibirPlaylistPanel(SpotifeiFrameController controller, Playlist playlist) {
         initComponents();
         lblTituloPlaylist.setText(playlist.getNome());
-        listarMusicasPlaylist();
+        listarMusicasPlaylist(controller.buscarMusicasPlaylist(playlist));
     }
 
     /**
@@ -61,10 +60,10 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         add(pnlExibirMusicasPlaylist, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void listarMusicasPlaylist() {
+    public void listarMusicasPlaylist(List<Musica> listaMusicas) {
         pnlListaMusicasPlaylist.removeAll();        
         
-        for (Musica musica : playlist.getMusicas()) {
+        for (Musica musica : listaMusicas) {
             MusicaItemPanel item = new MusicaItemPanel();
             item.getLblMusicaInfo().setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
             

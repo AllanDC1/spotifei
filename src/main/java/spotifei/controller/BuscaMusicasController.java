@@ -36,7 +36,7 @@ public class BuscaMusicasController {
         try (Connection connection = Conexao.criarConexaoBD()) {
             
             MusicaDAO musicaDao = new MusicaDAO(connection);
-            List<Musica> resultadoPesquisa = musicaDao.consultarMusicas(textoPesquisa);
+            List<Musica> resultadoPesquisa = musicaDao.consultarMusicasPesquisa(textoPesquisa);
             
             buscaMusicasView.atualizarListaMusicas(resultadoPesquisa);
             

@@ -20,7 +20,7 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
     public GerenciarPlaylistsPanel(SpotifeiFrameController controller) {
         this.controller = controller;
         initComponents();
-        listarPlaylists(Sessao.getUsuarioLogado().getPlaylists());
+        listarPlaylists(controller.buscarPlaylistsUsuario(Sessao.getUsuarioLogado()));
     }
 
     /**

@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import spotifei.model.Artista;
-import spotifei.model.Genero;
 import spotifei.model.Musica;
 
 /**
@@ -26,13 +25,12 @@ public class MusicaDAO {
         this.connection = connection;
     }
     
-    public List<Musica> consultarMusicas(String textoPesquisa) throws SQLException {
+    public List<Musica> consultarMusicasPesquisa(String textoPesquisa) throws SQLException {
         
-        List<Musica> resultadoPesquisa = new ArrayList<>();
+        List<Musica> resultadoConsulta = new ArrayList<>();
         
         String sql = "SELECT m.id_musica, m.titulo_musica, m.duracao, "
-                    + "a.id_artista, a.nome_artista, "
-                    + "g.id_genero, g.nome_genero "
+                    + "a.id_artista, a.nome_artista "
                     + "FROM musicas m "
                     + "JOIN artistas a ON m.id_artista = a.id_artista "
                     + "JOIN generos g ON m.id_genero = g.id_genero "
@@ -45,22 +43,48 @@ public class MusicaDAO {
             
             ResultSet rs = statement.executeQuery();
             
-            while(rs.next()) {
-                Artista artista = new Artista(rs.getInt("id_artista"), rs.getString("nome_artista"));
-                Genero genero = new Genero(rs.getInt("id_genero"), rs.getString("nome_genero"));
-                
+            while(rs.next()) {                
                 Musica musica = new Musica(
                     rs.getInt("id_musica"),
                     rs.getString("titulo_musica"),
-                    artista,
-                    genero,
+                    new Artista(rs.getInt("id_artista"), rs.getString("nome_artista")),
                     rs.getString("duracao")
                 );
                 
-                resultadoPesquisa.add(musica);
+                resultadoConsulta.add(musica);
             }
         }
         
-        return resultadoPesquisa;
+        return resultadoConsulta;
+    }
+    
+    public List<Musica> consultarPorPlaylist(int idPlaylist) throws SQLException{
+        
+        List<Musica> resultadoConsulta = new ArrayList<>();
+        
+        String sql = "SELECT m.id_musica, m.titulo_musica, a.id_artista, a.nome_artista, m.duracao "
+                + "FROM musicas m "
+                + "JOIN artistas a ON m.id_artista = a.id_artista "
+                + "JOIN playlist_musica pm ON m.id_musica = pm.id_musica "
+                + "WHERE pm.id_playlist = ?";
+        
+        try (PreparedStatement statement = connection.prepareCall(sql)) {
+            statement.setInt(1, idPlaylist);
+            
+            ResultSet rs = statement.executeQuery();
+            
+            while(rs.next()) {
+                Musica musica = new Musica(
+                    rs.getInt("id_musica"),
+                    rs.getString("titulo_musica"),
+                    new Artista(rs.getInt("id_artista"), rs.getString("nome_artista")),
+                    rs.getString("duracao")
+                );
+                
+                resultadoConsulta.add(musica);
+            }
+        }
+        
+        return resultadoConsulta;
     }
 }

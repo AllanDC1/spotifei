@@ -11,9 +11,6 @@ import spotifei.app.Sessao;
 import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
 import spotifei.dao.Conexao;
-import spotifei.model.Artista;
-import spotifei.model.Musica;
-import spotifei.model.Playlist;
 import spotifei.view.LoginFrame;
 import spotifei.view.SpotifeiFrame;
 
@@ -44,12 +41,6 @@ public class LoginController {
             Usuario usuarioLogado = usuarioDao.consultarLogin(login, senha);
             
             if (usuarioLogado != null) {
-                // PARA TESTE APAGAR DEPOIS
-                //Musica musica = new Musica("Musica Teste", new Artista(1, "Artista teste"), "00:10");
-                //Playlist playlist = new Playlist(1, "Teste playlist");
-                //playlist.setMusicas(musica);
-                //usuarioLogado.setPlaylists(playlist);
-                // !!!
                 Sessao.setUsuarioLogado(usuarioLogado);
                 JOptionPane.showMessageDialog(loginView, "Usuário Logado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 

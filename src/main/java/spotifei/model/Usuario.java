@@ -4,9 +4,6 @@
  */
 package spotifei.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author unifacalen
@@ -16,7 +13,6 @@ public class Usuario extends Pessoa implements Autenticavel{
     private int id;
     private String login;
     private String senha;
-    private List<Playlist> playlists;
 
     public Usuario(String login, String senha, String nome) {
         this.login = login;
@@ -59,15 +55,5 @@ public class Usuario extends Pessoa implements Autenticavel{
     @Override
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public List<Playlist> getPlaylists() {
-        return playlists;
-    }
-    
-    // PARA TESTE ALTERAR DEPOIS
-    public void setPlaylists(Playlist playlist) {
-        this.playlists = new ArrayList<Playlist>();
-        this.playlists.add(playlist);
     }
 }
