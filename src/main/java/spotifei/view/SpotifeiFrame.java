@@ -4,7 +4,9 @@
  */
 package spotifei.view;
 
-import java.awt.CardLayout;
+//import java.awt.CardLayout;
+import javax.swing.JPanel;
+import spotifei.controller.SpotifeiFrameController;
 
 /**
  *
@@ -12,13 +14,11 @@ import java.awt.CardLayout;
  */
 public class SpotifeiFrame extends javax.swing.JFrame {
     
-    private CardLayout cl;
+    private SpotifeiFrameController controller;
     
     public SpotifeiFrame() {
+        controller = new SpotifeiFrameController(this);
         initComponents();
-        cl = (CardLayout)(pnlMainSpotifei.getLayout());     
-        pnlMainSpotifei.add(new BuscaMusicasPanel(), "buscarMusicas");
-        pnlMainSpotifei.add(new PlaylistsPanel(), "exibirPlaylists");
     }
     
     /**
@@ -115,15 +115,17 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMusicasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusicasNavegacaoActionPerformed
-        // TODO add your handling code here:
-        cl.show(pnlMainSpotifei, "buscarMusicas");
+        controller.navegarMusicas();
     }//GEN-LAST:event_btnMusicasNavegacaoActionPerformed
 
     private void btnPlaylistNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaylistNavegacaoActionPerformed
-        // TODO add your handling code here:
-        cl.show(pnlMainSpotifei,"exibirPlaylists");
+        controller.navegarPlaylists();
     }//GEN-LAST:event_btnPlaylistNavegacaoActionPerformed
 
+    public JPanel getPnlMainSpotifei() {
+        return pnlMainSpotifei;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMusicasNavegacao;
     private javax.swing.JButton btnPlaylistNavegacao;

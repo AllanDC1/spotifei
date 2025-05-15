@@ -4,19 +4,19 @@
  */
 package spotifei.view;
 
-import javax.swing.JLabel;
+import spotifei.model.Playlist;
 
 /**
  *
  * @author adone
  */
 public class PlaylistItemPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PlaylistItemPanel
-     */
-    public PlaylistItemPanel() {
+    
+    private Runnable onClick;
+    
+    public PlaylistItemPanel(Playlist playlist) {
         initComponents();
+        lblPlaylistInfo.setText(playlist.getNome() + " - " + playlist.getMusicas().size() + " Música(s)");
     }
 
     /**
@@ -32,8 +32,15 @@ public class PlaylistItemPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(44, 44, 44));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setMaximumSize(new java.awt.Dimension(2147483647, 70));
         setMinimumSize(new java.awt.Dimension(0, 70));
         setPreferredSize(new java.awt.Dimension(0, 70));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(new java.awt.BorderLayout());
 
         lblPlaylistInfo.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -42,10 +49,15 @@ public class PlaylistItemPanel extends javax.swing.JPanel {
         add(lblPlaylistInfo, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JLabel getLblPlaylistInfo() {
-        return lblPlaylistInfo;
-    }
+    public void setOnClick(Runnable onClick) {
+        this.onClick = onClick;
+    }    
     
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        if (onClick != null) {
+            onClick.run();
+        }
+    }//GEN-LAST:event_formMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblPlaylistInfo;

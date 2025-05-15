@@ -4,6 +4,7 @@
  */
 package spotifei.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,5 +63,11 @@ public class Usuario extends Pessoa implements Autenticavel{
 
     public List<Playlist> getPlaylists() {
         return playlists;
+    }
+    
+    // PARA TESTE ALTERAR DEPOIS
+    public void setPlaylists(Playlist playlist) {
+        this.playlists = new ArrayList<Playlist>();
+        this.playlists.add(playlist);
     }
 }

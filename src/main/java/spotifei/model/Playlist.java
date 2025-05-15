@@ -4,6 +4,7 @@
  */
 package spotifei.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,11 @@ public class Playlist {
     private String nome;
     private List<Musica> musicas;
     private Usuario dono;
+
+    public Playlist(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
     public int getId() {
         return id;
@@ -42,6 +48,11 @@ public class Playlist {
 
     public List<Musica> getMusicas() {
         return musicas;
-    }    
-    
+    }
+
+    // PARA TESTE ALTERAR DEPOIS
+    public void setMusicas(Musica musica) {
+        this.musicas = new ArrayList<Musica>();
+        this.musicas.add(musica);
+    }
 }

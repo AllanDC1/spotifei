@@ -6,20 +6,21 @@ package spotifei.view;
 
 import java.util.List;
 import spotifei.app.Sessao;
+import spotifei.controller.SpotifeiFrameController;
 import spotifei.model.Playlist;
 
 /**
  *
  * @author adone
  */
-public class PlaylistsPanel extends javax.swing.JPanel {
+public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PlaylistsPanel
-     */
-    public PlaylistsPanel() {
+    private SpotifeiFrameController controller;
+    
+    public GerenciarPlaylistsPanel(SpotifeiFrameController controller) {
+        this.controller = controller;
         initComponents();
-        atualizarListaPlaylists(Sessao.getUsuarioLogado().getPlaylists());
+        listarPlaylists(Sessao.getUsuarioLogado().getPlaylists());
     }
 
     /**
@@ -32,7 +33,7 @@ public class PlaylistsPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         pnlSuperior = new javax.swing.JPanel();
-        lblTituloPlaylists = new javax.swing.JLabel();
+        lblSuperiorPlaylists = new javax.swing.JLabel();
         pnlExibirPlaylists = new javax.swing.JScrollPane();
         pnlListaPlaylists = new javax.swing.JPanel();
         pnlBotoesPlaylists = new javax.swing.JPanel();
@@ -42,15 +43,16 @@ public class PlaylistsPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(44, 44, 44));
         setMinimumSize(new java.awt.Dimension(850, 768));
+        setPreferredSize(new java.awt.Dimension(850, 768));
         setLayout(new java.awt.BorderLayout());
 
         pnlSuperior.setBackground(new java.awt.Color(44, 44, 44));
         pnlSuperior.setPreferredSize(new java.awt.Dimension(850, 50));
         pnlSuperior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 7));
 
-        lblTituloPlaylists.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-        lblTituloPlaylists.setText("Suas Playlists");
-        pnlSuperior.add(lblTituloPlaylists);
+        lblSuperiorPlaylists.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        lblSuperiorPlaylists.setText("Suas Playlists");
+        pnlSuperior.add(lblSuperiorPlaylists);
 
         add(pnlSuperior, java.awt.BorderLayout.PAGE_START);
 
@@ -86,13 +88,16 @@ public class PlaylistsPanel extends javax.swing.JPanel {
         add(pnlBotoesPlaylists, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void atualizarListaPlaylists(List<Playlist> listaPlaylists) {
+    public void listarPlaylists(List<Playlist> listaPlaylists) {
         pnlListaPlaylists.removeAll();
 
         for (Playlist playlist : listaPlaylists) {
-            PlaylistItemPanel item = new PlaylistItemPanel();
-            item.getLblPlaylistInfo().setText(playlist.getNome() + " - " + playlist.getMusicas().size() + "Música(s)");
+            PlaylistItemPanel item = new PlaylistItemPanel(playlist);            
 
+            item.setOnClick(() -> {
+                controller.exibirPlaylist(playlist);
+            });
+            
             pnlListaPlaylists.add(item);
         }
 
@@ -105,7 +110,7 @@ public class PlaylistsPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCriarPlaylist;
     private javax.swing.JButton btnEditarPlaylist;
     private javax.swing.JButton btnExcluirPlaylist;
-    private javax.swing.JLabel lblTituloPlaylists;
+    private javax.swing.JLabel lblSuperiorPlaylists;
     private javax.swing.JPanel pnlBotoesPlaylists;
     private javax.swing.JScrollPane pnlExibirPlaylists;
     private javax.swing.JPanel pnlListaPlaylists;
