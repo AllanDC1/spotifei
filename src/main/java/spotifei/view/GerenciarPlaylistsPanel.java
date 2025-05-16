@@ -5,6 +5,7 @@
 package spotifei.view;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import spotifei.app.Sessao;
 import spotifei.controller.SpotifeiFrameController;
 import spotifei.model.Playlist;
@@ -18,8 +19,8 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
     private SpotifeiFrameController controller;
     
     public GerenciarPlaylistsPanel(SpotifeiFrameController controller) {
-        this.controller = controller;
         initComponents();
+        this.controller = controller;
         listarPlaylists(controller.buscarPlaylistsUsuario(Sessao.getUsuarioLogado()));
     }
 
@@ -38,8 +39,6 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
         pnlListaPlaylists = new javax.swing.JPanel();
         pnlBotoesPlaylists = new javax.swing.JPanel();
         btnCriarPlaylist = new javax.swing.JButton();
-        btnEditarPlaylist = new javax.swing.JButton();
-        btnExcluirPlaylist = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(44, 44, 44));
         setMinimumSize(new java.awt.Dimension(850, 768));
@@ -68,48 +67,59 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
         pnlBotoesPlaylists.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 14));
 
         btnCriarPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnCriarPlaylist.setText("Criar");
+        btnCriarPlaylist.setText("Nova Playlist");
         btnCriarPlaylist.setBorderPainted(false);
-        btnCriarPlaylist.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnCriarPlaylist.setMaximumSize(new java.awt.Dimension(160, 40));
+        btnCriarPlaylist.setMinimumSize(new java.awt.Dimension(160, 40));
+        btnCriarPlaylist.setPreferredSize(new java.awt.Dimension(160, 40));
+        btnCriarPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarPlaylistActionPerformed(evt);
+            }
+        });
         pnlBotoesPlaylists.add(btnCriarPlaylist);
-
-        btnEditarPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnEditarPlaylist.setText("Editar");
-        btnEditarPlaylist.setBorderPainted(false);
-        btnEditarPlaylist.setPreferredSize(new java.awt.Dimension(130, 40));
-        pnlBotoesPlaylists.add(btnEditarPlaylist);
-
-        btnExcluirPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnExcluirPlaylist.setText("Excluir");
-        btnExcluirPlaylist.setBorderPainted(false);
-        btnExcluirPlaylist.setPreferredSize(new java.awt.Dimension(130, 40));
-        pnlBotoesPlaylists.add(btnExcluirPlaylist);
 
         add(pnlBotoesPlaylists, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCriarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarPlaylistActionPerformed
+        // TODO add your handling code here:
+        String nomeNovaPlaylist = JOptionPane.showInputDialog(this, "Nome para a nova playlist: "); // ALTERAR O THIS TALVEZ
+        if (nomeNovaPlaylist != null && !nomeNovaPlaylist.trim().isEmpty()) {
+            Playlist novaPlaylist = new Playlist(nomeNovaPlaylist, 0);
+            controller.salvarPlaylist(novaPlaylist);
+            // TRATAMENTO DE ERRO
+            
+            adicionarPlaylist(novaPlaylist);
+            pnlListaPlaylists.revalidate();
+            pnlListaPlaylists.repaint();
+        }
+        
+    }//GEN-LAST:event_btnCriarPlaylistActionPerformed
+
+    public void adicionarPlaylist(Playlist playlist) {
+        PlaylistItemPanel item = new PlaylistItemPanel(playlist);            
+
+        item.setOnClick(() -> {
+            controller.exibirPlaylist(playlist);
+        });
+
+        pnlListaPlaylists.add(item);
+    }
+    
     public void listarPlaylists(List<Playlist> listaPlaylists) {
         pnlListaPlaylists.removeAll();
 
         for (Playlist playlist : listaPlaylists) {
-            PlaylistItemPanel item = new PlaylistItemPanel(playlist);            
-
-            item.setOnClick(() -> {
-                controller.exibirPlaylist(playlist);
-            });
-            
-            pnlListaPlaylists.add(item);
+            adicionarPlaylist(playlist);
         }
 
         pnlListaPlaylists.revalidate();
         pnlListaPlaylists.repaint();
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriarPlaylist;
-    private javax.swing.JButton btnEditarPlaylist;
-    private javax.swing.JButton btnExcluirPlaylist;
     private javax.swing.JLabel lblSuperiorPlaylists;
     private javax.swing.JPanel pnlBotoesPlaylists;
     private javax.swing.JScrollPane pnlExibirPlaylists;

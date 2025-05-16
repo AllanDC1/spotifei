@@ -36,7 +36,7 @@ public class MusicaDAO {
                     + "JOIN generos g ON m.id_genero = g.id_genero "
                     + "WHERE m.titulo_musica ILIKE ? OR a.nome_artista ILIKE ? OR g.nome_genero ILIKE ?";
         
-        try (PreparedStatement statement = connection.prepareCall(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, "%" + textoPesquisa + "%");
             statement.setString(2, "%" + textoPesquisa + "%");
             statement.setString(3, "%" + textoPesquisa + "%");
@@ -68,7 +68,7 @@ public class MusicaDAO {
                 + "JOIN playlist_musica pm ON m.id_musica = pm.id_musica "
                 + "WHERE pm.id_playlist = ?";
         
-        try (PreparedStatement statement = connection.prepareCall(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, idPlaylist);
             
             ResultSet rs = statement.executeQuery();

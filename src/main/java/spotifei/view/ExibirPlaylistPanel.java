@@ -35,6 +35,9 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         lblTituloPlaylist = new javax.swing.JLabel();
         pnlExibirMusicasPlaylist = new javax.swing.JScrollPane();
         pnlListaMusicasPlaylist = new javax.swing.JPanel();
+        pnlBotoesPlaylists = new javax.swing.JPanel();
+        btnEditarPlaylist = new javax.swing.JButton();
+        btnExcluirPlaylist = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(44, 44, 44));
         setMinimumSize(new java.awt.Dimension(850, 768));
@@ -58,7 +61,42 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         pnlExibirMusicasPlaylist.setViewportView(pnlListaMusicasPlaylist);
 
         add(pnlExibirMusicasPlaylist, java.awt.BorderLayout.CENTER);
+
+        pnlBotoesPlaylists.setBackground(new java.awt.Color(44, 44, 44));
+        pnlBotoesPlaylists.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 14));
+
+        btnEditarPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEditarPlaylist.setText("Editar");
+        btnEditarPlaylist.setBorderPainted(false);
+        btnEditarPlaylist.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnEditarPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPlaylistActionPerformed(evt);
+            }
+        });
+        pnlBotoesPlaylists.add(btnEditarPlaylist);
+
+        btnExcluirPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnExcluirPlaylist.setText("Excluir");
+        btnExcluirPlaylist.setBorderPainted(false);
+        btnExcluirPlaylist.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnExcluirPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirPlaylistActionPerformed(evt);
+            }
+        });
+        pnlBotoesPlaylists.add(btnExcluirPlaylist);
+
+        add(pnlBotoesPlaylists, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEditarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPlaylistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarPlaylistActionPerformed
+
+    private void btnExcluirPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPlaylistActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirPlaylistActionPerformed
 
     public void listarMusicasPlaylist(List<Musica> listaMusicas) {
         pnlListaMusicasPlaylist.removeAll();        
@@ -79,7 +117,10 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarPlaylist;
+    private javax.swing.JButton btnExcluirPlaylist;
     private javax.swing.JLabel lblTituloPlaylist;
+    private javax.swing.JPanel pnlBotoesPlaylists;
     private javax.swing.JScrollPane pnlExibirMusicasPlaylist;
     private javax.swing.JPanel pnlListaMusicasPlaylist;
     private javax.swing.JPanel pnlTituloPlaylist;

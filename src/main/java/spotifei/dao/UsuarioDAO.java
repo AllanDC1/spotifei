@@ -27,7 +27,7 @@ public class UsuarioDAO {
     public Usuario consultarLogin(String login, String senha) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE login_usuario = ?";
         
-        try (PreparedStatement statement = connection.prepareCall(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, login);
             
             try (ResultSet rs = statement.executeQuery()) {

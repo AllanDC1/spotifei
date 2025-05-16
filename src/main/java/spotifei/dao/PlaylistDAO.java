@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import spotifei.app.Sessao;
 import spotifei.model.Playlist;
 
 /**
@@ -29,11 +31,11 @@ public class PlaylistDAO {
         
         String sql = "SELECT p.id_playlist, p.nome_playlist, COUNT(pm.id_musica) AS qnt_musicas "
                 + "FROM playlists p "
-                + "JOIN playlist_musica pm ON p.id_playlist = pm.id_playlist "
-                + "WHERE id_usuario = ? "
+                + "LEFT JOIN playlist_musica pm ON p.id_playlist = pm.id_playlist "
+                + "WHERE p.id_usuario = ? "
                 + "GROUP BY p.id_playlist, p.nome_playlist";
         
-        try (PreparedStatement statement = connection.prepareCall(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, idUsuario);
             
             ResultSet rs = statement.executeQuery();
@@ -50,5 +52,24 @@ public class PlaylistDAO {
         }
         
         return resultadoConsulta;
+    }
+    
+    public void inserirPlaylist(Playlist playlist) throws SQLException {
+        
+        String sql = "INSERT INTO playlists(nome_playlist, id_usuario) VALUES (?, ?)";
+        
+        try(PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, playlist.getNome());
+            statement.setInt(2, Sessao.getUsuarioLogado().getId());
+            
+            int linhasCriadas = statement.executeUpdate();
+            
+            if (linhasCriadas > 0) {
+                ResultSet keysGeradas = statement.getGeneratedKeys();
+                if (keysGeradas.next()) {
+                    playlist.setId(keysGeradas.getInt(1));
+                }
+            }
+        }
     }
 }

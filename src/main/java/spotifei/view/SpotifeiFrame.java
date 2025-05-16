@@ -17,8 +17,8 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     private SpotifeiFrameController controller;
     
     public SpotifeiFrame() {
-        controller = new SpotifeiFrameController(this);
         initComponents();
+        controller = new SpotifeiFrameController(this);
     }
     
     /**

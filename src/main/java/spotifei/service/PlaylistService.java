@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import spotifei.dao.MusicaDAO;
+import spotifei.dao.PlaylistDAO;
 import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
@@ -17,12 +18,18 @@ import spotifei.model.Playlist;
  */
 public class PlaylistService {
     private MusicaDAO musicaDAO;
+    private PlaylistDAO playlistDAO;
 
     public PlaylistService(Connection connection) {
         this.musicaDAO = new MusicaDAO(connection);
+        this.playlistDAO = new PlaylistDAO(connection);
     }
 
     public List<Musica> getMusicas(Playlist playlist) throws SQLException {
         return musicaDAO.consultarPorPlaylist(playlist.getId());
+    }
+    
+    public void cadastrarPlaylist(Playlist playlist) throws SQLException {
+        playlistDAO.inserirPlaylist(playlist);
     }
 }

@@ -13,6 +13,11 @@ public class Playlist {
     private String nome;
     private int qntMusicas;
 
+    public Playlist(String nome, int qntMusicas) {
+        this.nome = nome;
+        this.qntMusicas = qntMusicas;
+    }
+    
     public Playlist(int id, String nome, int qntMusicas) {
         this.id = id;
         this.nome = nome;
