@@ -8,9 +8,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import spotifei.app.Sessao;
-import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
 import spotifei.dao.Conexao;
+import spotifei.service.UsuarioService;
 import spotifei.view.LoginFrame;
 import spotifei.view.SpotifeiFrame;
 
@@ -37,8 +37,8 @@ public class LoginController {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
             
-            UsuarioDAO usuarioDao = new UsuarioDAO(connection);                           
-            Usuario usuarioLogado = usuarioDao.consultarLogin(login, senha);
+            UsuarioService usuarioService = new UsuarioService(connection);                       
+            Usuario usuarioLogado = usuarioService.logarUsuario(login, senha);
             
             if (usuarioLogado != null) {
                 Sessao.setUsuarioLogado(usuarioLogado);

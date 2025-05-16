@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import org.mindrot.jbcrypt.BCrypt;
 import spotifei.model.Usuario;
 
@@ -44,15 +45,22 @@ public class UsuarioDAO {
         return null; // caso nao tenha encontrado uma correspondencia
     }
     
-    public void inserir(Usuario usuario) throws SQLException {             
+    public void inserirUsuario(Usuario usuario) throws SQLException {             
         String sql = "INSERT INTO usuarios(login_usuario, senha_usuario, nome_usuario) VALUES (?, ?, ?)";
         
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, usuario.getLogin());
             statement.setString(2, usuario.getSenha());
             statement.setString(3, usuario.getNome());
             
-            statement.execute();
+            int linhasCriadas = statement.executeUpdate();
+            
+            if (linhasCriadas > 0) {
+                ResultSet keysGeradas = statement.getGeneratedKeys();
+                if (keysGeradas.next()) {
+                    usuario.setId(keysGeradas.getInt(1));
+                }
+            }
         }
     }   
 }
