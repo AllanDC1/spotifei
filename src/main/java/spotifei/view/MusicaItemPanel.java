@@ -88,7 +88,7 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         int confirmar = JOptionPane.showConfirmDialog(null, comboBoxPlaylists, "Adicionar na Playlist", JOptionPane.OK_CANCEL_OPTION);
         
         if (confirmar == JOptionPane.OK_OPTION) {
-            Playlist playlistSelecionada = (Playlist)comboBoxPlaylists.getSelectedItem();
+            Playlist playlistSelecionada = (Playlist) comboBoxPlaylists.getSelectedItem();
             if (playlistController.adicionarMusica(playlistSelecionada, musica)) {
                 JOptionPane.showMessageDialog(null, "Música adicionada em " + playlistSelecionada, "Adicionar na Playlist", JOptionPane.INFORMATION_MESSAGE);
             }

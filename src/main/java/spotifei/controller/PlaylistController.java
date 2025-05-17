@@ -109,4 +109,14 @@ public class PlaylistController {
             return false;
         }
     }
+    
+    public void removerMusica(Playlist playlist, Musica musica) {
+        
+        try (Connection connection = Conexao.criarConexaoBD()) {
+            PlaylistService playlistService = new PlaylistService(connection);
+            playlistService.removerMusicaPlaylist(playlist, musica);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

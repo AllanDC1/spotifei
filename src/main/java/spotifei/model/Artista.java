@@ -23,4 +23,9 @@ public class Artista extends Pessoa {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return super.getNome();
+    }
 }

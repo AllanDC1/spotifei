@@ -52,4 +52,9 @@ public class Musica {
     public void setDuracao(String duracao) {
         this.duracao = duracao;
     }    
+    
+    @Override
+    public String toString() {
+        return titulo + " - " + artista;
+    }
 }

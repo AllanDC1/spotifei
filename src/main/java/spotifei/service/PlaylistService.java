@@ -44,4 +44,8 @@ public class PlaylistService {
     public void adicionarMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
         playlistDAO.inserirMusicaPlaylist(playlist, musica);
     }
+    
+    public void removerMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
+        playlistDAO.deletarMusicaPlaylist(playlist, musica);
+    }
 }

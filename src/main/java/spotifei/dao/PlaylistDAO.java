@@ -108,4 +108,16 @@ public class PlaylistDAO {
             statement.executeUpdate();
         }
     }
+    
+    public void deletarMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
+        
+        String sql = "DELETE FROM playlist_musica WHERE id_playlist = ? AND id_musica = ?";
+        
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, playlist.getId());
+            statement.setInt(2, musica.getId());
+            
+            statement.executeUpdate();
+        }
+    }
 }
