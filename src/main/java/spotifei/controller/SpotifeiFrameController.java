@@ -83,16 +83,19 @@ public class SpotifeiFrameController {
         return listaMusicas;
     }
     
-    public void salvarPlaylist(Playlist playlist) {
+    public boolean salvarPlaylist(Playlist playlist) {
         try (Connection connection = Conexao.criarConexaoBD()) {
             PlaylistService playlistService = new PlaylistService(connection);
-            playlistService.cadastrarPlaylist(playlist);    
+            playlistService.cadastrarPlaylist(playlist);
+            
+            return true;
         } catch (SQLException e) {
             if (e.getSQLState().equals(ErroSQL.ERRO_UNIQUE_POSTGRESQL)) {
                 JOptionPane.showMessageDialog(spotifeiView, "Playlist com esse nome já existe.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(spotifeiView, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            return false;
         }
     }
 }

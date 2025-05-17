@@ -84,17 +84,19 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
 
     private void btnCriarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarPlaylistActionPerformed
         // TODO add your handling code here:
-        String nomeNovaPlaylist = JOptionPane.showInputDialog(this, "Nome para a nova playlist: "); // ALTERAR O THIS TALVEZ
+        String nomeNovaPlaylist = JOptionPane.showInputDialog(null, "Nome para a nova playlist: ", "Criar Playlist", JOptionPane.QUESTION_MESSAGE); // ALTERAR O THIS TALVEZ
+        
         if (nomeNovaPlaylist != null && !nomeNovaPlaylist.trim().isEmpty()) {
             Playlist novaPlaylist = new Playlist(nomeNovaPlaylist, 0);
-            controller.salvarPlaylist(novaPlaylist);
-            // TRATAMENTO DE ERRO
             
-            adicionarPlaylist(novaPlaylist);
-            pnlListaPlaylists.revalidate();
-            pnlListaPlaylists.repaint();
+            if (controller.salvarPlaylist(novaPlaylist)) {
+                adicionarPlaylist(novaPlaylist);
+                pnlListaPlaylists.revalidate();
+                pnlListaPlaylists.repaint();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha o campo de nome para Playlist.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-        
     }//GEN-LAST:event_btnCriarPlaylistActionPerformed
 
     public void adicionarPlaylist(Playlist playlist) {
