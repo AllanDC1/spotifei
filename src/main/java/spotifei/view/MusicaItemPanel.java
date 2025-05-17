@@ -4,8 +4,15 @@
  */
 package spotifei.view;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import spotifei.app.Sessao;
+import spotifei.controller.PlaylistController;
 import spotifei.model.Musica;
+import spotifei.model.Playlist;
 
 /**
  *
@@ -13,8 +20,11 @@ import spotifei.model.Musica;
  */
 public class MusicaItemPanel extends javax.swing.JPanel {
     
+    private Musica musica;
+    
     public MusicaItemPanel(Musica musica) {
         initComponents();
+        this.musica = musica;
         lblMusicaInfo.setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
     }
 
@@ -55,10 +65,35 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         pnlBotoes.add(btnDescurtir);
 
         btnAdicionarPlaylist.setText("Add a Playlist");
+        btnAdicionarPlaylist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarPlaylistActionPerformed(evt);
+            }
+        });
         pnlBotoes.add(btnAdicionarPlaylist);
 
         add(pnlBotoes, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdicionarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPlaylistActionPerformed
+        
+        PlaylistController playlistController = new PlaylistController();
+        List<Playlist> playlistsUsuario = playlistController.buscarPlaylistsUsuario(Sessao.getUsuarioLogado());
+        
+        JComboBox<Playlist> comboBoxPlaylists = new JComboBox<>();
+        for (Playlist playlist : playlistsUsuario) {
+            comboBoxPlaylists.addItem(playlist);
+        }
+        
+        int confirmar = JOptionPane.showConfirmDialog(null, comboBoxPlaylists, "Adicionar na Playlist", JOptionPane.OK_CANCEL_OPTION);
+        
+        if (confirmar == JOptionPane.OK_OPTION) {
+            Playlist playlistSelecionada = (Playlist)comboBoxPlaylists.getSelectedItem();
+            if (playlistController.adicionarMusica(playlistSelecionada, musica)) {
+                JOptionPane.showMessageDialog(null, "Música adicionada em " + playlistSelecionada, "Adicionar na Playlist", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAdicionarPlaylistActionPerformed
 
     public JLabel getLblMusicaInfo() {
         return lblMusicaInfo;

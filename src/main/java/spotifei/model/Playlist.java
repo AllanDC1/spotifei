@@ -47,4 +47,9 @@ public class Playlist {
     public void setQntMusicas(int qntMusicas) {
         this.qntMusicas = qntMusicas;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }    
 }

@@ -40,4 +40,8 @@ public class PlaylistService {
     public void removerPlaylist(Playlist playlist) throws SQLException {
         playlistDAO.deletarPlaylist(playlist);
     }
+    
+    public void adicionarMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
+        playlistDAO.inserirMusicaPlaylist(playlist, musica);
+    }
 }

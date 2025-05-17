@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import spotifei.dao.Conexao;
-import spotifei.dao.MusicaDAO;
 import spotifei.model.Musica;
 import spotifei.service.MusicaService;
 import spotifei.view.BuscaMusicasPanel;

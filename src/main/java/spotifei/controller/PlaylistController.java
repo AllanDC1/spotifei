@@ -22,7 +22,7 @@ import spotifei.service.UsuarioService;
  * @author adone
  */
 public class PlaylistController {
-
+    
     public List<Musica> buscarMusicasPlaylist(Playlist playlist) {
         
         List<Musica> listaMusicas = new ArrayList<>();
@@ -92,5 +92,21 @@ public class PlaylistController {
             JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         return listaPlaylists;
+    }
+    
+    public boolean adicionarMusica(Playlist playlist, Musica musica) {
+        
+        try (Connection connection = Conexao.criarConexaoBD()) {
+            PlaylistService playlistService = new PlaylistService(connection);
+            playlistService.adicionarMusicaPlaylist(playlist, musica);
+            return true;
+        } catch (SQLException e) {
+            if (e.getSQLState().equals(ErroSQL.ERRO_UNIQUE_POSTGRESQL)) {
+                JOptionPane.showMessageDialog(null, "A música já está nessa playlist.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
+        }
     }
 }

@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import spotifei.app.Sessao;
+import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
 /**
@@ -91,6 +92,18 @@ public class PlaylistDAO {
         
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, playlist.getId());
+            
+            statement.executeUpdate();
+        }
+    }
+    
+    public void inserirMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
+        
+        String sql = "INSERT INTO playlist_musica(id_playlist, id_musica) VALUES (?, ?)";
+        
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, playlist.getId());
+            statement.setInt(2, musica.getId());
             
             statement.executeUpdate();
         }
