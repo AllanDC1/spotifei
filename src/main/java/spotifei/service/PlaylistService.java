@@ -32,4 +32,12 @@ public class PlaylistService {
     public void cadastrarPlaylist(Playlist playlist) throws SQLException {
         playlistDAO.inserirPlaylist(playlist);
     }
+    
+    public void alterarPlaylist(int idPlaylistAlterada, String novoNome) throws SQLException {
+        playlistDAO.editarPlaylist(idPlaylistAlterada, novoNome);
+    }
+    
+    public void removerPlaylist(Playlist playlist) throws SQLException {
+        playlistDAO.deletarPlaylist(playlist);
+    }
 }

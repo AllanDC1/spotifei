@@ -83,20 +83,21 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCriarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarPlaylistActionPerformed
-        // TODO add your handling code here:
-        String nomeNovaPlaylist = JOptionPane.showInputDialog(null, "Nome para a nova playlist: ", "Criar Playlist", JOptionPane.QUESTION_MESSAGE); // ALTERAR O THIS TALVEZ
+        String nomeNovaPlaylist = JOptionPane.showInputDialog(null, "Nome para a nova playlist: ", "Criar Playlist", JOptionPane.QUESTION_MESSAGE);
         
-        if (nomeNovaPlaylist != null && !nomeNovaPlaylist.trim().isEmpty()) {
-            Playlist novaPlaylist = new Playlist(nomeNovaPlaylist, 0);
-            
-            if (controller.salvarPlaylist(novaPlaylist)) {
-                adicionarPlaylist(novaPlaylist);
-                pnlListaPlaylists.revalidate();
-                pnlListaPlaylists.repaint();
+        if (nomeNovaPlaylist != null) {
+            if (!nomeNovaPlaylist.trim().isEmpty()) {
+                Playlist novaPlaylist = new Playlist(nomeNovaPlaylist, 0);
+
+                if (controller.salvarPlaylist(novaPlaylist)) {
+                    adicionarPlaylist(novaPlaylist);
+                    pnlListaPlaylists.revalidate();
+                    pnlListaPlaylists.repaint();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha o campo de nome para Playlist.", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha o campo de nome para Playlist.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
+        } 
     }//GEN-LAST:event_btnCriarPlaylistActionPerformed
 
     public void adicionarPlaylist(Playlist playlist) {

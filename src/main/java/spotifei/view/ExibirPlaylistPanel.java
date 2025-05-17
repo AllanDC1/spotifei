@@ -6,6 +6,7 @@ package spotifei.view;
 
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import spotifei.controller.SpotifeiFrameController;
 import spotifei.model.Musica;
 import spotifei.model.Playlist;
@@ -15,9 +16,14 @@ import spotifei.model.Playlist;
  * @author adone
  */
 public class ExibirPlaylistPanel extends javax.swing.JPanel {
+
+    private Playlist playlist;
+    private SpotifeiFrameController controller;
     
     public ExibirPlaylistPanel(SpotifeiFrameController controller, Playlist playlist) {
         initComponents();
+        this.playlist = playlist;
+        this.controller = controller;
         lblTituloPlaylist.setText(playlist.getNome());
         listarMusicasPlaylist(controller.buscarMusicasPlaylist(playlist));
     }
@@ -91,11 +97,29 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPlaylistActionPerformed
-        // TODO add your handling code here:
+        String novoNome = JOptionPane.showInputDialog(null, "Novo nome para a playlist: ", "Editar Playlist", JOptionPane.QUESTION_MESSAGE);
+        
+        if (novoNome != null) {
+            if (!novoNome.trim().isEmpty()) {
+                if (controller.renomearPlaylist(playlist.getId(), novoNome)) {
+                    playlist.setNome(novoNome);
+                    lblTituloPlaylist.setText(novoNome);
+                    JOptionPane.showMessageDialog(null, "Playlist renomeada.", "Editar Playlist", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha o campo de novo nome para Playlist.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            } 
+        }
     }//GEN-LAST:event_btnEditarPlaylistActionPerformed
 
     private void btnExcluirPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPlaylistActionPerformed
-        // TODO add your handling code here:
+        int confirmar = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a playlist?", "Excluir Playlist", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmar == JOptionPane.YES_OPTION) {
+            controller.excluirPlaylist(playlist);
+            JOptionPane.showMessageDialog(null, "Playlist excluída.", "Excluir Playlist", JOptionPane.INFORMATION_MESSAGE);
+            controller.navegarPlaylists();
+        }
     }//GEN-LAST:event_btnExcluirPlaylistActionPerformed
 
     public void listarMusicasPlaylist(List<Musica> listaMusicas) {

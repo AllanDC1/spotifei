@@ -72,4 +72,27 @@ public class PlaylistDAO {
             }
         }
     }
+    
+    public void editarPlaylist(int idPlaylistAlterada, String novoNome) throws SQLException {
+        
+        String sql = "UPDATE playlists SET nome_playlist = ? WHERE id_playlist = ?";
+        
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, novoNome);
+            statement.setInt(2, idPlaylistAlterada);
+            
+            statement.executeUpdate();
+        }
+    }
+    
+    public void deletarPlaylist(Playlist playlist) throws SQLException {
+        
+        String sql = "DELETE FROM playlists WHERE id_playlist = ?";
+        
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, playlist.getId());
+            
+            statement.executeUpdate();
+        }
+    }
 }

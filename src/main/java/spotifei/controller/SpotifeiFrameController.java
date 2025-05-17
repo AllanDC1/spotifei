@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import spotifei.dao.Conexao;
@@ -91,11 +93,37 @@ public class SpotifeiFrameController {
             return true;
         } catch (SQLException e) {
             if (e.getSQLState().equals(ErroSQL.ERRO_UNIQUE_POSTGRESQL)) {
-                JOptionPane.showMessageDialog(spotifeiView, "Playlist com esse nome já existe.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(spotifeiView, "Uma Playlist com esse nome já existe.", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(spotifeiView, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
             return false;
+        }
+    }
+    
+    public boolean renomearPlaylist(int idPlaylistAlterada, String novoNome) {
+        try(Connection connection = Conexao.criarConexaoBD()) {
+            PlaylistService playlistService = new PlaylistService(connection);
+            playlistService.alterarPlaylist(idPlaylistAlterada, novoNome);
+            
+            return true;
+        } catch (SQLException e) {
+            if (e.getSQLState().equals(ErroSQL.ERRO_UNIQUE_POSTGRESQL)) {
+                JOptionPane.showMessageDialog(spotifeiView, "Uma Playlist com esse nome já existe.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(spotifeiView, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
+        }
+    }
+    
+    public void excluirPlaylist(Playlist playlist) {
+        try(Connection connection = Conexao.criarConexaoBD()) {
+            PlaylistService playlistService = new PlaylistService(connection);
+            playlistService.removerPlaylist(playlist);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(spotifeiView, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
