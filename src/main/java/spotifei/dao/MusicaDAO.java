@@ -25,7 +25,7 @@ public class MusicaDAO {
         this.connection = connection;
     }
     
-    public List<Musica> consultarMusicasPesquisa(String textoPesquisa) throws SQLException {
+    public List<Musica> consultarPorPesquisa(String textoPesquisa) throws SQLException {
         
         List<Musica> resultadoConsulta = new ArrayList<>();
         

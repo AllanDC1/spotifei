@@ -126,8 +126,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         pnlListaMusicasPlaylist.removeAll();        
         
         for (Musica musica : listaMusicas) {
-            MusicaItemPanel item = new MusicaItemPanel();
-            item.getLblMusicaInfo().setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
+            MusicaItemPanel item = new MusicaItemPanel(musica);
             
             pnlListaMusicasPlaylist.add(item);
         }

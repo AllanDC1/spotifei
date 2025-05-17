@@ -5,18 +5,17 @@
 package spotifei.view;
 
 import javax.swing.JLabel;
+import spotifei.model.Musica;
 
 /**
  *
  * @author adone
  */
 public class MusicaItemPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form MusicaItemPanel
-     */
-    public MusicaItemPanel() {
+    
+    public MusicaItemPanel(Musica musica) {
         initComponents();
+        lblMusicaInfo.setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
     }
 
     /**

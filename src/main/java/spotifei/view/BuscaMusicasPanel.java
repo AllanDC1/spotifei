@@ -18,9 +18,11 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
     private BuscaMusicasController controller;
     
-    public BuscaMusicasPanel() {
+    public BuscaMusicasPanel(BuscaMusicasController controller) {
         initComponents();
-        controller = new BuscaMusicasController(this);
+        this.controller = controller;
+        controller.setView(this);
+        controller.listarMusicas();
     }
 
     /**
@@ -83,7 +85,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
     private void btnBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMusicasActionPerformed
         // TODO add your handling code here:
-        controller.buscarMusicas();
+        controller.listarMusicas();
     }//GEN-LAST:event_btnBuscarMusicasActionPerformed
 
     private void txtBuscarMusicasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusGained
@@ -106,8 +108,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlListaMusicas.removeAll();
 
         for (Musica musica : listaMusicas) {
-            MusicaItemPanel item = new MusicaItemPanel();
-            item.getLblMusicaInfo().setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
+            MusicaItemPanel item = new MusicaItemPanel(musica);            
 
             pnlListaMusicas.add(item);
         }

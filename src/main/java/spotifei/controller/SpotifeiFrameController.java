@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import spotifei.dao.Conexao;
@@ -43,7 +41,7 @@ public class SpotifeiFrameController {
     }
     
     public void navegarMusicas() {
-        pnlMain.add(new BuscaMusicasPanel(), "buscarMusicas");
+        pnlMain.add(new BuscaMusicasPanel(new BuscaMusicasController()), "buscarMusicas");
         cl.show(pnlMain, "buscarMusicas");
         pnlMain.revalidate();
         pnlMain.repaint();
