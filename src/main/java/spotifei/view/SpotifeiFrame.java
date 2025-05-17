@@ -4,7 +4,9 @@
  */
 package spotifei.view;
 
-import java.awt.CardLayout;
+//import java.awt.CardLayout;
+import javax.swing.JPanel;
+import spotifei.controller.MainFrameController;
 
 /**
  *
@@ -12,12 +14,11 @@ import java.awt.CardLayout;
  */
 public class SpotifeiFrame extends javax.swing.JFrame {
     
-    private CardLayout cl;
+    private MainFrameController controller;
     
     public SpotifeiFrame() {
         initComponents();
-        cl = (CardLayout)(pnlMainSpotifei.getLayout());     
-        pnlMainSpotifei.add(new BuscaMusicasPanel(), "buscarMusicas");
+        controller = new MainFrameController(this);
     }
     
     /**
@@ -50,6 +51,11 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         btnPlaylistNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPlaylistNavegacao.setText("Playlists");
         btnPlaylistNavegacao.setBorderPainted(false);
+        btnPlaylistNavegacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaylistNavegacaoActionPerformed(evt);
+            }
+        });
 
         btnMusicasNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnMusicasNavegacao.setText("Músicas");
@@ -109,10 +115,17 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMusicasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusicasNavegacaoActionPerformed
-        // TODO add your handling code here:
-        cl.show(pnlMainSpotifei, "buscarMusicas");
+        controller.navegarMusicas();
     }//GEN-LAST:event_btnMusicasNavegacaoActionPerformed
 
+    private void btnPlaylistNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaylistNavegacaoActionPerformed
+        controller.navegarPlaylists();
+    }//GEN-LAST:event_btnPlaylistNavegacaoActionPerformed
+
+    public JPanel getPnlMainSpotifei() {
+        return pnlMainSpotifei;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMusicasNavegacao;
     private javax.swing.JButton btnPlaylistNavegacao;

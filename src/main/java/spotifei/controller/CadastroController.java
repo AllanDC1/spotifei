@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import org.mindrot.jbcrypt.BCrypt;
 import spotifei.app.Sessao;
-import spotifei.dao.UsuarioDAO;
 import spotifei.model.Usuario;
 import spotifei.dao.Conexao;
 import spotifei.exception.ErroSQL;
+import spotifei.service.UsuarioService;
 import spotifei.view.CadastroFrame;
 import spotifei.view.SpotifeiFrame;
 
@@ -45,8 +45,8 @@ public class CadastroController {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
             
-            UsuarioDAO usuarioDao = new UsuarioDAO(connection);            
-            usuarioDao.inserir(novoUsuario);
+            UsuarioService usuarioService = new UsuarioService(connection);           
+            usuarioService.cadastrarUsuario(novoUsuario);
             
             JOptionPane.showMessageDialog(cadastroView, "Usuário Cadastrado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             

@@ -7,7 +7,7 @@ package spotifei.view;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JTextField;
-import spotifei.controller.BuscaMusicasController;
+import spotifei.controller.MusicaController;
 import spotifei.model.Musica;
 
 /**
@@ -16,11 +16,13 @@ import spotifei.model.Musica;
  */
 public class BuscaMusicasPanel extends javax.swing.JPanel {
 
-    private BuscaMusicasController controller;
+    private MusicaController controller;
     
-    public BuscaMusicasPanel() {
+    public BuscaMusicasPanel(MusicaController controller) {
         initComponents();
-        controller = new BuscaMusicasController(this);
+        this.controller = controller;
+        controller.setView(this);
+        controller.listarMusicas();
     }
 
     /**
@@ -44,6 +46,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         pnlSuperiorBusca.setBackground(new java.awt.Color(44, 44, 44));
+        pnlSuperiorBusca.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 10));
 
         txtBuscarMusicas.setColumns(25);
         txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -61,7 +64,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         });
         pnlSuperiorBusca.add(txtBuscarMusicas);
 
-        btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnBuscarMusicas.setText("Buscar");
         btnBuscarMusicas.setBorderPainted(false);
         btnBuscarMusicas.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +85,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
     private void btnBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMusicasActionPerformed
         // TODO add your handling code here:
-        controller.buscarMusicas();
+        controller.listarMusicas();
     }//GEN-LAST:event_btnBuscarMusicasActionPerformed
 
     private void txtBuscarMusicasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusGained
@@ -105,8 +108,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlListaMusicas.removeAll();
 
         for (Musica musica : listaMusicas) {
-            MusicaItemPanel item = new MusicaItemPanel();
-            item.getLblMusicaInfo().setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
+            MusicaItemPanel item = new MusicaItemPanel(musica);            
 
             pnlListaMusicas.add(item);
         }

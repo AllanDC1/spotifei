@@ -4,8 +4,6 @@
  */
 package spotifei.model;
 
-import java.util.List;
-
 /**
  *
  * @author unifacalen
@@ -13,8 +11,18 @@ import java.util.List;
 public class Playlist {
     private int id;
     private String nome;
-    private List<Musica> musicas;
-    private Usuario dono;
+    private int qntMusicas;
+
+    public Playlist(String nome, int qntMusicas) {
+        this.nome = nome;
+        this.qntMusicas = qntMusicas;
+    }
+    
+    public Playlist(int id, String nome, int qntMusicas) {
+        this.id = id;
+        this.nome = nome;
+        this.qntMusicas = qntMusicas;
+    }
 
     public int getId() {
         return id;
@@ -32,11 +40,16 @@ public class Playlist {
         this.nome = nome;
     }
 
-    public Usuario getDono() {
-        return dono;
+    public int getQntMusicas() {
+        return qntMusicas;
     }
 
-    public void setDono(Usuario dono) {
-        this.dono = dono;
+    public void setQntMusicas(int qntMusicas) {
+        this.qntMusicas = qntMusicas;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }    
 }
