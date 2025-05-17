@@ -7,7 +7,8 @@ package spotifei.view;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import spotifei.controller.SpotifeiFrameController;
+import spotifei.controller.PlaylistController;
+import spotifei.controller.MainFrameController;
 import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
@@ -18,14 +19,16 @@ import spotifei.model.Playlist;
 public class ExibirPlaylistPanel extends javax.swing.JPanel {
 
     private Playlist playlist;
-    private SpotifeiFrameController controller;
+    private MainFrameController frameController;
+    private PlaylistController playlistController;
     
-    public ExibirPlaylistPanel(SpotifeiFrameController controller, Playlist playlist) {
+    public ExibirPlaylistPanel(MainFrameController frameController, PlaylistController playlistController, Playlist playlist) {
         initComponents();
         this.playlist = playlist;
-        this.controller = controller;
+        this.frameController = frameController;
+        this.playlistController = playlistController;
         lblTituloPlaylist.setText(playlist.getNome());
-        listarMusicasPlaylist(controller.buscarMusicasPlaylist(playlist));
+        listarMusicasPlaylist(playlistController.buscarMusicasPlaylist(playlist));
     }
 
     /**
@@ -101,7 +104,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         
         if (novoNome != null) {
             if (!novoNome.trim().isEmpty()) {
-                if (controller.renomearPlaylist(playlist.getId(), novoNome)) {
+                if (playlistController.renomearPlaylist(playlist.getId(), novoNome)) {
                     playlist.setNome(novoNome);
                     lblTituloPlaylist.setText(novoNome);
                     JOptionPane.showMessageDialog(null, "Playlist renomeada.", "Editar Playlist", JOptionPane.INFORMATION_MESSAGE);
@@ -116,9 +119,9 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         int confirmar = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a playlist?", "Excluir Playlist", JOptionPane.YES_NO_OPTION);
         
         if (confirmar == JOptionPane.YES_OPTION) {
-            controller.excluirPlaylist(playlist);
+            playlistController.excluirPlaylist(playlist);
             JOptionPane.showMessageDialog(null, "Playlist excluída.", "Excluir Playlist", JOptionPane.INFORMATION_MESSAGE);
-            controller.navegarPlaylists();
+            frameController.navegarPlaylists();
         }
     }//GEN-LAST:event_btnExcluirPlaylistActionPerformed
 

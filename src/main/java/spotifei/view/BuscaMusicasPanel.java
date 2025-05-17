@@ -7,7 +7,7 @@ package spotifei.view;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JTextField;
-import spotifei.controller.BuscaMusicasController;
+import spotifei.controller.MusicaController;
 import spotifei.model.Musica;
 
 /**
@@ -16,9 +16,9 @@ import spotifei.model.Musica;
  */
 public class BuscaMusicasPanel extends javax.swing.JPanel {
 
-    private BuscaMusicasController controller;
+    private MusicaController controller;
     
-    public BuscaMusicasPanel(BuscaMusicasController controller) {
+    public BuscaMusicasPanel(MusicaController controller) {
         initComponents();
         this.controller = controller;
         controller.setView(this);

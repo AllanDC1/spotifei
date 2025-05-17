@@ -18,7 +18,7 @@ import spotifei.view.BuscaMusicasPanel;
  *
  * @author adone
  */
-public class BuscaMusicasController {
+public class MusicaController {
     
     private BuscaMusicasPanel buscaMusicasView;
     

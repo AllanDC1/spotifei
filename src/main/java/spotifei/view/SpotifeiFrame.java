@@ -6,7 +6,7 @@ package spotifei.view;
 
 //import java.awt.CardLayout;
 import javax.swing.JPanel;
-import spotifei.controller.SpotifeiFrameController;
+import spotifei.controller.MainFrameController;
 
 /**
  *
@@ -14,11 +14,11 @@ import spotifei.controller.SpotifeiFrameController;
  */
 public class SpotifeiFrame extends javax.swing.JFrame {
     
-    private SpotifeiFrameController controller;
+    private MainFrameController controller;
     
     public SpotifeiFrame() {
         initComponents();
-        controller = new SpotifeiFrameController(this);
+        controller = new MainFrameController(this);
     }
     
     /**

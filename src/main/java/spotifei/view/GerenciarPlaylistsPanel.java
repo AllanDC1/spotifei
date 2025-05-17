@@ -7,7 +7,8 @@ package spotifei.view;
 import java.util.List;
 import javax.swing.JOptionPane;
 import spotifei.app.Sessao;
-import spotifei.controller.SpotifeiFrameController;
+import spotifei.controller.PlaylistController;
+import spotifei.controller.MainFrameController;
 import spotifei.model.Playlist;
 
 /**
@@ -16,12 +17,14 @@ import spotifei.model.Playlist;
  */
 public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
 
-    private SpotifeiFrameController controller;
+    private MainFrameController frameController;
+    private PlaylistController playlistController;
     
-    public GerenciarPlaylistsPanel(SpotifeiFrameController controller) {
+    public GerenciarPlaylistsPanel(MainFrameController frameController, PlaylistController playlistController) {
         initComponents();
-        this.controller = controller;
-        listarPlaylists(controller.buscarPlaylistsUsuario(Sessao.getUsuarioLogado()));
+        this.frameController = frameController;
+        this.playlistController = playlistController;
+        listarPlaylists(playlistController.buscarPlaylistsUsuario(Sessao.getUsuarioLogado()));
     }
 
     /**
@@ -89,7 +92,7 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
             if (!nomeNovaPlaylist.trim().isEmpty()) {
                 Playlist novaPlaylist = new Playlist(nomeNovaPlaylist, 0);
 
-                if (controller.salvarPlaylist(novaPlaylist)) {
+                if (playlistController.salvarPlaylist(novaPlaylist)) {
                     adicionarPlaylist(novaPlaylist);
                     pnlListaPlaylists.revalidate();
                     pnlListaPlaylists.repaint();
@@ -104,7 +107,7 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
         PlaylistItemPanel item = new PlaylistItemPanel(playlist);            
 
         item.setOnClick(() -> {
-            controller.exibirPlaylist(playlist);
+            frameController.exibirPlaylist(playlist);
         });
 
         pnlListaPlaylists.add(item);
