@@ -45,11 +45,15 @@ public class SpotifeiFrameController {
     public void navegarMusicas() {
         pnlMain.add(new BuscaMusicasPanel(), "buscarMusicas");
         cl.show(pnlMain, "buscarMusicas");
+        pnlMain.revalidate();
+        pnlMain.repaint();
     }
     
     public void navegarPlaylists() {
         pnlMain.add(new GerenciarPlaylistsPanel(this), "gerenciarPlaylists");
         cl.show(pnlMain, "gerenciarPlaylists");
+        pnlMain.revalidate();
+        pnlMain.repaint();
     }
     
     public void exibirPlaylist(Playlist playlist) {
