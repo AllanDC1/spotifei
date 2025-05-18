@@ -7,9 +7,12 @@ package spotifei.controller;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import spotifei.dao.Conexao;
 import spotifei.model.Musica;
+import spotifei.model.Usuario;
 import spotifei.service.MusicaService;
 import spotifei.view.BuscaMusicasPanel;
 
@@ -37,7 +40,20 @@ public class MusicaController {
             buscaMusicasView.atualizarListaMusicas(resultadoPesquisa);
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(buscaMusicasView, "Erro na busca: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro na busca: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public String reagirMusica(Usuario usuario, Musica musica, char reacao) {
+        
+        try (Connection connection = Conexao.criarConexaoBD()) {
+            
+            MusicaService musicaService = new MusicaService(connection);
+            return musicaService.alterarReacaoMusica(usuario, musica, reacao);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
     }
 

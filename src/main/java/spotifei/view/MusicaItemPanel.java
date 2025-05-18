@@ -4,12 +4,12 @@
  */
 package spotifei.view;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import spotifei.app.Sessao;
+import spotifei.controller.MusicaController;
 import spotifei.controller.PlaylistController;
 import spotifei.model.Musica;
 import spotifei.model.Playlist;
@@ -59,9 +59,19 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         pnlBotoes.setLayout(new javax.swing.BoxLayout(pnlBotoes, javax.swing.BoxLayout.LINE_AXIS));
 
         btnCurtir.setText("Curtir");
+        btnCurtir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurtirActionPerformed(evt);
+            }
+        });
         pnlBotoes.add(btnCurtir);
 
         btnDescurtir.setText("Descurtir");
+        btnDescurtir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescurtirActionPerformed(evt);
+            }
+        });
         pnlBotoes.add(btnDescurtir);
 
         btnAdicionarPlaylist.setText("Add a Playlist");
@@ -94,6 +104,28 @@ public class MusicaItemPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnAdicionarPlaylistActionPerformed
+
+    private void btnCurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurtirActionPerformed
+        
+        MusicaController musicaController = new MusicaController();
+        String mensagem = musicaController.reagirMusica(Sessao.getUsuarioLogado(), musica, 'C');
+        
+        if (mensagem != null) {
+            JOptionPane.showMessageDialog(null, mensagem, "Curtir música", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnCurtirActionPerformed
+
+    private void btnDescurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescurtirActionPerformed
+        
+        MusicaController musicaController = new MusicaController();
+        String mensagem = musicaController.reagirMusica(Sessao.getUsuarioLogado(), musica, 'D');
+        
+        if (mensagem != null) {
+            JOptionPane.showMessageDialog(null, mensagem, "Descurtir música", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnDescurtirActionPerformed
 
     public JLabel getLblMusicaInfo() {
         return lblMusicaInfo;
