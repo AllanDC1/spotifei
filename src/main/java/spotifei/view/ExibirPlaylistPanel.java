@@ -175,10 +175,6 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         pnlListaMusicasPlaylist.revalidate();
         pnlListaMusicasPlaylist.repaint();
     }
-
-    public JLabel getLblTituloPlaylist() {
-        return lblTituloPlaylist;
-    }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarPlaylist;

@@ -15,6 +15,7 @@ import spotifei.model.Musica;
 import spotifei.model.Usuario;
 import spotifei.service.MusicaService;
 import spotifei.view.BuscaMusicasPanel;
+import spotifei.view.MusicasReagidasPanel;
 
 /**
  *
@@ -23,8 +24,9 @@ import spotifei.view.BuscaMusicasPanel;
 public class MusicaController {
     
     private BuscaMusicasPanel buscaMusicasView;
+    private MusicasReagidasPanel musicasReagidasView;
     
-    public void listarMusicas() {
+    public void listarMusicasPesquisa() {
         
         String textoPesquisa = buscaMusicasView.getTxtBuscarMusicas().getText();
         // Se estiver com o placeholder, substitui a pesquisa para vazio
@@ -56,9 +58,25 @@ public class MusicaController {
             return null;
         }
     }
+    
+    public void listarMusicasReagidas(Usuario usuario, char tipoReacao) {
+        try (Connection connection = Conexao.criarConexaoBD()) {
+            
+            MusicaService musicaService = new MusicaService(connection);
+            List<Musica> listaMusicasReacoes = musicaService.buscarMusicasUsuarioReacao(usuario, tipoReacao);
+            
+            musicasReagidasView.listarReacaoItem(listaMusicasReacoes);
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-    public void setView(BuscaMusicasPanel buscaMusicasView) {
+    public void setBuscaMusicasView(BuscaMusicasPanel buscaMusicasView) {
         this.buscaMusicasView = buscaMusicasView;
     }
-    
+
+    public void setMusicasReagidasView(MusicasReagidasPanel musicasReagidasView) {
+        this.musicasReagidasView = musicasReagidasView;
+    }
 }

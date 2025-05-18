@@ -10,6 +10,7 @@ import spotifei.model.Playlist;
 import spotifei.view.BuscaMusicasPanel;
 import spotifei.view.GerenciarPlaylistsPanel;
 import spotifei.view.ExibirPlaylistPanel;
+import spotifei.view.MusicasReagidasPanel;
 import spotifei.view.SpotifeiFrame;
 
 /**
@@ -43,5 +44,19 @@ public class MainFrameController {
     public void exibirPlaylist(Playlist playlist) {
         pnlMain.add(new ExibirPlaylistPanel(this, new PlaylistController(), playlist), "exibirPlaylist");
         cl.show(pnlMain, "exibirPlaylist");
+    }
+    
+    public void navegarCurtidas() {
+        pnlMain.add(new MusicasReagidasPanel(new MusicaController(), "Curtidas"), "exibirCurtidas");
+        cl.show(pnlMain, "exibirCurtidas");
+        pnlMain.revalidate();
+        pnlMain.repaint();
+    }
+    
+    public void navegarDescurtidas() {
+        pnlMain.add(new MusicasReagidasPanel(new MusicaController(), "Descurtidas"), "exibirDescurtidas");
+        cl.show(pnlMain, "exibirDescurtidas");
+        pnlMain.revalidate();
+        pnlMain.repaint();
     }
 }

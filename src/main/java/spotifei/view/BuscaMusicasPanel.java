@@ -21,8 +21,8 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
     public BuscaMusicasPanel(MusicaController controller) {
         initComponents();
         this.controller = controller;
-        controller.setView(this);
-        controller.listarMusicas();
+        controller.setBuscaMusicasView(this);
+        controller.listarMusicasPesquisa();
     }
 
     /**
@@ -85,7 +85,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
     private void btnBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMusicasActionPerformed
         // TODO add your handling code here:
-        controller.listarMusicas();
+        controller.listarMusicasPesquisa();
     }//GEN-LAST:event_btnBuscarMusicasActionPerformed
 
     private void txtBuscarMusicasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusGained

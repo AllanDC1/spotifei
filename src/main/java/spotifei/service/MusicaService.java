@@ -33,4 +33,8 @@ public class MusicaService {
     public String alterarReacaoMusica(Usuario usuario, Musica musica, char reacao) throws SQLException {
        return usuarioMusicaDAO.verificarReacaoMusica(usuario, musica, reacao);
     }
+    
+    public List<Musica> buscarMusicasUsuarioReacao(Usuario usuario, char tipoReacao) throws SQLException {
+        return usuarioMusicaDAO.consultarMusicasUsuarioReacao(usuario, tipoReacao);
+    }
 }
