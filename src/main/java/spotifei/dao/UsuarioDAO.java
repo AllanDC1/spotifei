@@ -18,7 +18,7 @@ import spotifei.model.Usuario;
  */
 public class UsuarioDAO {
     
-    private Connection connection;
+    private Connection connection;    
 
     public UsuarioDAO(Connection connection) {
         this.connection = connection;
@@ -62,5 +62,5 @@ public class UsuarioDAO {
                 }
             }
         }
-    }   
+    }
 }

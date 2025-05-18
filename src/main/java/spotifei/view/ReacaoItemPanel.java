@@ -3,13 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package spotifei.view;
-
 import java.util.List;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import spotifei.app.Sessao;
-import spotifei.controller.MusicaController;
 import spotifei.controller.PlaylistController;
 import spotifei.model.Musica;
 import spotifei.model.Playlist;
@@ -18,11 +15,11 @@ import spotifei.model.Playlist;
  *
  * @author adone
  */
-public class MusicaItemPanel extends javax.swing.JPanel {
+public class ReacaoItemPanel extends javax.swing.JPanel {
     
     private Musica musica;
     
-    public MusicaItemPanel(Musica musica) {
+    public ReacaoItemPanel(Musica musica) {
         initComponents();
         this.musica = musica;
         lblMusicaInfo.setText(musica.getTitulo() + " - " + musica.getArtista().getNome() + " (" + musica.getDuracao() + ")");
@@ -39,8 +36,6 @@ public class MusicaItemPanel extends javax.swing.JPanel {
 
         lblMusicaInfo = new javax.swing.JLabel();
         pnlBotoes = new javax.swing.JPanel();
-        btnCurtir = new javax.swing.JButton();
-        btnDescurtir = new javax.swing.JButton();
         btnAdicionarPlaylist = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(44, 44, 44));
@@ -58,22 +53,6 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         pnlBotoes.setBackground(new java.awt.Color(44, 44, 44));
         pnlBotoes.setLayout(new javax.swing.BoxLayout(pnlBotoes, javax.swing.BoxLayout.LINE_AXIS));
 
-        btnCurtir.setText("Curtir");
-        btnCurtir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCurtirActionPerformed(evt);
-            }
-        });
-        pnlBotoes.add(btnCurtir);
-
-        btnDescurtir.setText("Descurtir");
-        btnDescurtir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDescurtirActionPerformed(evt);
-            }
-        });
-        pnlBotoes.add(btnDescurtir);
-
         btnAdicionarPlaylist.setText("Add a Playlist");
         btnAdicionarPlaylist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,17 +65,17 @@ public class MusicaItemPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPlaylistActionPerformed
-        
+
         PlaylistController playlistController = new PlaylistController();
         List<Playlist> playlistsUsuario = playlistController.buscarPlaylistsUsuario(Sessao.getUsuarioLogado());
-        
+
         JComboBox<Playlist> comboBoxPlaylists = new JComboBox<>();
         for (Playlist playlist : playlistsUsuario) {
             comboBoxPlaylists.addItem(playlist);
         }
-        
+
         int confirmar = JOptionPane.showConfirmDialog(null, comboBoxPlaylists, "Adicionar na Playlist", JOptionPane.OK_CANCEL_OPTION);
-        
+
         if (confirmar == JOptionPane.OK_OPTION) {
             Playlist playlistSelecionada = (Playlist) comboBoxPlaylists.getSelectedItem();
             if (playlistController.adicionarMusica(playlistSelecionada, musica)) {
@@ -104,37 +83,9 @@ public class MusicaItemPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnAdicionarPlaylistActionPerformed
-
-    private void btnCurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurtirActionPerformed
-        
-        MusicaController musicaController = new MusicaController();
-        String mensagem = musicaController.reagirMusica(Sessao.getUsuarioLogado(), musica, 'C');
-        
-        if (mensagem != null) {
-            JOptionPane.showMessageDialog(null, mensagem, "Curtir música", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-    }//GEN-LAST:event_btnCurtirActionPerformed
-
-    private void btnDescurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescurtirActionPerformed
-        
-        MusicaController musicaController = new MusicaController();
-        String mensagem = musicaController.reagirMusica(Sessao.getUsuarioLogado(), musica, 'D');
-        
-        if (mensagem != null) {
-            JOptionPane.showMessageDialog(null, mensagem, "Descurtir música", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-    }//GEN-LAST:event_btnDescurtirActionPerformed
-
-    public JLabel getLblMusicaInfo() {
-        return lblMusicaInfo;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPlaylist;
-    private javax.swing.JButton btnCurtir;
-    private javax.swing.JButton btnDescurtir;
     private javax.swing.JLabel lblMusicaInfo;
     private javax.swing.JPanel pnlBotoes;
     // End of variables declaration//GEN-END:variables

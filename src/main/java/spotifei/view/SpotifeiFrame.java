@@ -34,6 +34,8 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         lblSpotifeiSpotifei = new javax.swing.JLabel();
         btnPlaylistNavegacao = new javax.swing.JButton();
         btnMusicasNavegacao = new javax.swing.JButton();
+        btnCurtidasNavegacao = new javax.swing.JButton();
+        btnDescurtidasNavegacao = new javax.swing.JButton();
         pnlMainSpotifei = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,6 +68,24 @@ public class SpotifeiFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCurtidasNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnCurtidasNavegacao.setText("Curtidas");
+        btnCurtidasNavegacao.setBorderPainted(false);
+        btnCurtidasNavegacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurtidasNavegacaoActionPerformed(evt);
+            }
+        });
+
+        btnDescurtidasNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnDescurtidasNavegacao.setText("Descurtidas");
+        btnDescurtidasNavegacao.setBorderPainted(false);
+        btnDescurtidasNavegacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescurtidasNavegacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlNavegacaoSpotifeiLayout = new javax.swing.GroupLayout(pnlNavegacaoSpotifei);
         pnlNavegacaoSpotifei.setLayout(pnlNavegacaoSpotifeiLayout);
         pnlNavegacaoSpotifeiLayout.setHorizontalGroup(
@@ -75,7 +95,9 @@ public class SpotifeiFrame extends javax.swing.JFrame {
                 .addGroup(pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                     .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCurtidasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlNavegacaoSpotifeiLayout.setVerticalGroup(
@@ -87,6 +109,10 @@ public class SpotifeiFrame extends javax.swing.JFrame {
                 .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnCurtidasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -122,11 +148,21 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         controller.navegarPlaylists();
     }//GEN-LAST:event_btnPlaylistNavegacaoActionPerformed
 
+    private void btnCurtidasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurtidasNavegacaoActionPerformed
+        controller.navegarCurtidas();
+    }//GEN-LAST:event_btnCurtidasNavegacaoActionPerformed
+
+    private void btnDescurtidasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescurtidasNavegacaoActionPerformed
+        controller.navegarDescurtidas();
+    }//GEN-LAST:event_btnDescurtidasNavegacaoActionPerformed
+
     public JPanel getPnlMainSpotifei() {
         return pnlMainSpotifei;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCurtidasNavegacao;
+    private javax.swing.JButton btnDescurtidasNavegacao;
     private javax.swing.JButton btnMusicasNavegacao;
     private javax.swing.JButton btnPlaylistNavegacao;
     private javax.swing.JLabel lblSpotifeiSpotifei;
