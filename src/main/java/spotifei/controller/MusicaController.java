@@ -7,8 +7,6 @@ package spotifei.controller;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import spotifei.dao.Conexao;
 import spotifei.model.Musica;
@@ -26,9 +24,8 @@ public class MusicaController {
     private BuscaMusicasPanel buscaMusicasView;
     private MusicasReagidasPanel musicasReagidasView;
     
-    public void listarMusicasPesquisa() {
+    public void listarMusicasPesquisa(String textoPesquisa) {
         
-        String textoPesquisa = buscaMusicasView.getTxtBuscarMusicas().getText();
         // Se estiver com o placeholder, substitui a pesquisa para vazio
         if (textoPesquisa.equals("Pesquisar...")) {
             textoPesquisa = "";

@@ -6,7 +6,11 @@ package spotifei.view;
 
 import java.awt.Color;
 import java.util.List;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
+import spotifei.app.Sessao;
+import spotifei.controller.HistoricoController;
 import spotifei.controller.MusicaController;
 import spotifei.model.Musica;
 
@@ -16,13 +20,22 @@ import spotifei.model.Musica;
  */
 public class BuscaMusicasPanel extends javax.swing.JPanel {
 
-    private MusicaController controller;
+    private MusicaController musicaController;
+    private HistoricoController historicoController;
+    private JPopupMenu popupHistorico;
     
-    public BuscaMusicasPanel(MusicaController controller) {
+    public BuscaMusicasPanel(MusicaController musicaController, HistoricoController historicoController) {
         initComponents();
-        this.controller = controller;
-        controller.setBuscaMusicasView(this);
-        controller.listarMusicasPesquisa();
+        popupHistorico = new JPopupMenu();
+        
+        this.musicaController = musicaController;
+        this.historicoController = historicoController;
+        
+        musicaController.setBuscaMusicasView(this);
+        historicoController.setView(this);
+        
+        // LISTA TODAS AS MUSICAS INICIALMENTE
+        musicaController.listarMusicasPesquisa("");
     }
 
     /**
@@ -35,6 +48,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         pnlSuperiorBusca = new javax.swing.JPanel();
+        btnHistoricoPesquisa = new javax.swing.JButton();
         txtBuscarMusicas = new javax.swing.JTextField();
         btnBuscarMusicas = new javax.swing.JButton();
         pnlResultadosBusca = new javax.swing.JScrollPane();
@@ -47,6 +61,16 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
 
         pnlSuperiorBusca.setBackground(new java.awt.Color(44, 44, 44));
         pnlSuperiorBusca.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 10));
+
+        btnHistoricoPesquisa.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnHistoricoPesquisa.setText("Hist.");
+        btnHistoricoPesquisa.setBorderPainted(false);
+        btnHistoricoPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoricoPesquisaActionPerformed(evt);
+            }
+        });
+        pnlSuperiorBusca.add(btnHistoricoPesquisa);
 
         txtBuscarMusicas.setColumns(25);
         txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -84,12 +108,14 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMusicasActionPerformed
-        // TODO add your handling code here:
-        controller.listarMusicasPesquisa();
+        String textoPesquisa = txtBuscarMusicas.getText();
+        
+        musicaController.listarMusicasPesquisa(textoPesquisa);
+        historicoController.adicionarPesquisa(Sessao.getUsuarioLogado(), textoPesquisa);
     }//GEN-LAST:event_btnBuscarMusicasActionPerformed
 
     private void txtBuscarMusicasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusGained
-        // TODO add your handling code here:
+        // RETIRAR PLACEHOLDER
         if (txtBuscarMusicas.getText().equals("Pesquisar...")) {
             txtBuscarMusicas.setText("");
             txtBuscarMusicas.setForeground(new Color(204,204,204));
@@ -97,12 +123,16 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarMusicasFocusGained
 
     private void txtBuscarMusicasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusLost
-        // TODO add your handling code here:
+        // ADICIONAR PLACEHOLDER
         if (txtBuscarMusicas.getText().equals("")) {
             txtBuscarMusicas.setText("Pesquisar...");
             txtBuscarMusicas.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_txtBuscarMusicasFocusLost
+
+    private void btnHistoricoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoPesquisaActionPerformed
+        historicoController.buscarExibirHistorico(Sessao.getUsuarioLogado());
+    }//GEN-LAST:event_btnHistoricoPesquisaActionPerformed
 
     public void atualizarListaMusicas(List<Musica> listaMusicas) {
         pnlListaMusicas.removeAll();
@@ -117,12 +147,31 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlListaMusicas.repaint();
     }
 
+    public void exibirHistorico(List<String> historico) {
+        
+        popupHistorico.removeAll();
+        
+        for (String pesquisa : historico) {
+            JMenuItem item = new JMenuItem(pesquisa);
+            
+            item.addActionListener(e -> {
+                txtBuscarMusicas.setText(pesquisa);
+                popupHistorico.setVisible(false);
+            });
+            
+            popupHistorico.add(item);
+        }
+        
+        popupHistorico.show(txtBuscarMusicas, 0, txtBuscarMusicas.getHeight());
+    }
+    
     public JTextField getTxtBuscarMusicas() {
         return txtBuscarMusicas;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarMusicas;
+    private javax.swing.JButton btnHistoricoPesquisa;
     private javax.swing.JPanel pnlListaMusicas;
     private javax.swing.JScrollPane pnlResultadosBusca;
     private javax.swing.JPanel pnlSuperiorBusca;

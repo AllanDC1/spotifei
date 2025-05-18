@@ -28,7 +28,7 @@ public class MainFrameController {
     }
     
     public void navegarMusicas() {
-        pnlMain.add(new BuscaMusicasPanel(new MusicaController()), "buscarMusicas");
+        pnlMain.add(new BuscaMusicasPanel(new MusicaController(), new HistoricoController()), "buscarMusicas");
         cl.show(pnlMain, "buscarMusicas");
         pnlMain.revalidate();
         pnlMain.repaint();
