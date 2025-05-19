@@ -8,8 +8,10 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import spotifei.view.LoginFrame;
 
 /**
+ * Classe principal para execução do sistema.
+ * 
  *
- * @author adone
+ *
  */
 public class SpotifeiApp {
     public static void main(String[] args) {

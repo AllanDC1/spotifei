@@ -10,14 +10,20 @@ import spotifei.controller.MusicaController;
 import spotifei.model.Musica;
 
 /**
- *
- * @author adone
+ * Painel responsável por exibir as músicas reagidas por um usuário, de acordo com um tipo de reação.
+ * Este painel é preenchido dinamicamente com itens de música utilizando o {@code ReacaoItemPanel}.
  */
 public class MusicasReagidasPanel extends javax.swing.JPanel {
 
     private MusicaController controller;
     private final String tipoReacao;
     
+    /**
+     * Construtor do painel que inicializa a interface e carrega as músicas reagidas com base na reação especificada.
+     *
+     * @param controller     Instância do {@code MusicaController} usada para manipular os dados das músicas.
+     * @param tipoReacao     Tipo de reação que será usada para filtrar as músicas (ex: "Curtidas", "Amadas").
+     */
     public MusicasReagidasPanel(MusicaController controller, String tipoReacao) {
         initComponents();
         
@@ -65,6 +71,12 @@ public class MusicasReagidasPanel extends javax.swing.JPanel {
         add(pnlExibirMusicasReacao, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Atualiza a lista de músicas exibidas no painel com base na lista fornecida.
+     * Cada música é representada por um {@code ReacaoItemPanel}.
+     *
+     * @param listaMusicas Lista de objetos {@code Musica} que serão exibidos no painel.
+     */
     public void listarReacaoItem(List<Musica> listaMusicas) {
         pnlListaMusicasReacao.removeAll();
 

@@ -15,17 +15,26 @@ import spotifei.view.BuscaMusicasPanel;
 
 
 /**
+ * Controlador responsável por gerenciar o histórico de pesquisas realizadas por um usuário.
  *
- * @author adone
+ * <p>Permite adicionar novas pesquisas ao histórico e recuperar pesquisas anteriores para exibição na interface gráfica.</p>
  */
 public class HistoricoController {
     
     private BuscaMusicasPanel view;
     
+     /**
+     * Adiciona uma nova pesquisa ao histórico do usuário.
+     *
+     * <p>Ignora entradas vazias ou o texto padrão "Pesquisar...".</p>
+     *
+     * @param usuario O usuário que realizou a pesquisa.
+     * @param textoPesquisa O texto pesquisado.
+     */
     public void adicionarPesquisa(Usuario usuario, String textoPesquisa) {
         
         if (textoPesquisa.equals("Pesquisar...") || textoPesquisa.isEmpty()) {
-            return; // NAO SALVA NO HISTORICO
+            return; // Não salva no histórico
         }
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -38,6 +47,11 @@ public class HistoricoController {
         }
     }
     
+    /**
+     * Recupera e exibe o histórico de pesquisas do usuário na interface.
+     *
+     * @param usuario O usuário cujo histórico será exibido.
+     */
     public void buscarExibirHistorico(Usuario usuario) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -52,7 +66,7 @@ public class HistoricoController {
         }
     }
 
-    public void setView(BuscaMusicasPanel BuscaMusicasview) {
-        this.view = BuscaMusicasview;
+    public void setView(BuscaMusicasPanel buscaMusicasview) {
+        this.view = buscaMusicasview;
     }
 }

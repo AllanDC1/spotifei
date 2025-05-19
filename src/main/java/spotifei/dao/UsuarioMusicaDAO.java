@@ -15,18 +15,28 @@ import spotifei.model.Musica;
 import spotifei.model.Usuario;
 
 /**
- *
- * @author adone
+ * Classe responsável por gerenciar as reações (curtida/descurtida) de usuários em músicas.
  */
 public class UsuarioMusicaDAO {
     
     private Connection connection;    
     private static final char SEM_REACAO = '-';
 
+    /**
+     * Construtor que recebe a conexão com o banco.
+     */
     public UsuarioMusicaDAO(Connection connection) {
         this.connection = connection;
     }
     
+    /**
+     * Insere uma reação (curtida ou descurtida) do usuário em uma música.
+     * 
+     * @param usuario Usuário que está reagindo.
+     * @param musica Música alvo da reação.
+     * @param reacao Tipo da reação (ex: 'C' para curtir, 'D' para descurtir).
+     * @throws SQLException Caso ocorra erro ao inserir a reação.
+     */
     private void inserirReacaoMusica(Usuario usuario, Musica musica, char reacao) throws SQLException {
         
         String sql = "INSERT INTO usuario_musica (id_usuario, id_musica, tipo_reacao) VALUES (?, ?, ?)";
@@ -40,6 +50,13 @@ public class UsuarioMusicaDAO {
         }
     }
     
+    /**
+     * Deleta a reação do usuário para uma música no banco.
+     *
+     * @param usuario Usuário que quer remover a reação.
+     * @param musica Música alvo da remoção.
+     * @throws SQLException Caso ocorra erro ao deletar a reação.
+     */
     private void deletarReacaoMusica(Usuario usuario, Musica musica) throws SQLException {
         
         String sql = "DELETE FROM usuario_musica WHERE id_usuario = ? AND id_musica = ?";
@@ -52,6 +69,14 @@ public class UsuarioMusicaDAO {
         }
     }
     
+    /**
+     * Atualiza a reação do usuário para uma música no banco.
+     *
+     * @param usuario Usuário que está modificando a reação.
+     * @param musica Música alvo da alteração.
+     * @param reacao Novo tipo de reação.
+     * @throws SQLException Caso ocorra erro ao atualizar a reação.
+     */
     private void editarReacaoMusica(Usuario usuario, Musica musica, char reacao) throws SQLException {
         
         String sql = "UPDATE usuario_musica SET tipo_reacao = ? WHERE id_usuario = ? AND id_musica = ?";
@@ -65,6 +90,14 @@ public class UsuarioMusicaDAO {
         }
     }
     
+    /**
+     * Consulta a reação atual do usuário para uma música.
+     *
+     * @param usuario Usuário consultado.
+     * @param musica Música consultada.
+     * @return O caractere representando a reação atual ou '-' se nenhuma reação existir.
+     * @throws SQLException Caso ocorra erro na consulta.
+     */
     private char consultarReacaoMusica(Usuario usuario, Musica musica) throws SQLException {
         
         String sql = "SELECT tipo_reacao FROM usuario_musica WHERE id_usuario = ? AND id_musica = ?";
@@ -83,6 +116,18 @@ public class UsuarioMusicaDAO {
         return SEM_REACAO;
     }
     
+    /**
+     * Verifica e alterna a reação do usuário para uma música.
+     * Se a reação atual for igual à informada, remove a reação.
+     * Se for diferente, atualiza para a nova reação.
+     * Se não houver reação, insere a nova.
+     *
+     * @param usuario Usuário que está reagindo.
+     * @param musica Música alvo da reação.
+     * @param reacao Tipo da reação ('C' para curtir, 'D' para descurtir).
+     * @return Mensagem indicando a ação executada.
+     * @throws SQLException Caso ocorra erro ao manipular a reação.
+     */
     public String verificarReacaoMusica(Usuario usuario, Musica musica, char reacao) throws SQLException {
         
         char reacaoAtual = consultarReacaoMusica(usuario, musica);
@@ -99,6 +144,14 @@ public class UsuarioMusicaDAO {
         }
     }
     
+    /**
+     * Consulta as músicas associadas a um usuário por tipo de reação.
+     *
+     * @param usuario Usuário alvo da consulta.
+     * @param tipoReacao Tipo da reação que se quer filtrar ('C', 'D', etc).
+     * @return Lista de músicas com a reação especificada.
+     * @throws SQLException Caso ocorra erro na consulta.
+     */
     public List<Musica> consultarMusicasUsuarioReacao(Usuario usuario, char tipoReacao) throws SQLException {
         
         List<Musica> resultadoConsulta = new ArrayList<>();

@@ -17,17 +17,30 @@ import spotifei.view.CadastroFrame;
 import spotifei.view.SpotifeiFrame;
 
 /**
+ * Controlador responsável pelo fluxo de cadastro de novos usuários no sistema.
  *
- * @author unifacalen
+ * <p>Interage com a view {@code CadastroFrame} para obter os dados preenchidos pelo usuário,
+ * realiza validações, processa o hash da senha e persiste o novo usuário no banco de dados.</p>
  */
 public class CadastroController {
     
     private CadastroFrame cadastroView;
 
+    /**
+     * Construtor do controlador de cadastro.
+     *
+     * @param cadastroView A interface gráfica de onde os dados do usuário serão extraídos.
+     */
     public CadastroController(CadastroFrame cadastroView) {
         this.cadastroView = cadastroView;
     }
     
+    /**
+     * Realiza o cadastro de um novo usuário com base nas informações fornecidas na interface gráfica.
+     *
+     * <p>Valida se os campos estão preenchidos, realiza o hash da senha, salva o novo usuário
+     * no banco de dados, exibe mensagens apropriadas e navega para a tela principal após o cadastro bem-sucedido.</p>
+     */
     public void cadastrarUsuario() {
         String login = cadastroView.getTxtUsuarioCadastro().getText();
         String senha = cadastroView.getTxtSenhaCadastro().getText();
@@ -35,7 +48,7 @@ public class CadastroController {
         
         if (login.isEmpty() || senha.isEmpty() || nome.isEmpty()) {
             JOptionPane.showMessageDialog(cadastroView, "Preencha todos os campos.", "Erro", JOptionPane.WARNING_MESSAGE);
-            return; // alterar caso queira trocar de janela
+            return; // Interrompe caso tenha erro
         }
         
         // Hashing da senha

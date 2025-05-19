@@ -15,17 +15,30 @@ import spotifei.view.LoginFrame;
 import spotifei.view.SpotifeiFrame;
 
 /**
+ * Controlador responsável por realizar o processo de login do usuário.
  *
- * @author unifacalen
+ * <p>Interage com a interface gráfica {@code LoginFrame} para obter as credenciais
+ * informadas, validar os campos e autenticar o usuário no sistema.</p>
  */
 public class LoginController {
     
     private LoginFrame loginView;
 
+    /**
+     * Construtor do controlador de login.
+     *
+     * @param loginView A interface gráfica que contém os campos de login e senha.
+     */
     public LoginController(LoginFrame loginView) {
         this.loginView = loginView;
     }
     
+    /**
+     * Realiza o processo de login com base nas credenciais fornecidas pelo usuário.
+     *
+     * <p>Valida os campos, autentica o usuário no banco de dados e, se bem-sucedido,
+     * inicializa a sessão e abre a interface principal do sistema.</p>
+     */
     public void logarUsuario() {
         String login = loginView.getTxtUsuarioLogin().getText();
         String senha = loginView.getTxtSenhaLogin().getText();

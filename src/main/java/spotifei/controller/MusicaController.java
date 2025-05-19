@@ -16,17 +16,23 @@ import spotifei.view.BuscaMusicasPanel;
 import spotifei.view.MusicasReagidasPanel;
 
 /**
+ * Controlador responsável pelas ações relacionadas à manipulação de músicas.
  *
- * @author adone
+ * <p>Permite buscar músicas, reagir a músicas (curtir/descurtir) e listar músicas com reações.
+ * Atua como intermediário entre a interface gráfica e a camada de serviços.</p>
  */
 public class MusicaController {
     
     private BuscaMusicasPanel buscaMusicasView;
     private MusicasReagidasPanel musicasReagidasView;
     
+    /**
+     * Realiza a busca de músicas com base no texto informado.
+     *
+     * @param textoPesquisa Texto digitado pelo usuário para filtrar as músicas.
+     */
     public void listarMusicasPesquisa(String textoPesquisa) {
         
-        // Se estiver com o placeholder, substitui a pesquisa para vazio
         if (textoPesquisa.equals("Pesquisar...")) {
             textoPesquisa = "";
         }
@@ -43,6 +49,14 @@ public class MusicaController {
         }
     }
     
+    /**
+     * Registra a reação de um usuário a uma música.
+     *
+     * @param usuario Usuário que está reagindo à música.
+     * @param musica Música a ser reagida.
+     * @param reacao Tipo de reação ('C' para curtir, 'D' para descurtir).
+     * @return Mensagem de retorno da operação ou {@code null} em caso de erro.
+     */
     public String reagirMusica(Usuario usuario, Musica musica, char reacao) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -56,6 +70,12 @@ public class MusicaController {
         }
     }
     
+    /**
+     * Lista todas as músicas com determinada reação feitas por um usuário.
+     *
+     * @param usuario Usuário logado.
+     * @param tipoReacao Tipo da reação a ser filtrada ('C' para curtidas, 'D' para descurtidas).
+     */
     public void listarMusicasReagidas(Usuario usuario, char tipoReacao) {
         try (Connection connection = Conexao.criarConexaoBD()) {
             

@@ -15,13 +15,20 @@ import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
 /**
- *
- * @author adone
+ * Painel responsável por exibir informações de uma música individual,
+ * além de fornecer botões de interação como curtir, descurtir e adicionar a uma playlist.
  */
 public class MusicaItemPanel extends javax.swing.JPanel {
     
     private Musica musica;
     
+    /**
+     * Construtor do painel da música.
+     *
+     * Inicializa os componentes gráficos e configura as informações da música exibida.
+     *
+     * @param musica a música que será representada por este painel
+     */
     public MusicaItemPanel(Musica musica) {
         initComponents();
         this.musica = musica;
@@ -74,7 +81,7 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         });
         pnlBotoes.add(btnDescurtir);
 
-        btnAdicionarPlaylist.setText("Add a Playlist");
+        btnAdicionarPlaylist.setText("Add à Playlist");
         btnAdicionarPlaylist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarPlaylistActionPerformed(evt);
@@ -85,6 +92,14 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         add(pnlBotoes, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Ação executada ao clicar no botão "Add à Playlist".
+     *
+     * Exibe uma lista de playlists do usuário em um comboBox, permitindo escolher uma
+     * para adicionar a música atual. Exibe um diálogo de confirmação.
+     *
+     * @param evt evento de clique no botão
+     */
     private void btnAdicionarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPlaylistActionPerformed
         
         PlaylistController playlistController = new PlaylistController();
@@ -105,6 +120,14 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAdicionarPlaylistActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão "Curtir".
+     *
+     * Envia uma reação de curtida para a música exibida, associando-a ao usuário logado.
+     * Exibe o retorno da ação em um diálogo.
+     *
+     * @param evt evento de clique no botão
+     */
     private void btnCurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurtirActionPerformed
         
         MusicaController musicaController = new MusicaController();
@@ -116,6 +139,14 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnCurtirActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão "Descurtir".
+     *
+     * Envia uma reação de descurtida para a música exibida, associando-a ao usuário logado.
+     * Exibe o retorno da ação em um diálogo.
+     *
+     * @param evt evento de clique no botão
+     */
     private void btnDescurtirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescurtirActionPerformed
         
         MusicaController musicaController = new MusicaController();
@@ -126,10 +157,6 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnDescurtirActionPerformed
-
-    public JLabel getLblMusicaInfo() {
-        return lblMusicaInfo;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPlaylist;

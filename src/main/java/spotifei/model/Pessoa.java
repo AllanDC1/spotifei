@@ -5,8 +5,8 @@
 package spotifei.model;
 
 /**
- *
- * @author unifacalen
+ * Classe abstrata que representa uma pessoa com um nome.
+ * Pode ser estendida por outras classes como {@code Usuario} ou {@code Artista}.
  */
 public abstract class Pessoa {
     private String nome;

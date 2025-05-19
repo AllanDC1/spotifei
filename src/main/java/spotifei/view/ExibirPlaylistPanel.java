@@ -14,8 +14,11 @@ import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
 /**
- *
- * @author adone
+ * Painel responsável por exibir o conteúdo de uma playlist específica.
+ * 
+ * Este painel mostra o nome da playlist e as músicas que pertencem a ela.
+ * A lógica de busca das músicas e integração com o controlador principal da aplicação
+ * é realizada através do {@link PlaylistController} e {@link MainFrameController}.
  */
 public class ExibirPlaylistPanel extends javax.swing.JPanel {
 
@@ -23,12 +26,23 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
     private MainFrameController frameController;
     private PlaylistController playlistController;
     
+    /**
+     * Construtor do painel de exibição de playlist.
+     * 
+     * @param frameController controlador principal da aplicação, utilizado para navegação ou ações globais
+     * @param playlistController controlador responsável pelas ações relacionadas à playlist
+     * @param playlist a playlist que será exibida
+     */
     public ExibirPlaylistPanel(MainFrameController frameController, PlaylistController playlistController, Playlist playlist) {
         initComponents();
         this.playlist = playlist;
         this.frameController = frameController;
         this.playlistController = playlistController;
+        
+        // Define o nome da playlist na interface
         lblTituloPlaylist.setText(playlist.getNome());
+        
+        // Lista as músicas da playlist
         listarMusicasPlaylist(playlistController.buscarMusicasPlaylist(playlist));
     }
 
@@ -118,6 +132,15 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         add(pnlBotoesPlaylists, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Ação executada ao clicar no botão de editar playlist.
+     * 
+     * Abre um diálogo de entrada para o usuário fornecer um novo nome para a playlist.
+     * Se o nome for válido (não nulo e não vazio), atualiza o nome da playlist no sistema
+     * e na interface. Caso contrário, exibe uma mensagem de aviso.
+     * 
+     * @param evt evento de clique no botão "Editar Playlist"
+     */
     private void btnEditarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPlaylistActionPerformed
         String novoNome = JOptionPane.showInputDialog(null, "Novo nome para a playlist: ", "Editar Playlist", JOptionPane.QUESTION_MESSAGE);
         
@@ -134,6 +157,15 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnEditarPlaylistActionPerformed
 
+    /**
+    * Ação executada ao clicar no botão de excluir playlist.
+    * 
+    * Exibe um diálogo de confirmação para o usuário.
+    * Caso o usuário confirme a exclusão, a playlist é removida do sistema e
+    * uma mensagem de sucesso é exibida. Em seguida, a interface retorna à tela de playlists.
+    * 
+    * @param evt evento de clique no botão "Excluir Playlist"
+    */
     private void btnExcluirPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPlaylistActionPerformed
         int confirmar = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir a playlist?", "Excluir Playlist", JOptionPane.YES_NO_OPTION);
         
@@ -144,6 +176,15 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnExcluirPlaylistActionPerformed
 
+    /**
+    * Ação executada ao clicar no botão de remover música da playlist.
+    * 
+    * Busca as músicas da playlist atual e exibe um JComboBox para seleção.
+    * Se o usuário confirmar a escolha, a música selecionada é removida da playlist,
+    * e a interface é atualizada para refletir a mudança.
+    * 
+    * @param evt evento de clique no botão "Remover Música da Playlist"
+    */
     private void btnRemoverMusicaPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMusicaPlaylistActionPerformed
         
         List<Musica> musicasPlaylist = playlistController.buscarMusicasPlaylist(playlist);
@@ -163,6 +204,11 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnRemoverMusicaPlaylistActionPerformed
 
+    /**
+     * Exibe na interface todas as músicas pertencentes à playlist fornecida.
+     * 
+     * @param listaMusicas lista de músicas da playlist
+     */
     public void listarMusicasPlaylist(List<Musica> listaMusicas) {
         pnlListaMusicasPlaylist.removeAll();        
         

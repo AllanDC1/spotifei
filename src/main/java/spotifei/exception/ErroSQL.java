@@ -5,9 +5,11 @@
 package spotifei.exception;
 
 /**
- *
- * @author adone
+ * Constantes para códigos de erro SQL específicos do PostgreSQL.
  */
 public class ErroSQL {
+    /**
+     * Código de erro para violação de restrição UNIQUE no PostgreSQL.
+     */
     public static final String ERRO_UNIQUE_POSTGRESQL = "23505";
 }

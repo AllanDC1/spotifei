@@ -5,8 +5,8 @@
 package spotifei.model;
 
 /**
- *
- * @author unifacalen
+ * Representa um usuário do sistema.
+ * Estenden a classe {@code Pessoa} e implementa {@code Autenticavel}
  */
 public class Usuario extends Pessoa implements Autenticavel{
     
@@ -14,12 +14,27 @@ public class Usuario extends Pessoa implements Autenticavel{
     private String login;
     private String senha;
 
+    /**
+     * Construtor para um usuário apenas com login, senha e nome.
+     * 
+     * @param login o login do usuário
+     * @param senha a senha do usuário
+     * @param nome  o nome do usuário
+     */
     public Usuario(String login, String senha, String nome) {
         this.login = login;
         this.senha = senha;
         super.setNome(nome);
     }
     
+    /**
+     * Construtor completo para um usuário.
+     * 
+     * @param id    o identificador do usuário
+     * @param login o login do usuário
+     * @param senha a senha do usuário
+     * @param nome  o nome do usuário
+     */
     public Usuario(int id, String login, String senha, String nome) {
         this.id = id;
         this.login = login;

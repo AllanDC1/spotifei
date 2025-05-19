@@ -5,8 +5,7 @@
 package spotifei.model;
 
 /**
- *
- * @author unifacalen
+ * Representa uma música do sistema com todas suas informações.
  */
 public class Musica {
     private int id;
@@ -14,6 +13,14 @@ public class Musica {
     private Artista artista; 
     private String duracao;
 
+    /**
+    * Construtor que inicializa a música todos seus atributos.
+    *
+    * @param id   Identificador único da música.
+    * @param titulo Título da música.
+    * @param artista Objeto Artista, artista da música.
+    * @param duracao Duração da música em texto.
+    */
     public Musica(int id, String titulo, Artista artista, String duracao) {
         this.id = id;
         this.titulo = titulo;
