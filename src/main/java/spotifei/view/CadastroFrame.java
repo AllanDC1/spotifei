@@ -8,15 +8,18 @@ import javax.swing.JTextField;
 import spotifei.controller.CadastroController;
 
 /**
- *
- * @author unifacalen
+ * Janela responsável pela interface gráfica de cadastro de usuários.
+ * 
+ * Esta tela permite que novos usuários sejam registrados no sistema.
+ * A lógica de cadastro é delegada ao {@link CadastroController}.
  */
 public class CadastroFrame extends javax.swing.JFrame {
 
     private CadastroController controller;
     
     /**
-     * Creates new form CadastroFrame
+     * Construtor da tela de cadastro.
+     * Inicializa os componentes visuais e instancia o controlador responsável.
      */
     public CadastroFrame() {
         initComponents();
@@ -136,6 +139,12 @@ public class CadastroFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento acionado ao clicar no botão "Cadastrar".
+     * Aciona o método do controlador para realizar o cadastro do usuário.
+     * 
+     * @param evt evento de clique do botão
+     */
     private void btnCadastrarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCadastroActionPerformed
         // TODO add your handling code here:
         controller.cadastrarUsuario();
@@ -145,25 +154,13 @@ public class CadastroFrame extends javax.swing.JFrame {
         return txtNomeCadastro;
     }
 
-    public void setTxtNomeCadastro(JTextField txtNomeCadastro) {
-        this.txtNomeCadastro = txtNomeCadastro;
-    }
-
     public JTextField getTxtSenhaCadastro() {
         return txtSenhaCadastro;
-    }
-
-    public void setTxtSenhaCadastro(JTextField txtSenhaCadastro) {
-        this.txtSenhaCadastro = txtSenhaCadastro;
     }
 
     public JTextField getTxtUsuarioCadastro() {
         return txtUsuarioCadastro;
     }
-    
-    public void setTxtUsuarioCadastro(JTextField txtUsuarioCadastro) {
-        this.txtUsuarioCadastro = txtUsuarioCadastro;
-    }            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCadastro;

@@ -8,15 +8,20 @@ import javax.swing.JTextField;
 import spotifei.controller.LoginController;
 
 /**
- *
- * @author unifacalen
+ * Janela responsável pela interface de login do sistema.
+ * 
+ * Permite que o usuário entre com suas credenciais e acesse o sistema.
+ * Também oferece a opção de navegar para a tela de cadastro.
  */
 public class LoginFrame extends javax.swing.JFrame {
 
     private LoginController controller;
     
-    /**
-     * Creates new form LoginFrame
+     /**
+     * Construtor da janela de login.
+     *
+     * Inicializa os componentes gráficos e instancia o controlador responsável
+     * pelas ações da tela.
      */
     public LoginFrame() {
         initComponents();
@@ -130,11 +135,26 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Ação executada ao clicar no botão "Login".
+     * 
+     * Chama o método do controlador para realizar a autenticação
+     * com os dados informados pelo usuário.
+     *
+     * @param evt evento de clique no botão "Entrar"
+     */
     private void btnLogarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarLoginActionPerformed
         // TODO add your handling code here:
         controller.logarUsuario();
     }//GEN-LAST:event_btnLogarLoginActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão "Cadastro".
+     * 
+     * Abre a janela de cadastro de novo usuário e fecha a janela atual de login.
+     *
+     * @param evt evento de clique no botão "Cadastrar"
+     */
     private void btnCadastroLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroLoginActionPerformed
         // TODO add your handling code here:
         CadastroFrame cadastroFrame = new CadastroFrame();
@@ -143,57 +163,13 @@ public class LoginFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCadastroLoginActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new LoginFrame().setVisible(true);
-//            }
-//        });
-//    }
-    
     public JTextField getTxtSenhaLogin() {
         return txtSenhaLogin;
     }
-
-    public void setTxtSenhaLogin(JTextField txtSenhaLogin) {
-        this.txtSenhaLogin = txtSenhaLogin;
-    }
-
+    
     public JTextField getTxtUsuarioLogin() {
         return txtUsuarioLogin;
     }
-
-    public void setTxtUsuarioLogin(JTextField txtUsuarioLogin) {
-        this.txtUsuarioLogin = txtUsuarioLogin;
-    }    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroLogin;
     private javax.swing.JButton btnLogarLogin;

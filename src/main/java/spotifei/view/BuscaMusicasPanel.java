@@ -15,8 +15,17 @@ import spotifei.controller.MusicaController;
 import spotifei.model.Musica;
 
 /**
- *
- * @author adone
+ * Painel responsável por exibir a interface de busca de músicas.
+ * 
+ * Este painel permite que o usuário:
+ * <ul>
+ *   <li>Pesquise músicas pelo título.</li>
+ *   <li>Visualize os resultados dinamicamente conforme a busca.</li>
+ *   <li>Acesse o histórico de buscas anteriores.</li>
+ * </ul>
+ * 
+ * A interação com o sistema é feita por meio dos controllers {@link MusicaController}
+ * e {@link HistoricoController}.
  */
 public class BuscaMusicasPanel extends javax.swing.JPanel {
 
@@ -24,6 +33,13 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
     private HistoricoController historicoController;
     private JPopupMenu popupHistorico;
     
+    /**
+     * Construtor do painel de busca de músicas.
+     * Inicializa os componentes visuais e carrega a lista inicial de músicas.
+     * 
+     * @param musicaController controlador responsável pelas ações de música
+     * @param historicoController controlador responsável pelas ações do histórico
+     */
     public BuscaMusicasPanel(MusicaController musicaController, HistoricoController historicoController) {
         initComponents();
         popupHistorico = new JPopupMenu();
@@ -107,6 +123,12 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         add(pnlResultadosBusca, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Evento disparado ao clicar no botão de busca.
+     * Executa a pesquisa da música e adiciona ao histórico.
+     * 
+     * @param evt evento de clique do botão
+     */
     private void btnBuscarMusicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMusicasActionPerformed
         String textoPesquisa = txtBuscarMusicas.getText();
         
@@ -114,6 +136,12 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         historicoController.adicionarPesquisa(Sessao.getUsuarioLogado(), textoPesquisa);
     }//GEN-LAST:event_btnBuscarMusicasActionPerformed
 
+    /**
+     * Evento disparado ao focar no campo de texto da busca.
+     * Remove o placeholder se estiver presente.
+     * 
+     * @param evt evento de foco ganho
+     */
     private void txtBuscarMusicasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusGained
         // RETIRAR PLACEHOLDER
         if (txtBuscarMusicas.getText().equals("Pesquisar...")) {
@@ -122,6 +150,12 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarMusicasFocusGained
 
+    /**
+     * Evento disparado ao perder o foco do campo de texto.
+     * Reaplica o placeholder caso o campo esteja vazio.
+     * 
+     * @param evt evento de foco perdido
+     */
     private void txtBuscarMusicasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarMusicasFocusLost
         // ADICIONAR PLACEHOLDER
         if (txtBuscarMusicas.getText().equals("")) {
@@ -130,10 +164,21 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarMusicasFocusLost
 
+    /**
+     * Evento acionado ao clicar no botão de histórico de pesquisa.
+     * Solicita ao controlador que exiba o histórico do usuário atual.
+     * 
+     * @param evt evento de clique no botão
+     */
     private void btnHistoricoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoPesquisaActionPerformed
         historicoController.buscarExibirHistorico(Sessao.getUsuarioLogado());
     }//GEN-LAST:event_btnHistoricoPesquisaActionPerformed
 
+    /**
+     * Atualiza a lista de músicas exibidas na interface com base em uma nova busca.
+     * 
+     * @param listaMusicas lista de músicas que será exibida no painel
+     */
     public void atualizarListaMusicas(List<Musica> listaMusicas) {
         pnlListaMusicas.removeAll();
 
@@ -147,6 +192,12 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlListaMusicas.repaint();
     }
 
+    /**
+     * Exibe um menu popup com o histórico de buscas do usuário.
+     * Cada item do menu, ao ser clicado, insere a busca correspondente no campo de texto.
+     * 
+     * @param historico lista de termos buscados anteriormente
+     */
     public void exibirHistorico(List<String> historico) {
         
         popupHistorico.removeAll();
@@ -163,11 +214,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         }
         
         popupHistorico.show(txtBuscarMusicas, 0, txtBuscarMusicas.getHeight());
-    }
-    
-    public JTextField getTxtBuscarMusicas() {
-        return txtBuscarMusicas;
-    }
+    }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarMusicas;

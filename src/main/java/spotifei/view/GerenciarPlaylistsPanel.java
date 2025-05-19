@@ -12,14 +12,26 @@ import spotifei.controller.MainFrameController;
 import spotifei.model.Playlist;
 
 /**
- *
- * @author adone
+ * Painel responsável por gerenciar as playlists do usuário.
+ * 
+ * Permite visualizar todas as playlists do usuário logado, criar novas playlists
+ * e navegar até uma playlist específica para visualização ou edição.
+ * 
+ * Este painel é exibido dentro do frame principal do sistema.
  */
 public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
 
     private MainFrameController frameController;
     private PlaylistController playlistController;
     
+    /**
+     * Construtor do painel de gerenciamento de playlists.
+     *
+     * Inicializa os componentes gráficos e carrega as playlists do usuário logado.
+     *
+     * @param frameController controlador responsável pela navegação entre os painéis da interface
+     * @param playlistController controlador responsável pela lógica de manipulação de playlists
+     */
     public GerenciarPlaylistsPanel(MainFrameController frameController, PlaylistController playlistController) {
         initComponents();
         this.frameController = frameController;
@@ -85,6 +97,15 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
         add(pnlBotoesPlaylists, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Ação executada ao clicar no botão de criar uma nova playlist.
+    *
+    * Exibe um diálogo solicitando ao usuário o nome da nova playlist.
+    * Caso o nome informado seja válido (não nulo e não vazio), a playlist é criada
+    * e adicionada à interface se for salva com sucesso no sistema.
+    *
+    * @param evt evento de clique no botão "Criar Playlist"
+    */
     private void btnCriarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarPlaylistActionPerformed
         String nomeNovaPlaylist = JOptionPane.showInputDialog(null, "Nome para a nova playlist: ", "Criar Playlist", JOptionPane.QUESTION_MESSAGE);
         
@@ -103,6 +124,14 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_btnCriarPlaylistActionPerformed
 
+    /**
+    * Adiciona visualmente uma playlist ao painel de listas.
+    *
+    * Cria um componente visual representando a playlist recebida,
+    * adiciona um listener de clique para exibi-la, e a insere no painel.
+    *
+    * @param playlist objeto Playlist a ser adicionado à visualização
+    */
     public void adicionarPlaylist(Playlist playlist) {
         PlaylistItemPanel item = new PlaylistItemPanel(playlist);            
 
@@ -113,6 +142,14 @@ public class GerenciarPlaylistsPanel extends javax.swing.JPanel {
         pnlListaPlaylists.add(item);
     }
     
+    /**
+    * Lista todas as playlists no painel da interface.
+    *
+    * Remove os itens atuais do painel e adiciona todos os itens da lista informada.
+    * Revalida e repinta o painel para garantir a atualização visual.
+    *
+    * @param listaPlaylists lista de playlists a serem exibidas
+    */
     public void listarPlaylists(List<Playlist> listaPlaylists) {
         pnlListaPlaylists.removeAll();
 
