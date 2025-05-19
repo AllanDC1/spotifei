@@ -18,11 +18,19 @@ import spotifei.service.PlaylistService;
 import spotifei.service.UsuarioService;
 
 /**
+ * Controlador responsável pela manipulação de playlists.
  *
- * @author adone
+ * <p>Fornece métodos para criar, editar, remover playlists e adicionar/remover músicas delas.
+ * Atua como intermediário entre a interface gráfica e a camada de serviços.</p>
  */
 public class PlaylistController {
     
+    /**
+     * Busca todas as músicas de uma playlist.
+     *
+     * @param playlist Playlist cujas músicas serão recuperadas.
+     * @return Lista de músicas da playlist, ou lista vazia em caso de erro.
+     */
     public List<Musica> buscarMusicasPlaylist(Playlist playlist) {
         
         List<Musica> listaMusicas = new ArrayList<>();
@@ -37,6 +45,12 @@ public class PlaylistController {
         return listaMusicas;
     }
 
+    /**
+     * Salva uma nova playlist no banco de dados.
+     *
+     * @param playlist Playlist a ser cadastrada.
+     * @return {@code true} se a operação for bem-sucedida, {@code false} caso contrário.
+     */
     public boolean salvarPlaylist(Playlist playlist) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -54,6 +68,13 @@ public class PlaylistController {
         }
     }
 
+    /**
+     * Altera o nome de uma playlist existente.
+     *
+     * @param idPlaylistAlterada ID da playlist a ser renomeada.
+     * @param novoNome Novo nome desejado para a playlist.
+     * @return {@code true} se renomeada com sucesso, {@code false} se falhar.
+     */
     public boolean renomearPlaylist(int idPlaylistAlterada, String novoNome) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -71,6 +92,11 @@ public class PlaylistController {
         }
     }
 
+    /**
+     * Exclui uma playlist.
+     *
+     * @param playlist Playlist a ser removida do sistema.
+     */
     public void excluirPlaylist(Playlist playlist) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -81,6 +107,12 @@ public class PlaylistController {
         }
     }
 
+    /**
+     * Retorna todas as playlists de um usuário.
+     *
+     * @param usuario Usuário cujas playlists serão buscadas.
+     * @return Lista de playlists, ou vazia em caso de erro.
+     */
     public List<Playlist> buscarPlaylistsUsuario(Usuario usuario) {
         
         List<Playlist> listaPlaylists = new ArrayList<>();
@@ -94,6 +126,13 @@ public class PlaylistController {
         return listaPlaylists;
     }
     
+    /**
+     * Adiciona uma música a uma playlist.
+     *
+     * @param playlist Playlist de destino.
+     * @param musica Música a ser adicionada.
+     * @return {@code true} se adicionada com sucesso, {@code false} caso contrário.
+     */
     public boolean adicionarMusica(Playlist playlist, Musica musica) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -110,6 +149,12 @@ public class PlaylistController {
         }
     }
     
+    /**
+     * Remove uma música de uma playlist.
+     *
+     * @param playlist Playlist de origem.
+     * @param musica Música a ser removida.
+     */
     public void removerMusica(Playlist playlist, Musica musica) {
         
         try (Connection connection = Conexao.criarConexaoBD()) {

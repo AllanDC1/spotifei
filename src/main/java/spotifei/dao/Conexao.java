@@ -15,7 +15,10 @@ import javax.swing.JOptionPane;
 /**
  * Classe responsável por fornecer conexões com o banco de dados PostgreSQL.
  *
- * <p>Utiliza parâmetros fixos para usuário, senha e URL de conexão com o banco.</p>
+ * <p>Esta classe utiliza um arquivo externo de propriedades {@code bd.properties},
+ * localizado em {@code src/main/resources}, para carregar dinamicamente as
+ * informações de conexão (URL, usuário e senha).</p>
+ *
  */
 public class Conexao {
         
@@ -25,17 +28,19 @@ public class Conexao {
         try (InputStream input = Conexao.class.getClassLoader().getResourceAsStream("bd.properties")) {
             if (input == null) {
                 JOptionPane.showMessageDialog(null, "Arquivo de configuração 'bd.properties' não encontrado: ", "Erro", JOptionPane.ERROR_MESSAGE);
+            } else {
+                propriedades.load(input);
             }
-            propriedades.load(input);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar o arquivo de configuração: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }    
     /**
-     * Cria e retorna uma nova conexão com o banco de dados usando os parâmetros do arquivo bd.properties.
+     * Cria e retorna uma nova conexão com o banco de dados PostgreSQL, utilizando
+     * as propriedades carregadas do arquivo {@code bd.properties}.
      *
-     * @return conexão com o banco de dados
-     * @throws SQLException se houver erro na conexão
+     * @return {@link Connection} uma conexão ativa com o banco de dados
+     * @throws SQLException se ocorrer um erro ao tentar se conectar
      */
     public static Connection criarConexaoBD() throws SQLException {
         String usuario = propriedades.getProperty("bd.usuario");

@@ -13,17 +13,29 @@ import org.mindrot.jbcrypt.BCrypt;
 import spotifei.model.Usuario;
 
 /**
- *
- * @author adone
+ * Classe responsável por acessar e manipular os dados dos usuários no banco de dados.
  */
 public class UsuarioDAO {
     
     private Connection connection;    
 
+    /**
+     * Construtor que recebe a conexão com o banco de dados.
+     * 
+     * @param connection conexão ativa com o banco
+     */
     public UsuarioDAO(Connection connection) {
         this.connection = connection;
     }
     
+    /**
+     * Verifica se o login e a senha informados correspondem a um usuário existente.
+     * 
+     * @param login login informado pelo usuário
+     * @param senha senha informada (em texto plano)
+     * @return objeto Usuario se o login for válido, ou null caso contrário
+     * @throws SQLException em caso de erro na consulta
+     */
     public Usuario consultarLogin(String login, String senha) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE login_usuario = ?";
         
@@ -45,6 +57,12 @@ public class UsuarioDAO {
         return null; // caso nao tenha encontrado uma correspondencia
     }
     
+    /**
+     * Insere um novo usuário no banco de dados.
+     * 
+     * @param usuario objeto contendo os dados do novo usuário
+     * @throws SQLException em caso de erro na inserção
+     */
     public void inserirUsuario(Usuario usuario) throws SQLException {             
         String sql = "INSERT INTO usuarios(login_usuario, senha_usuario, nome_usuario) VALUES (?, ?, ?)";
         

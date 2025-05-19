@@ -16,16 +16,25 @@ import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
 /**
- *
- * @author adone
+ * Classe responsável por acessar e manipular os dados das playlists no banco de dados.
  */
 public class PlaylistDAO {
     private Connection connection;
 
+    /**
+     * Construtor que recebe a conexão com o banco de dados.
+     * 
+     * @param connection conexão ativa com o banco
+     */
     public PlaylistDAO(Connection connection) {
         this.connection = connection;
     }
     
+    /**
+     * Construtor que recebe a conexão com o banco de dados.
+     * 
+     * @param connection conexão ativa com o banco
+     */
     public List<Playlist> consultarPorUsuario(int idUsuario) throws SQLException {
         
         List<Playlist> resultadoConsulta = new ArrayList<>();
@@ -55,6 +64,12 @@ public class PlaylistDAO {
         return resultadoConsulta;
     }
     
+    /**
+     * Insere uma nova playlist no banco de dados.
+     * 
+     * @param playlist objeto contendo o nome da playlist
+     * @throws SQLException em caso de erro na inserção
+     */
     public void inserirPlaylist(Playlist playlist) throws SQLException {
         
         String sql = "INSERT INTO playlists(nome_playlist, id_usuario) VALUES (?, ?)";
@@ -74,6 +89,13 @@ public class PlaylistDAO {
         }
     }
     
+    /**
+     * Atualiza o nome de uma playlist.
+     * 
+     * @param idPlaylistAlterada ID da playlist a ser alterada
+     * @param novoNome novo nome da playlist
+     * @throws SQLException em caso de erro na atualização
+     */
     public void editarPlaylist(int idPlaylistAlterada, String novoNome) throws SQLException {
         
         String sql = "UPDATE playlists SET nome_playlist = ? WHERE id_playlist = ?";
@@ -86,6 +108,12 @@ public class PlaylistDAO {
         }
     }
     
+    /**
+     * Remove uma playlist do banco de dados.
+     * 
+     * @param playlist objeto da playlist a ser removida
+     * @throws SQLException em caso de erro na exclusão
+     */
     public void deletarPlaylist(Playlist playlist) throws SQLException {
         
         String sql = "DELETE FROM playlists WHERE id_playlist = ?";
@@ -97,6 +125,13 @@ public class PlaylistDAO {
         }
     }
     
+    /**
+     * Adiciona uma música a uma playlist.
+     * 
+     * @param playlist objeto da playlist
+     * @param musica objeto da música a ser adicionada
+     * @throws SQLException em caso de erro na inserção
+     */
     public void inserirMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
         
         String sql = "INSERT INTO playlist_musica(id_playlist, id_musica) VALUES (?, ?)";
@@ -109,6 +144,13 @@ public class PlaylistDAO {
         }
     }
     
+    /**
+     * Remove uma música de uma playlist.
+     * 
+     * @param playlist objeto da playlist
+     * @param musica objeto da música a ser removida
+     * @throws SQLException em caso de erro na exclusão
+     */
     public void deletarMusicaPlaylist(Playlist playlist, Musica musica) throws SQLException {
         
         String sql = "DELETE FROM playlist_musica WHERE id_playlist = ? AND id_musica = ?";

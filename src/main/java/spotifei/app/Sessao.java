@@ -7,10 +7,15 @@ package spotifei.app;
 import spotifei.model.Usuario;
 
 /**
- *
- * @author adone
+ * Classe utilitária para gerenciar a sessão do usuário logado no sistema.
+ * 
+ * <p>Armazena o usuário atualmente autenticado de forma estática,
+ * permitindo acesso global enquanto a aplicação estiver em execução.</p>
  */
 public class Sessao {
+    /** 
+     * Referência ao usuário atualmente logado.
+     */
     private static Usuario usuarioLogado;
     
     public static void setUsuarioLogado(Usuario usuario) {

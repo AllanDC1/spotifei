@@ -14,17 +14,28 @@ import spotifei.model.Artista;
 import spotifei.model.Musica;
 
 /**
- *
- * @author adone
+ * Classe responsável por acessar os dados da tabela de músicas no banco de dados.
  */
 public class MusicaDAO {
     
     private Connection connection;
 
+    /**
+     * Construtor que recebe uma conexão com o banco de dados.
+     * 
+     * @param connection conexão ativa com o banco
+     */
     public MusicaDAO(Connection connection) {
         this.connection = connection;
     }
     
+    /**
+     * Consulta músicas pelo texto informado, verificando no título, nome do artista ou nome do gênero.
+     * 
+     * @param textoPesquisa texto digitado na busca
+     * @return lista de músicas que correspondem ao texto pesquisado
+     * @throws SQLException em caso de erro na consulta
+     */
     public List<Musica> consultarPorPesquisa(String textoPesquisa) throws SQLException {
         
         List<Musica> resultadoConsulta = new ArrayList<>();
@@ -58,6 +69,13 @@ public class MusicaDAO {
         return resultadoConsulta;
     }
     
+    /**
+     * Consulta todas as músicas associadas a uma playlist específica.
+     * 
+     * @param idPlaylist identificador da playlist
+     * @return lista de músicas da playlist
+     * @throws SQLException em caso de erro na consulta
+     */
     public List<Musica> consultarPorPlaylist(int idPlaylist) throws SQLException{
         
         List<Musica> resultadoConsulta = new ArrayList<>();
