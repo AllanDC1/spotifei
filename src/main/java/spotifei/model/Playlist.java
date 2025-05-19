@@ -5,19 +5,31 @@
 package spotifei.model;
 
 /**
- *
- * @author unifacalen
+ * Representa uma playlist do sistema com todas suas informações.
  */
 public class Playlist {
     private int id;
     private String nome;
     private int qntMusicas;
 
+    /**
+    * Construtor que inicializa a playlist sem ID.
+    *
+    * @param nome Nome da playlist.
+    * @param qntMusicas Quantidade de músicas na playlist.
+    */
     public Playlist(String nome, int qntMusicas) {
         this.nome = nome;
         this.qntMusicas = qntMusicas;
     }
     
+    /**
+    * Construtor que inicializa a playlist completa.
+    *
+    * @param id Identificador único da playlist.
+    * @param nome Nome da playlist.
+    * @param qntMusicas Quantidade de músicas na playlist.
+    */
     public Playlist(int id, String nome, int qntMusicas) {
         this.id = id;
         this.nome = nome;

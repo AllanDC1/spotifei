@@ -5,7 +5,8 @@
 package spotifei.model;
 
 /**
- * Representa um usuário do sistema, que é uma pessoa autenticável.
+ * Representa um usuário do sistema.
+ * Estenden a classe {@code Pessoa} e implementa {@code Autenticavel}
  */
 public class Usuario extends Pessoa implements Autenticavel{
     

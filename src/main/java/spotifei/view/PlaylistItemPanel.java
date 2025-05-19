@@ -7,13 +7,18 @@ package spotifei.view;
 import spotifei.model.Playlist;
 
 /**
- *
- * @author adone
+ * Painel que representa uma playlist individual na interface gráfica.
+ * Exibe informações básicas da playlist e permite definir uma ação ao ser clicado.
  */
 public class PlaylistItemPanel extends javax.swing.JPanel {
     
     private Runnable onClick;
     
+    /**
+     * Construtor que inicializa os componentes visuais e define as informações da playlist no rótulo.
+     *
+     * @param playlist Objeto {@code Playlist} que contém os dados a serem exibidos no painel.
+     */
     public PlaylistItemPanel(Playlist playlist) {
         initComponents();
         lblPlaylistInfo.setText(playlist.getNome() + " - " + playlist.getQntMusicas() + " Música(s)");
@@ -49,10 +54,21 @@ public class PlaylistItemPanel extends javax.swing.JPanel {
         add(lblPlaylistInfo, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Define a ação que será executada quando o painel for clicado.
+     *
+     * @param onClick Objeto {@code Runnable} representando a ação a ser executada no clique.
+     */
     public void setOnClick(Runnable onClick) {
         this.onClick = onClick;
     }    
     
+    /**
+     * Evento acionado quando o painel é clicado.
+     * Executa a ação definida previamente por {@code setOnClick()}, se existir.
+     *
+     * @param evt Evento de clique do mouse.
+     */
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         if (onClick != null) {
             onClick.run();

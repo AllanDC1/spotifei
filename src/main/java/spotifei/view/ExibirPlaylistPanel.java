@@ -207,7 +207,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
     /**
      * Exibe na interface todas as músicas pertencentes à playlist fornecida.
      * 
-     * @param musicas lista de músicas da playlist
+     * @param listaMusicas lista de músicas da playlist
      */
     public void listarMusicasPlaylist(List<Musica> listaMusicas) {
         pnlListaMusicasPlaylist.removeAll();        

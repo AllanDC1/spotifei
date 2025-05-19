@@ -31,9 +31,11 @@ public class PlaylistDAO {
     }
     
     /**
-     * Construtor que recebe a conexão com o banco de dados.
+     * Consulta todas as playlists de um usuário, incluindo a quantidade de músicas em cada uma.
      * 
-     * @param connection conexão ativa com o banco
+     * @param idUsuario ID do usuário logado
+     * @return lista de playlists do usuário
+     * @throws SQLException em caso de erro na consulta
      */
     public List<Playlist> consultarPorUsuario(int idUsuario) throws SQLException {
         

@@ -5,8 +5,8 @@
 package spotifei.model;
 
 /**
- *
- * @author unifacalen
+ * Interface que define o contrato para classes que possuem autenticação via login e senha.
+ * Geralmente implementada por entidades que necessitam de acesso autenticado ao sistema.
  */
 public interface Autenticavel {
     int getId();

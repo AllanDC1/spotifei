@@ -12,13 +12,18 @@ import spotifei.model.Musica;
 import spotifei.model.Playlist;
 
 /**
- *
- * @author adone
+ * Painel que representa visualmente uma música reagida pelo usuário.
+ * Exibe informações da música e permite adicioná-la a uma playlist.
  */
 public class ReacaoItemPanel extends javax.swing.JPanel {
     
     private Musica musica;
     
+    /**
+     * Construtor do painel que inicializa os componentes e exibe os dados da música.
+     *
+     * @param musica Objeto {@code Musica} que será exibido no painel.
+     */
     public ReacaoItemPanel(Musica musica) {
         initComponents();
         this.musica = musica;
@@ -64,6 +69,12 @@ public class ReacaoItemPanel extends javax.swing.JPanel {
         add(pnlBotoes, java.awt.BorderLayout.LINE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Ação executada ao clicar no botão de adicionar a música a uma playlist.
+     * Exibe uma lista com as playlists do usuário e adiciona a música à playlist selecionada.
+     *
+     * @param evt Evento de clique do botão.
+     */
     private void btnAdicionarPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPlaylistActionPerformed
 
         PlaylistController playlistController = new PlaylistController();

@@ -9,13 +9,17 @@ import javax.swing.JPanel;
 import spotifei.controller.MainFrameController;
 
 /**
- *
- * @author adone
+ * Janela principal da aplicação Spotifei.
+ * Responsável por inicializar a interface gráfica e gerenciar a navegação entre as seções da aplicação.
  */
 public class SpotifeiFrame extends javax.swing.JFrame {
     
     private MainFrameController controller;
     
+    /**
+     * Construtor da janela principal.
+     * Inicializa os componentes da interface e o controlador responsável pela navegação.
+     */
     public SpotifeiFrame() {
         initComponents();
         controller = new MainFrameController(this);
@@ -140,18 +144,38 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Ação executada ao clicar no botão de navegação para a seção de músicas.
+     *
+     * @param evt Evento de clique do botão.
+     */
     private void btnMusicasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMusicasNavegacaoActionPerformed
         controller.navegarMusicas();
     }//GEN-LAST:event_btnMusicasNavegacaoActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão de navegação para a seção de playlists.
+     *
+     * @param evt Evento de clique do botão.
+     */
     private void btnPlaylistNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaylistNavegacaoActionPerformed
         controller.navegarPlaylists();
     }//GEN-LAST:event_btnPlaylistNavegacaoActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão de navegação para a seção de músicas curtidas.
+     *
+     * @param evt Evento de clique do botão.
+     */
     private void btnCurtidasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurtidasNavegacaoActionPerformed
         controller.navegarCurtidas();
     }//GEN-LAST:event_btnCurtidasNavegacaoActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão de navegação para a seção de músicas descurtidas.
+     *
+     * @param evt Evento de clique do botão.
+     */
     private void btnDescurtidasNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescurtidasNavegacaoActionPerformed
         controller.navegarDescurtidas();
     }//GEN-LAST:event_btnDescurtidasNavegacaoActionPerformed
