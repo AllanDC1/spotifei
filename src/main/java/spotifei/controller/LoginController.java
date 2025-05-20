@@ -41,11 +41,11 @@ public class LoginController {
      */
     public void logarUsuario() {
         String login = loginView.getTxtUsuarioLogin().getText();
-        String senha = loginView.getTxtSenhaLogin().getText();
+        String senha = new String(loginView.getPswSenhaLogin().getPassword());
         
         if (login.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(loginView, "Preencha todos os campos.", "Erro", JOptionPane.WARNING_MESSAGE);
-            return; // alterar caso queira trocar de janela
+            return; // Interrompe caso tenha erro
         }
         
         try (Connection connection = Conexao.criarConexaoBD()) {
@@ -63,7 +63,7 @@ public class LoginController {
                 loginView.dispose();
             } else {
                 JOptionPane.showMessageDialog(loginView, "Usuário ou Senha incorretos.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                loginView.getTxtSenhaLogin().setText("");
+                loginView.getPswSenhaLogin().setText("");
             }
         }
         catch (SQLException e) {

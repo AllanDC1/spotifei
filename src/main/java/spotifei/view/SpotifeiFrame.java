@@ -5,7 +5,9 @@
 package spotifei.view;
 
 //import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import spotifei.app.Sessao;
 import spotifei.controller.MainFrameController;
 
 /**
@@ -40,6 +42,7 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         btnMusicasNavegacao = new javax.swing.JButton();
         btnCurtidasNavegacao = new javax.swing.JButton();
         btnDescurtidasNavegacao = new javax.swing.JButton();
+        btnSairNavegacao = new javax.swing.JButton();
         pnlMainSpotifei = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,6 +93,15 @@ public class SpotifeiFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSairNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnSairNavegacao.setText("Sair");
+        btnSairNavegacao.setBorderPainted(false);
+        btnSairNavegacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairNavegacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlNavegacaoSpotifeiLayout = new javax.swing.GroupLayout(pnlNavegacaoSpotifei);
         pnlNavegacaoSpotifei.setLayout(pnlNavegacaoSpotifeiLayout);
         pnlNavegacaoSpotifeiLayout.setHorizontalGroup(
@@ -101,7 +113,8 @@ public class SpotifeiFrame extends javax.swing.JFrame {
                     .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCurtidasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSairNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlNavegacaoSpotifeiLayout.setVerticalGroup(
@@ -117,7 +130,9 @@ public class SpotifeiFrame extends javax.swing.JFrame {
                 .addComponent(btnCurtidasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSairNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         pnlMainSpotifei.setBackground(new java.awt.Color(44, 44, 44));
@@ -180,6 +195,20 @@ public class SpotifeiFrame extends javax.swing.JFrame {
         controller.navegarDescurtidas();
     }//GEN-LAST:event_btnDescurtidasNavegacaoActionPerformed
 
+    /**
+     * Ação executada ao clicar no botão de navegação para sair.
+     *
+     * @param evt Evento de clique do botão.
+     */    
+    private void btnSairNavegacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairNavegacaoActionPerformed
+        JOptionPane.showMessageDialog(null, "Obrigado pela presença!", "Saindo...", JOptionPane.INFORMATION_MESSAGE);
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
+        Sessao.logout();
+        
+        this.dispose();
+    }//GEN-LAST:event_btnSairNavegacaoActionPerformed
+
     public JPanel getPnlMainSpotifei() {
         return pnlMainSpotifei;
     }
@@ -189,6 +218,7 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDescurtidasNavegacao;
     private javax.swing.JButton btnMusicasNavegacao;
     private javax.swing.JButton btnPlaylistNavegacao;
+    private javax.swing.JButton btnSairNavegacao;
     private javax.swing.JLabel lblSpotifeiSpotifei;
     private javax.swing.JPanel pnlMainSpotifei;
     private javax.swing.JPanel pnlNavegacaoSpotifei;

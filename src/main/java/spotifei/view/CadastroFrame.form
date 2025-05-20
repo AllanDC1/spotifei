@@ -36,29 +36,32 @@
                       <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="lblNomeCadastro" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="lblNomeCadastro" linkSize="4" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNomeCadastro" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="txtNomeCadastro" linkSize="1" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="lblSenhaCadastro" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="lblSenhaCadastro" linkSize="4" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtSenhaCadastro" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="pswSenhaCadastro" linkSize="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="lblUsuarioCadastro" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="lblUsuarioCadastro" linkSize="4" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtUsuarioCadastro" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="txtUsuarioCadastro" linkSize="1" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="btnLoginCadastro" alignment="2" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Component id="btnCadastrarCadastro" alignment="2" min="-2" pref="160" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnCadastrarCadastro" min="-2" pref="157" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,22 +72,24 @@
               <Component id="lblSpotifeiCadastro" min="-2" pref="56" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtUsuarioCadastro" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="lblUsuarioCadastro" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="txtUsuarioCadastro" linkSize="2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="lblUsuarioCadastro" linkSize="3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNomeCadastro" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="lblNomeCadastro" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="txtNomeCadastro" linkSize="2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="lblNomeCadastro" linkSize="3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtSenhaCadastro" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="lblSenhaCadastro" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="lblSenhaCadastro" linkSize="3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="pswSenhaCadastro" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="btnCadastrarCadastro" min="-2" pref="49" max="-2" attributes="0"/>
-              <EmptySpace pref="62" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnCadastrarCadastro" linkSize="5" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnLoginCadastro" linkSize="5" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,11 +107,6 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="Usuario:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtSenhaCadastro">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSenhaCadastro">
@@ -158,6 +158,20 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarCadastroActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pswSenhaCadastro">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLoginCadastro">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Login"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginCadastroActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

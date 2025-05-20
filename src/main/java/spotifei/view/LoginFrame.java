@@ -4,6 +4,7 @@
  */
 package spotifei.view;
 
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import spotifei.controller.LoginController;
 
@@ -40,17 +41,17 @@ public class LoginFrame extends javax.swing.JFrame {
         btnLogarLogin = new javax.swing.JButton();
         txtUsuarioLogin = new javax.swing.JTextField();
         lblUsuarioLogin = new javax.swing.JLabel();
-        txtSenhaLogin = new javax.swing.JTextField();
         lblSenhaLogin = new javax.swing.JLabel();
         lblSpotifeiLogin = new javax.swing.JLabel();
         btnCadastroLogin = new javax.swing.JButton();
+        pswSenhaLogin = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Spotifei");
         setSize(new java.awt.Dimension(465, 369));
 
         btnLogarLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnLogarLogin.setText("Login");
+        btnLogarLogin.setText("Logar");
         btnLogarLogin.setBorderPainted(false);
         btnLogarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +64,6 @@ public class LoginFrame extends javax.swing.JFrame {
         lblUsuarioLogin.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblUsuarioLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblUsuarioLogin.setText("Usuario:");
-
-        txtSenhaLogin.setToolTipText("");
 
         lblSenhaLogin.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblSenhaLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -108,9 +107,14 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(pswSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(103, 103, 103))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pswSenhaLogin, txtUsuarioLogin});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblSenhaLogin, lblUsuarioLogin});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -122,18 +126,39 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(lblUsuarioLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pswSenhaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(btnLogarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(28, 28, 28)
                 .addComponent(btnCadastroLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pswSenhaLogin, txtUsuarioLogin});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblSenhaLogin, lblUsuarioLogin});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadastroLogin, btnLogarLogin});
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * Ação executada ao clicar no botão "Cadastro".
+     * 
+     * Abre a janela de cadastro de novo usuário e fecha a janela atual de login.
+     *
+     * @param evt evento de clique no botão "Cadastro"
+     */
+    private void btnCadastroLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroLoginActionPerformed
+        // TODO add your handling code here:
+        CadastroFrame cadastroFrame = new CadastroFrame();
+        cadastroFrame.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_btnCadastroLoginActionPerformed
 
     /**
      * Ação executada ao clicar no botão "Login".
@@ -148,23 +173,8 @@ public class LoginFrame extends javax.swing.JFrame {
         controller.logarUsuario();
     }//GEN-LAST:event_btnLogarLoginActionPerformed
 
-    /**
-     * Ação executada ao clicar no botão "Cadastro".
-     * 
-     * Abre a janela de cadastro de novo usuário e fecha a janela atual de login.
-     *
-     * @param evt evento de clique no botão "Cadastrar"
-     */
-    private void btnCadastroLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroLoginActionPerformed
-        // TODO add your handling code here:
-        CadastroFrame cadastroFrame = new CadastroFrame();
-        cadastroFrame.setVisible(true);
-
-        this.dispose();
-    }//GEN-LAST:event_btnCadastroLoginActionPerformed
-
-    public JTextField getTxtSenhaLogin() {
-        return txtSenhaLogin;
+    public JPasswordField getPswSenhaLogin() {
+        return pswSenhaLogin;
     }
     
     public JTextField getTxtUsuarioLogin() {
@@ -176,7 +186,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenhaLogin;
     private javax.swing.JLabel lblSpotifeiLogin;
     private javax.swing.JLabel lblUsuarioLogin;
-    private javax.swing.JTextField txtSenhaLogin;
+    private javax.swing.JPasswordField pswSenhaLogin;
     private javax.swing.JTextField txtUsuarioLogin;
     // End of variables declaration//GEN-END:variables
 }

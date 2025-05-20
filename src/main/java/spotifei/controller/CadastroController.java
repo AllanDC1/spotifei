@@ -43,7 +43,7 @@ public class CadastroController {
      */
     public void cadastrarUsuario() {
         String login = cadastroView.getTxtUsuarioCadastro().getText();
-        String senha = cadastroView.getTxtSenhaCadastro().getText();
+        String senha = new String(cadastroView.getPswSenhaCadastro().getPassword());
         String nome = cadastroView.getTxtNomeCadastro().getText();
         
         if (login.isEmpty() || senha.isEmpty() || nome.isEmpty()) {
