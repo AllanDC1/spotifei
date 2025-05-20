@@ -76,10 +76,11 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         pnlSuperiorBusca.setBackground(new java.awt.Color(44, 44, 44));
-        pnlSuperiorBusca.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 10));
+        pnlSuperiorBusca.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         btnHistoricoPesquisa.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnHistoricoPesquisa.setText("Hist.");
+        btnHistoricoPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/historyIcon.png"))); // NOI18N
+        btnHistoricoPesquisa.setToolTipText("Histórico");
         btnHistoricoPesquisa.setBorderPainted(false);
         btnHistoricoPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,11 +90,13 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlSuperiorBusca.add(btnHistoricoPesquisa);
 
         txtBuscarMusicas.setColumns(25);
-        txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtBuscarMusicas.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         txtBuscarMusicas.setForeground(new java.awt.Color(153, 153, 153));
         txtBuscarMusicas.setText("Pesquisar...");
         txtBuscarMusicas.setToolTipText("");
         txtBuscarMusicas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtBuscarMusicas.setMaximumSize(new java.awt.Dimension(2147483647, 40));
+        txtBuscarMusicas.setMinimumSize(new java.awt.Dimension(15, 40));
         txtBuscarMusicas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBuscarMusicasFocusGained(evt);
@@ -105,7 +108,8 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlSuperiorBusca.add(txtBuscarMusicas);
 
         btnBuscarMusicas.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBuscarMusicas.setText("Buscar");
+        btnBuscarMusicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/searchIcon.png"))); // NOI18N
+        btnBuscarMusicas.setToolTipText("Pesquisar");
         btnBuscarMusicas.setBorderPainted(false);
         btnBuscarMusicas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +187,7 @@ public class BuscaMusicasPanel extends javax.swing.JPanel {
         pnlListaMusicas.removeAll();
 
         for (Musica musica : listaMusicas) {
-            MusicaItemPanel item = new MusicaItemPanel(musica);            
+            MusicaItemPanel item = new MusicaItemPanel(musica);   
 
             pnlListaMusicas.add(item);
         }

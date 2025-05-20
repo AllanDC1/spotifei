@@ -62,7 +62,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         pnlBotoesPlaylists = new javax.swing.JPanel();
         btnEditarPlaylist = new javax.swing.JButton();
         btnExcluirPlaylist = new javax.swing.JButton();
-        btnRemoverMusicaPlaylist = new javax.swing.JButton();
+        btnRemoverPlaylist = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(44, 44, 44));
         setMinimumSize(new java.awt.Dimension(850, 768));
@@ -116,18 +116,18 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
         });
         pnlBotoesPlaylists.add(btnExcluirPlaylist);
 
-        btnRemoverMusicaPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnRemoverMusicaPlaylist.setText("Remover Música");
-        btnRemoverMusicaPlaylist.setBorderPainted(false);
-        btnRemoverMusicaPlaylist.setMaximumSize(new java.awt.Dimension(160, 40));
-        btnRemoverMusicaPlaylist.setMinimumSize(new java.awt.Dimension(160, 40));
-        btnRemoverMusicaPlaylist.setPreferredSize(new java.awt.Dimension(160, 40));
-        btnRemoverMusicaPlaylist.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoverPlaylist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRemoverPlaylist.setText("Remover");
+        btnRemoverPlaylist.setBorderPainted(false);
+        btnRemoverPlaylist.setMaximumSize(new java.awt.Dimension(130, 40));
+        btnRemoverPlaylist.setMinimumSize(new java.awt.Dimension(130, 40));
+        btnRemoverPlaylist.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnRemoverPlaylist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoverMusicaPlaylistActionPerformed(evt);
+                btnRemoverPlaylistActionPerformed(evt);
             }
         });
-        pnlBotoesPlaylists.add(btnRemoverMusicaPlaylist);
+        pnlBotoesPlaylists.add(btnRemoverPlaylist);
 
         add(pnlBotoesPlaylists, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
@@ -185,7 +185,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
     * 
     * @param evt evento de clique no botão "Remover Música da Playlist"
     */
-    private void btnRemoverMusicaPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMusicaPlaylistActionPerformed
+    private void btnRemoverPlaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverPlaylistActionPerformed
         
         List<Musica> musicasPlaylist = playlistController.buscarMusicasPlaylist(playlist);
         
@@ -202,7 +202,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Música removida.", "Remover da Playlist", JOptionPane.INFORMATION_MESSAGE);
             frameController.exibirPlaylist(playlist);
         }
-    }//GEN-LAST:event_btnRemoverMusicaPlaylistActionPerformed
+    }//GEN-LAST:event_btnRemoverPlaylistActionPerformed
 
     /**
      * Exibe na interface todas as músicas pertencentes à playlist fornecida.
@@ -225,7 +225,7 @@ public class ExibirPlaylistPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarPlaylist;
     private javax.swing.JButton btnExcluirPlaylist;
-    private javax.swing.JButton btnRemoverMusicaPlaylist;
+    private javax.swing.JButton btnRemoverPlaylist;
     private javax.swing.JLabel lblTituloPlaylist;
     private javax.swing.JPanel pnlBotoesPlaylists;
     private javax.swing.JScrollPane pnlExibirMusicasPlaylist;

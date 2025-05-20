@@ -15,9 +15,6 @@ import spotifei.model.Musica;
  */
 public class MusicasReagidasPanel extends javax.swing.JPanel {
 
-    private MusicaController controller;
-    private final String tipoReacao;
-    
     /**
      * Construtor do painel que inicializa a interface e carrega as músicas reagidas com base na reação especificada.
      *
@@ -27,13 +24,10 @@ public class MusicasReagidasPanel extends javax.swing.JPanel {
     public MusicasReagidasPanel(MusicaController controller, String tipoReacao) {
         initComponents();
         
-        this.controller = controller;
         controller.setMusicasReagidasView(this);
         controller.listarMusicasReagidas(Sessao.getUsuarioLogado(), tipoReacao.charAt(0));
         
-        this.tipoReacao = tipoReacao;
         lblTituloReacao.setText("Músicas " + tipoReacao);
-        
     }
 
     /**
@@ -81,7 +75,9 @@ public class MusicasReagidasPanel extends javax.swing.JPanel {
         pnlListaMusicasReacao.removeAll();
 
         for (Musica musica : listaMusicas) {
-            ReacaoItemPanel item = new ReacaoItemPanel(musica);       
+            MusicaItemPanel item = new MusicaItemPanel(musica);
+            item.getBtnCurtir().setVisible(false);
+            item.getBtnDescurtir().setVisible(false);
 
             pnlListaMusicasReacao.add(item);
         }
