@@ -5,6 +5,8 @@
 package spotifei.view;
 
 //import java.awt.CardLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import spotifei.app.Sessao;
@@ -37,25 +39,19 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlNavegacaoSpotifei = new javax.swing.JPanel();
-        lblSpotifeiSpotifei = new javax.swing.JLabel();
         btnPlaylistNavegacao = new javax.swing.JButton();
         btnMusicasNavegacao = new javax.swing.JButton();
         btnCurtidasNavegacao = new javax.swing.JButton();
         btnDescurtidasNavegacao = new javax.swing.JButton();
         btnSairNavegacao = new javax.swing.JButton();
+        lblSpotifeiMain = new javax.swing.JLabel();
         pnlMainSpotifei = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Spotifei");
         setMinimumSize(new java.awt.Dimension(1024, 768));
 
         pnlNavegacaoSpotifei.setBackground(new java.awt.Color(30, 30, 30));
-
-        lblSpotifeiSpotifei.setBackground(new java.awt.Color(0, 0, 0));
-        lblSpotifeiSpotifei.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblSpotifeiSpotifei.setForeground(new java.awt.Color(0, 153, 0));
-        lblSpotifeiSpotifei.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSpotifeiSpotifei.setText("SPOTIFEI");
-        lblSpotifeiSpotifei.setToolTipText("");
 
         btnPlaylistNavegacao.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnPlaylistNavegacao.setText("Playlists");
@@ -102,26 +98,36 @@ public class SpotifeiFrame extends javax.swing.JFrame {
             }
         });
 
+        lblSpotifeiMain.setBackground(new java.awt.Color(0, 0, 0));
+        lblSpotifeiMain.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSpotifeiMain.setForeground(new java.awt.Color(0, 153, 0));
+        lblSpotifeiMain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/spotifeiLogo.png"));
+        Image img = icon.getImage().getScaledInstance(120, 40, Image.SCALE_SMOOTH);
+        lblSpotifeiMain.setIcon(new ImageIcon(img));
+        lblSpotifeiMain.setToolTipText("");
+
         javax.swing.GroupLayout pnlNavegacaoSpotifeiLayout = new javax.swing.GroupLayout(pnlNavegacaoSpotifei);
         pnlNavegacaoSpotifei.setLayout(pnlNavegacaoSpotifeiLayout);
         pnlNavegacaoSpotifeiLayout.setHorizontalGroup(
             pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCurtidasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSairNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSpotifeiMain, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnPlaylistNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCurtidasNavegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDescurtidasNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addComponent(btnSairNavegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         pnlNavegacaoSpotifeiLayout.setVerticalGroup(
             pnlNavegacaoSpotifeiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNavegacaoSpotifeiLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lblSpotifeiSpotifei, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSpotifeiMain, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(132, 132, 132)
                 .addComponent(btnMusicasNavegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -219,7 +225,7 @@ public class SpotifeiFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMusicasNavegacao;
     private javax.swing.JButton btnPlaylistNavegacao;
     private javax.swing.JButton btnSairNavegacao;
-    private javax.swing.JLabel lblSpotifeiSpotifei;
+    private javax.swing.JLabel lblSpotifeiMain;
     private javax.swing.JPanel pnlMainSpotifei;
     private javax.swing.JPanel pnlNavegacaoSpotifei;
     // End of variables declaration//GEN-END:variables

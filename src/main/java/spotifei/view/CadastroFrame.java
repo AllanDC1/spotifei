@@ -4,6 +4,8 @@
  */
 package spotifei.view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import spotifei.controller.CadastroController;
@@ -41,10 +43,10 @@ public class CadastroFrame extends javax.swing.JFrame {
         lblSenhaCadastro = new javax.swing.JLabel();
         txtNomeCadastro = new javax.swing.JTextField();
         lblNomeCadastro = new javax.swing.JLabel();
-        lblSpotifeiCadastro = new javax.swing.JLabel();
         btnCadastrarCadastro = new javax.swing.JButton();
         pswSenhaCadastro = new javax.swing.JPasswordField();
         btnLoginCadastro = new javax.swing.JButton();
+        lblSpotifeiCadastro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Spotifei");
@@ -66,13 +68,6 @@ public class CadastroFrame extends javax.swing.JFrame {
         lblNomeCadastro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNomeCadastro.setText("Nome:");
 
-        lblSpotifeiCadastro.setBackground(new java.awt.Color(0, 0, 0));
-        lblSpotifeiCadastro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblSpotifeiCadastro.setForeground(new java.awt.Color(0, 153, 0));
-        lblSpotifeiCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSpotifeiCadastro.setText("SPOTIFEI");
-        lblSpotifeiCadastro.setToolTipText("");
-
         btnCadastrarCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastrarCadastro.setText("Cadastrar-se");
         btnCadastrarCadastro.setBorderPainted(false);
@@ -91,6 +86,15 @@ public class CadastroFrame extends javax.swing.JFrame {
             }
         });
 
+        lblSpotifeiCadastro.setBackground(new java.awt.Color(0, 0, 0));
+        lblSpotifeiCadastro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSpotifeiCadastro.setForeground(new java.awt.Color(0, 153, 0));
+        lblSpotifeiCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/spotifeiLogo.png"));
+        Image img = icon.getImage().getScaledInstance(120, 40, Image.SCALE_SMOOTH);
+        lblSpotifeiCadastro.setIcon(new ImageIcon(img));
+        lblSpotifeiCadastro.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +103,7 @@ public class CadastroFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 100, Short.MAX_VALUE)
@@ -133,8 +137,8 @@ public class CadastroFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
