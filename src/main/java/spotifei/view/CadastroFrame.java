@@ -56,7 +56,7 @@ public class CadastroFrame extends javax.swing.JFrame {
 
         lblUsuarioCadastro.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblUsuarioCadastro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUsuarioCadastro.setText("Usuario:");
+        lblUsuarioCadastro.setText("Usuário:");
 
         lblSenhaCadastro.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblSenhaCadastro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

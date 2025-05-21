@@ -100,7 +100,7 @@
           <Font name="Consolas" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Usuario:"/>
+        <Property name="text" type="java.lang.String" value="Usu&#xe1;rio:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSenhaLogin">

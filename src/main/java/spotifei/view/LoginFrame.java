@@ -65,7 +65,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         lblUsuarioLogin.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblUsuarioLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUsuarioLogin.setText("Usuario:");
+        lblUsuarioLogin.setText("Usuário:");
 
         lblSenhaLogin.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblSenhaLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
