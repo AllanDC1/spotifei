@@ -5,8 +5,8 @@
 package spotifei.view;
 
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import spotifei.app.Sessao;
 import spotifei.controller.MusicaController;
@@ -63,9 +63,11 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         add(lblMusicaInfo, java.awt.BorderLayout.CENTER);
 
         pnlBotoes.setBackground(new java.awt.Color(44, 44, 44));
-        pnlBotoes.setLayout(new javax.swing.BoxLayout(pnlBotoes, javax.swing.BoxLayout.LINE_AXIS));
+        pnlBotoes.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 13));
 
-        btnCurtir.setText("Curtir");
+        btnCurtir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/likeIcon.png"))); // NOI18N
+        btnCurtir.setToolTipText("Curtir");
+        btnCurtir.setBorderPainted(false);
         btnCurtir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCurtirActionPerformed(evt);
@@ -73,7 +75,9 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         });
         pnlBotoes.add(btnCurtir);
 
-        btnDescurtir.setText("Descurtir");
+        btnDescurtir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dislikeIcon.png"))); // NOI18N
+        btnDescurtir.setToolTipText("Descurtir");
+        btnDescurtir.setBorderPainted(false);
         btnDescurtir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDescurtirActionPerformed(evt);
@@ -81,7 +85,9 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         });
         pnlBotoes.add(btnDescurtir);
 
-        btnAdicionarPlaylist.setText("Add à Playlist");
+        btnAdicionarPlaylist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plusIcon.png"))); // NOI18N
+        btnAdicionarPlaylist.setToolTipText("Adicionar na Playlist");
+        btnAdicionarPlaylist.setBorderPainted(false);
         btnAdicionarPlaylist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarPlaylistActionPerformed(evt);
@@ -155,8 +161,15 @@ public class MusicaItemPanel extends javax.swing.JPanel {
         if (mensagem != null) {
             JOptionPane.showMessageDialog(null, mensagem, "Descurtir música", JOptionPane.INFORMATION_MESSAGE);
         }
-        
     }//GEN-LAST:event_btnDescurtirActionPerformed
+
+    public JButton getBtnCurtir() {
+        return btnCurtir;
+    }
+
+    public JButton getBtnDescurtir() {
+        return btnDescurtir;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPlaylist;

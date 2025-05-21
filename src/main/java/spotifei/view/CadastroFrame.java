@@ -4,6 +4,9 @@
  */
 package spotifei.view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import spotifei.controller.CadastroController;
 
@@ -37,12 +40,13 @@ public class CadastroFrame extends javax.swing.JFrame {
 
         txtUsuarioCadastro = new javax.swing.JTextField();
         lblUsuarioCadastro = new javax.swing.JLabel();
-        txtSenhaCadastro = new javax.swing.JTextField();
         lblSenhaCadastro = new javax.swing.JLabel();
         txtNomeCadastro = new javax.swing.JTextField();
         lblNomeCadastro = new javax.swing.JLabel();
-        lblSpotifeiCadastro = new javax.swing.JLabel();
         btnCadastrarCadastro = new javax.swing.JButton();
+        pswSenhaCadastro = new javax.swing.JPasswordField();
+        btnLoginCadastro = new javax.swing.JButton();
+        lblSpotifeiCadastro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Spotifei");
@@ -52,9 +56,7 @@ public class CadastroFrame extends javax.swing.JFrame {
 
         lblUsuarioCadastro.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblUsuarioCadastro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUsuarioCadastro.setText("Usuario:");
-
-        txtSenhaCadastro.setToolTipText("");
+        lblUsuarioCadastro.setText("Usuário:");
 
         lblSenhaCadastro.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblSenhaCadastro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -66,13 +68,6 @@ public class CadastroFrame extends javax.swing.JFrame {
         lblNomeCadastro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNomeCadastro.setText("Nome:");
 
-        lblSpotifeiCadastro.setBackground(new java.awt.Color(0, 0, 0));
-        lblSpotifeiCadastro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblSpotifeiCadastro.setForeground(new java.awt.Color(0, 153, 0));
-        lblSpotifeiCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSpotifeiCadastro.setText("SPOTIFEI");
-        lblSpotifeiCadastro.setToolTipText("");
-
         btnCadastrarCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCadastrarCadastro.setText("Cadastrar-se");
         btnCadastrarCadastro.setBorderPainted(false);
@@ -82,6 +77,24 @@ public class CadastroFrame extends javax.swing.JFrame {
             }
         });
 
+        btnLoginCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLoginCadastro.setText("Login");
+        btnLoginCadastro.setBorderPainted(false);
+        btnLoginCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginCadastroActionPerformed(evt);
+            }
+        });
+
+        lblSpotifeiCadastro.setBackground(new java.awt.Color(0, 0, 0));
+        lblSpotifeiCadastro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSpotifeiCadastro.setForeground(new java.awt.Color(0, 153, 0));
+        lblSpotifeiCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/spotifeiLogo.png"));
+        Image img = icon.getImage().getScaledInstance(120, 40, Image.SCALE_SMOOTH);
+        lblSpotifeiCadastro.setIcon(new ImageIcon(img));
+        lblSpotifeiCadastro.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +103,7 @@ public class CadastroFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 100, Short.MAX_VALUE)
@@ -102,23 +115,30 @@ public class CadastroFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(pswSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblUsuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtUsuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(103, 103, 103))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCadastrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnLoginCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pswSenhaCadastro, txtNomeCadastro, txtUsuarioCadastro});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblNomeCadastro, lblSenhaCadastro, lblUsuarioCadastro});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(lblSpotifeiCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -128,12 +148,20 @@ public class CadastroFrame extends javax.swing.JFrame {
                     .addComponent(lblNomeCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(btnCadastrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addComponent(lblSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pswSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLoginCadastro)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pswSenhaCadastro, txtNomeCadastro, txtUsuarioCadastro});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblNomeCadastro, lblSenhaCadastro, lblUsuarioCadastro});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCadastrarCadastro, btnLoginCadastro});
 
         pack();
         setLocationRelativeTo(null);
@@ -149,13 +177,28 @@ public class CadastroFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.cadastrarUsuario();
     }//GEN-LAST:event_btnCadastrarCadastroActionPerformed
+
+    /**
+     * Ação executada ao clicar no botão "Login".
+     * 
+     * Abre a janela de login de usuário e fecha a janela atual de cadastro.
+     *
+     * @param evt evento de clique no botão "Login"
+     */
+    private void btnLoginCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginCadastroActionPerformed
+        // TODO add your handling code here:
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_btnLoginCadastroActionPerformed
     
     public JTextField getTxtNomeCadastro() {
         return txtNomeCadastro;
     }
 
-    public JTextField getTxtSenhaCadastro() {
-        return txtSenhaCadastro;
+    public JPasswordField getPswSenhaCadastro() {
+        return pswSenhaCadastro;
     }
 
     public JTextField getTxtUsuarioCadastro() {
@@ -164,12 +207,13 @@ public class CadastroFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCadastro;
+    private javax.swing.JButton btnLoginCadastro;
     private javax.swing.JLabel lblNomeCadastro;
     private javax.swing.JLabel lblSenhaCadastro;
     private javax.swing.JLabel lblSpotifeiCadastro;
     private javax.swing.JLabel lblUsuarioCadastro;
+    private javax.swing.JPasswordField pswSenhaCadastro;
     private javax.swing.JTextField txtNomeCadastro;
-    private javax.swing.JTextField txtSenhaCadastro;
     private javax.swing.JTextField txtUsuarioCadastro;
     // End of variables declaration//GEN-END:variables
 }
