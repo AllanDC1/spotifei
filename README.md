@@ -47,16 +47,17 @@ git clone https://github.com/AllanDC1/spotifei.git
 ### 2. Clone o banco de dados:
   1. Abra o PgAdmin 4 e conecte-se ao servidor desejado
   2. Com botão direito no servidor, selecione Create -> Database
-  3. Dê um nome para o novo banco que será uma cópia e clique em Save
+  3. Dê o nome `spotifei` para o novo banco e clique em Save
   4. Com botão direito no banco criado, selecione Query Tool
   5. Clique em Open File (ícone de pasta) e escolha o arquivo .sql `spotifei-bd` (presente no repositório)
   6. Clique no botão Execute/Run (ícone de raio), e o banco será criado <br> <br>
-  *Caso necessário ajustar configs de owner, edite o arquivo ``bd.properties`` em `spotifei/src/main/resources`
+  *Caso necessário ajustar configs de owner e url, edite o arquivo ``bd.properties`` em `spotifei/src/main/resources`
 
 ### 3. Execute o projeto:
-  - Rode o executável ``spotifei-1.0 (.jar)``, localizado em `spotifei/target`
-  - Ou via comando no diretório `spotifei/target`:
-    
-    ```bash
+  1. Abra o projeto pela IDE NetBeans
+  2. Selecione `Clean and build` para compilar e gerar o execútavel
+  3. Rode diretamente pela IDE, ou use o executável ``spotifei-1.0 (.jar)``, gerado em `spotifei/target` <br>
+  4. Ou ainda via comando no diretório `spotifei/target`:
+  
     java -jar spotifei-1.0.jar
-    ```
+    
