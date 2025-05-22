@@ -48,7 +48,7 @@ git clone https://github.com/AllanDC1/spotifei.git
   2. Com botão direito no servidor, selecione Create -> Database
   3. Dê o nome `spotifei` para o novo banco e clique em Save
   4. Com botão direito no banco criado, selecione Query Tool
-  5. Clique em Open File (ícone de pasta) e escolha o arquivo .sql `spotifei-bd` (presente no repositório)
+  5. Clique em Open File (ícone de pasta) e escolha o arquivo  `spotifei-bd.sql` (presente no repositório)
   6. Clique no botão Execute/Run (ícone de raio), e o banco será criado <br> <br>
   *Caso necessário ajustar configs de owner e url, edite o arquivo ``bd.properties`` em `spotifei/src/main/resources`
 
@@ -57,8 +57,8 @@ git clone https://github.com/AllanDC1/spotifei.git
   2. Selecione `Clean and build` para compilar e gerar o execútavel
 
 ### 4. Execute o projeto:  
-  1. Rode diretamente pela IDE, ou use o executável ``spotifei-1.0 (.jar)``, gerado em `spotifei/target` <br>
-  2. Ou ainda via comando no diretório `spotifei/target`:
+  - Rode diretamente pela IDE, ou use o executável ``spotifei-1.0 (.jar)``, gerado em `spotifei/target` <br>
+  - Ou ainda via comando no diretório `spotifei/target`:
   
     java -jar spotifei-1.0.jar
     
