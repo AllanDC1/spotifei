@@ -5,7 +5,31 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-05-21 18:54:59
+-- Started on 2025-05-22 17:28:59
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 4977 (class 1262 OID 16388)
+-- Name: spotifei; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE spotifei WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'pt-BR';
+
+
+ALTER DATABASE spotifei OWNER TO postgres;
+
+\connect spotifei
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -53,7 +77,7 @@ CREATE SEQUENCE public.artistas_id_artista_seq
 ALTER SEQUENCE public.artistas_id_artista_seq OWNER TO postgres;
 
 --
--- TOC entry 4976 (class 0 OID 0)
+-- TOC entry 4978 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: artistas_id_artista_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -91,7 +115,7 @@ CREATE SEQUENCE public.generos_id_genero_seq
 ALTER SEQUENCE public.generos_id_genero_seq OWNER TO postgres;
 
 --
--- TOC entry 4977 (class 0 OID 0)
+-- TOC entry 4979 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: generos_id_genero_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -131,7 +155,7 @@ CREATE SEQUENCE public.historico_id_historico_seq
 ALTER SEQUENCE public.historico_id_historico_seq OWNER TO postgres;
 
 --
--- TOC entry 4978 (class 0 OID 0)
+-- TOC entry 4980 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: historico_id_historico_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -172,7 +196,7 @@ CREATE SEQUENCE public.musicas_id_musica_seq
 ALTER SEQUENCE public.musicas_id_musica_seq OWNER TO postgres;
 
 --
--- TOC entry 4979 (class 0 OID 0)
+-- TOC entry 4981 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: musicas_id_musica_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -224,7 +248,7 @@ CREATE SEQUENCE public.playlists_id_playlist_seq
 ALTER SEQUENCE public.playlists_id_playlist_seq OWNER TO postgres;
 
 --
--- TOC entry 4980 (class 0 OID 0)
+-- TOC entry 4982 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: playlists_id_playlist_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -279,7 +303,7 @@ CREATE SEQUENCE public.usuarios_id_usuario_seq
 ALTER SEQUENCE public.usuarios_id_usuario_seq OWNER TO postgres;
 
 --
--- TOC entry 4981 (class 0 OID 0)
+-- TOC entry 4983 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: usuarios_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -336,117 +360,106 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN id_usuario SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4960 (class 0 OID 16419)
+-- TOC entry 4961 (class 0 OID 16419)
 -- Dependencies: 220
 -- Data for Name: artistas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.artistas (id_artista, nome_artista) FROM stdin;
-1	Adele
-\.
+INSERT INTO public.artistas VALUES (1, 'Adele');
+INSERT INTO public.artistas VALUES (2, 'The Weeknd');
+INSERT INTO public.artistas VALUES (3, 'Taylor Swift');
+INSERT INTO public.artistas VALUES (4, 'Arctic Monkeys');
+INSERT INTO public.artistas VALUES (5, 'Ludwig van Beethoven');
+INSERT INTO public.artistas VALUES (6, 'Anitta');
 
 
 --
--- TOC entry 4962 (class 0 OID 16428)
+-- TOC entry 4963 (class 0 OID 16428)
 -- Dependencies: 222
 -- Data for Name: generos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.generos (id_genero, nome_genero) FROM stdin;
-1	Pop
-\.
+INSERT INTO public.generos VALUES (1, 'Pop');
+INSERT INTO public.generos VALUES (2, 'Rock');
+INSERT INTO public.generos VALUES (3, 'Clássico');
+INSERT INTO public.generos VALUES (4, 'Funk');
+INSERT INTO public.generos VALUES (5, 'Indie');
 
 
 --
--- TOC entry 4970 (class 0 OID 16508)
+-- TOC entry 4971 (class 0 OID 16508)
 -- Dependencies: 230
 -- Data for Name: historico; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.historico (id_historico, id_usuario, texto_pesquisa, data_pesquisa) FROM stdin;
-20	15	hell	2025-05-18 21:40:49.037363
-22	15	asdas	2025-05-18 21:40:52.093318
-23	15	aaa	2025-05-20 20:55:00.875584
-\.
 
 
 --
--- TOC entry 4964 (class 0 OID 16437)
+-- TOC entry 4965 (class 0 OID 16437)
 -- Dependencies: 224
 -- Data for Name: musicas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.musicas (id_musica, titulo_musica, id_artista, id_genero, duracao) FROM stdin;
-1	Hello	1	1	4:55
-\.
+INSERT INTO public.musicas VALUES (1, 'Hello', 1, 1, '4:55');
+INSERT INTO public.musicas VALUES (2, 'Blinding Lights', 2, 1, '03:20');
+INSERT INTO public.musicas VALUES (3, 'Shake It Off', 3, 1, '03:39');
+INSERT INTO public.musicas VALUES (4, 'Do I Wanna Know?', 4, 2, '04:31');
+INSERT INTO public.musicas VALUES (5, 'Sinfonia nº 5', 5, 3, '07:10');
+INSERT INTO public.musicas VALUES (6, 'Envolver', 6, 4, '03:13');
 
 
 --
--- TOC entry 4967 (class 0 OID 16474)
+-- TOC entry 4968 (class 0 OID 16474)
 -- Dependencies: 227
 -- Data for Name: playlist_musica; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.playlist_musica (id_playlist, id_musica) FROM stdin;
-\.
 
 
 --
--- TOC entry 4966 (class 0 OID 16466)
+-- TOC entry 4967 (class 0 OID 16466)
 -- Dependencies: 226
 -- Data for Name: playlists; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.playlists (id_playlist, nome_playlist, id_usuario) FROM stdin;
-9	teste 2	15
-\.
 
 
 --
--- TOC entry 4968 (class 0 OID 16489)
+-- TOC entry 4969 (class 0 OID 16489)
 -- Dependencies: 228
 -- Data for Name: usuario_musica; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario_musica (id_usuario, id_musica, tipo_reacao) FROM stdin;
-15	1	D
-\.
 
 
 --
--- TOC entry 4958 (class 0 OID 16390)
+-- TOC entry 4959 (class 0 OID 16390)
 -- Dependencies: 218
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuarios (id_usuario, login_usuario, senha_usuario, nome_usuario) FROM stdin;
-15	allan	$2a$10$oxihZB6vzMOKudYYovbKYe.te4G2IKCQ/1PcpIFgRR.hCsWff4rcO	roberto
-16	rob	$2a$10$aQ4ThDb7m4VDo2HVusN2M.Ct4BHFDSPjYgjppSXqRbv3xVal4w9h2	roberto
-17	roberto	$2a$10$9G5EKom9i.mjBJx3kJbRG.fwxXGQAgC0HPnSklVXkgVg4DfyOw582	Roberto Carlos
-19	rob123	$2a$10$j565mVeHVKpvsdc0btxgI.ICZBJObyyb1qzCVALUL0xmsiJ.0bNoK	Roberto Carlos
-\.
-
-
---
--- TOC entry 4982 (class 0 OID 0)
--- Dependencies: 219
--- Name: artistas_id_artista_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.artistas_id_artista_seq', 1, true);
-
-
---
--- TOC entry 4983 (class 0 OID 0)
--- Dependencies: 221
--- Name: generos_id_genero_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.generos_id_genero_seq', 1, true);
 
 
 --
 -- TOC entry 4984 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: artistas_id_artista_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.artistas_id_artista_seq', 6, true);
+
+
+--
+-- TOC entry 4985 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: generos_id_genero_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.generos_id_genero_seq', 5, true);
+
+
+--
+-- TOC entry 4986 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: historico_id_historico_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -455,16 +468,16 @@ SELECT pg_catalog.setval('public.historico_id_historico_seq', 23, true);
 
 
 --
--- TOC entry 4985 (class 0 OID 0)
+-- TOC entry 4987 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: musicas_id_musica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.musicas_id_musica_seq', 1, true);
+SELECT pg_catalog.setval('public.musicas_id_musica_seq', 6, true);
 
 
 --
--- TOC entry 4986 (class 0 OID 0)
+-- TOC entry 4988 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: playlists_id_playlist_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -473,7 +486,7 @@ SELECT pg_catalog.setval('public.playlists_id_playlist_seq', 9, true);
 
 
 --
--- TOC entry 4987 (class 0 OID 0)
+-- TOC entry 4989 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: usuarios_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -581,7 +594,7 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4811 (class 2606 OID 16516)
+-- TOC entry 4812 (class 2606 OID 16516)
 -- Name: historico FK_historico_usuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -608,7 +621,16 @@ ALTER TABLE ONLY public.musicas
 
 
 --
--- TOC entry 4807 (class 2606 OID 16484)
+-- TOC entry 4807 (class 2606 OID 16524)
+-- Name: playlists FK_playlist_id_usuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.playlists
+    ADD CONSTRAINT "FK_playlist_id_usuario" FOREIGN KEY (id_usuario) REFERENCES public.usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 4808 (class 2606 OID 16484)
 -- Name: playlist_musica FK_playlist_musica_musica; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -617,7 +639,7 @@ ALTER TABLE ONLY public.playlist_musica
 
 
 --
--- TOC entry 4808 (class 2606 OID 16479)
+-- TOC entry 4809 (class 2606 OID 16479)
 -- Name: playlist_musica FK_playlist_musica_playlist; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -626,7 +648,7 @@ ALTER TABLE ONLY public.playlist_musica
 
 
 --
--- TOC entry 4809 (class 2606 OID 16500)
+-- TOC entry 4810 (class 2606 OID 16500)
 -- Name: usuario_musica FK_usuario_musica_musica; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -635,7 +657,7 @@ ALTER TABLE ONLY public.usuario_musica
 
 
 --
--- TOC entry 4810 (class 2606 OID 16495)
+-- TOC entry 4811 (class 2606 OID 16495)
 -- Name: usuario_musica FK_usuario_musica_usuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -643,7 +665,7 @@ ALTER TABLE ONLY public.usuario_musica
     ADD CONSTRAINT "FK_usuario_musica_usuario" FOREIGN KEY (id_usuario) REFERENCES public.usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2025-05-21 18:54:59
+-- Completed on 2025-05-22 17:28:59
 
 --
 -- PostgreSQL database dump complete
