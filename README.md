@@ -36,8 +36,7 @@ Após o login ou cadastro, o usuário acessa a tela principal com uma **barra la
 ### Requisitos
 - Java 17 ou superior
 - PgAdmin 4 (PostgreSQL) rodando com o banco configurado
-
-### Passos
+- IDE NetBeans *(Apenas se quiser compilar ou visualizar previews das interfaces)*
 
 ### 1. Clone o repositório:
 ```bash
@@ -53,11 +52,13 @@ git clone https://github.com/AllanDC1/spotifei.git
   6. Clique no botão Execute/Run (ícone de raio), e o banco será criado <br> <br>
   *Caso necessário ajustar configs de owner e url, edite o arquivo ``bd.properties`` em `spotifei/src/main/resources`
 
-### 3. Execute o projeto:
+### 3. (Opcional) Compile o projeto:
   1. Abra o projeto pela IDE NetBeans
   2. Selecione `Clean and build` para compilar e gerar o execútavel
-  3. Rode diretamente pela IDE, ou use o executável ``spotifei-1.0 (.jar)``, gerado em `spotifei/target` <br>
-  4. Ou ainda via comando no diretório `spotifei/target`:
+
+### 4. Execute o projeto:  
+  1. Rode diretamente pela IDE, ou use o executável ``spotifei-1.0 (.jar)``, gerado em `spotifei/target` <br>
+  2. Ou ainda via comando no diretório `spotifei/target`:
   
     java -jar spotifei-1.0.jar
     
